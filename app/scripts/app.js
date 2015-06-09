@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name pasaeAngularjsApp
+ * @name pasaeAngularJsApp
  * @description
- * # pasaeAngularjsApp
+ * # pasaeAngularJsApp
  *
  * Main module of the application.
  */
 angular
-  .module('pasaeAngularjsApp', [
+  .module('pasaeAngularJsApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -22,6 +22,10 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
