@@ -1,34 +1,42 @@
 'use strict';
 
-angular.module('pasaeAngularJsApp').service( 'SessionService', [function(){
+angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http',function($q,$http){
 	return {
-		register : function(){
-			
+		register : function(user){
+			var deferred = $q.defer();
+			$http.get('register', user).then(function(successData){
+				var data = successData
+				// se registra exitosamente el usuario devuelvo la informacion para logearlo
+				deferred.resolve(data);				
+				},function(error){
+					deferred.reject(error);
+				})
+			return deferred.promise;
 		}
-		autenticate : function(){
-			$http.get('user', {headers : headers}).success(function(data) {
-			      if (data.name) {
-			    	  //En vez de root scope deberia usar cookies
-			    	$cookie.authenticated = true;
-			      } else {
-			    	$cookie:authenticated = false;			      
-			      }
-			      callback && callback();
-			    }).error(function() {
+		authenticate : function(user){
+			var deferred = $q.defer():
+		
+			//Defino el header	
+				
+			$http.get('authenticate', {headers : headers}).then(function(data) {
+				$cookie.authenticated = true;			      
+			    deferred.resolve(data);
+			    }),function(error) {
 			      $cookie.authenticated = false;
-			      callback && callback();
-			    });
+			      deferred.reject(error);
+			    })
+			return deferred.promise;
 		}
-		login :  function() {
-		      authenticate($scope.credentials, function() {
-		          if ($cookie.authenticated) {
-		            $location.path("/");
-		            $scope.error = false;
-		          } else {
-		            $location.path("/login");
-		            $scope.error = true;
-		          }
-		        });
-		    };
+//		login :  function() {
+//		      authenticate($scope.credentials, function() {
+//		          if ($cookie.authenticated) {
+//		            $location.path("/");
+//		            $scope.error = false;
+//		          } else {
+//		            $location.path("/login");
+//		            $scope.error = true;
+//		          }
+//		        });
+//		    };
 	};
 }]);
