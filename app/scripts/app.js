@@ -30,4 +30,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+    
+    $httpProvider.interceptors.push("SessionInterceptor");
   });

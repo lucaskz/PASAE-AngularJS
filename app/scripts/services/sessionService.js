@@ -17,6 +17,9 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http',fun
 			var deferred = $q.defer():
 		
 			//Defino el header	
+			var headers = credentials ? {authorization : "Basic "
+		        + btoa(user.email + ":" + user.password)
+		    } : {};
 				
 			$http.get('authenticate', {headers : headers}).then(function(data) {
 				$cookie.authenticated = true;			      
