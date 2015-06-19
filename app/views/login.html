@@ -1,5 +1,4 @@
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">    
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -9,21 +8,20 @@
                 <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
                 <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" placeholder="Email">
+                        <input type="text" class="form-control input-lg" ng-model="user.email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" placeholder="Password">
+                        <input type="password" class="form-control input-lg" ng-model="user.password" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-danger btn-lg btn-block">Sign In</button>
-                        <i class="spinner tu-icono-fav" ng-show="loading"></>
-                        <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+                        <button class="btn btn-danger btn-lg btn-block" ng-click="login()">Sign In</button>
+                        <i class="spinner tu-icono-fav" ng-show="loading"></i>
+                        <span class="pull-right"><a  ng-click="register()">Register</a></span><span><a href="#">Need help?</a></span>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <h6 class="text-center"><a href="">Privacy is important to us. Click here to read why.</a></h6>
             </div>
-        </div>
-    </div>
+        </div>    
 </div>

@@ -15,9 +15,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider,$httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -31,5 +32,5 @@ angular
         redirectTo: '/'
       });
     
-    $httpProvider.interceptors.push("SessionInterceptor");
+    $httpProvider.interceptors.push('SessionInterceptor');
   });

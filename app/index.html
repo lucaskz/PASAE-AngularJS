@@ -22,7 +22,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" ng-controller="HeaderCtrl">
         <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
 		    <div class="container">
 		        <div class="navbar-header">
@@ -45,7 +45,7 @@
 		                <li>&nbsp;</li>
 		            </ul>
 		            <ul class="nav navbar-nav navbar-right">
-		                <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-heart-o fa-lg"></i></a></li>
+		                <li><a  ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Login</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -53,9 +53,9 @@
    	</div>
 
     <div class="container">
-    <div ng-view=""></div>
+    <div ng-view></div>
     </div>
-
+    
 	<footer id="footer">
 	    <div class="container">
 	        <div class="row">
@@ -129,9 +129,15 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/ui-bootstrap-custom-0.13.0.js"></script>
+        <script src="scripts/ui-bootstrap-custom-tpls-0.13.0.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/services/test.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/interceptors/session.js"></script>
+        <script src="scripts/services/session.js"></script>
         <!-- endbuild -->
 </body>
 </html>

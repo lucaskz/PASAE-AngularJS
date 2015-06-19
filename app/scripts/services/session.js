@@ -1,0 +1,45 @@
+'use strict';
+
+angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$cookies',function($q,$http,$cookies){
+	return {
+		register : function(user){
+			var deferred = $q.defer();
+			$http.get('register', user).then(function(successData){
+				var data = successData;
+				// se registra exitosamente el usuario devuelvo la informacion para logearlo
+				deferred.resolve(data);				
+				},function(error){
+					deferred.reject(error);
+				});
+			return deferred.promise;
+		},
+		authenticate : function(credentials){
+			var deferred = $q.defer();
+		
+			//Defino el header	
+			var headers = credentials ? {authorization : 'Basic ' + btoa(credentials.email + ":" + credentials.password)
+		    } : {};
+				
+			$http.get('authenticate', {headers : headers}).then(function(data) {
+				$cookie.authenticated = true;		
+				$cookie.token = data.token;
+			    deferred.resolve(data);
+			    }),function(error) {
+			      $cookie.authenticated = false;
+			      deferred.reject(error);
+			    }
+			return deferred.promise;
+		}
+//		login :  function() {
+//		      authenticate($scope.credentials, function() {
+//		          if ($cookie.authenticated) {
+//		            $location.path("/");
+//		            $scope.error = false;
+//		          } else {
+//		            $location.path("/login");
+//		            $scope.error = true;
+//		          }
+//		        });
+//		    };
+	};
+}]);
