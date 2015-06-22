@@ -11,6 +11,8 @@ angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$mo
 	  
 	$scope.loading = false;
 	
+	
+	
     $scope.register = function (user){
     	$modalInstance.close();   	
 
@@ -21,10 +23,10 @@ angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$mo
 	    });
 	 	  
     };    
-    $scope.login = function(user){
+    $scope.login = function(){
 //    	SessionService.login();    	
     	$scope.loading = true;
-    	SessionService.authenticate(user).then(
+    	SessionService.authenticate($scope.user).then(
     			function(){
     				//aca okParam es lo que se devuelve en deferred.resolve(DATA) desde el service
     				$scope.loading = false;

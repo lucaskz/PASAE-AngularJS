@@ -33,4 +33,5 @@ angular
       });
     
     $httpProvider.interceptors.push('SessionInterceptor');
+    
   });
