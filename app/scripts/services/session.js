@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$cookies',function($q,$http,$cookies){
+angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http,$cookies,$httpParamSerializer){
 	return {
 		register : function(user){
 			var deferred = $q.defer();
@@ -19,8 +19,12 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 			//Defino el header	
 //			var headers = credentials ? {authorization : 'Basic ' + btoa(credentials.username + ":" + credentials.password)
 //		    } : {};
-				
-			$http.post('http://localhost:8080/web-module/login', {username:credentials.username,password:credentials.password}).then(function(data) {
+			
+			$http.post('http://localhost:8080/web-module/login', $httpParamSerializer(credentials), {
+			    headers: {
+			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			        }
+				}).then(function(data) {
 				$cookie.authenticated = true;		
 				$cookie.token = data.token;
 			    deferred.resolve(data);
