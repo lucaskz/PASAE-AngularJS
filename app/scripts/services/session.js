@@ -4,7 +4,7 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 	return {
 		register : function(user){
 			var deferred = $q.defer();
-			$http.post('register', user).then(function(successData){
+			$http.post('http://localhost:8080/web-module/espectador', user).then(function(successData){
 				var data = successData;
 				// se registra exitosamente el usuario devuelvo la informacion para logearlo
 				deferred.resolve(data);				
