@@ -90,6 +90,7 @@ module.exports = function (grunt) {
                   res.setHeader('Access-Control-Allow-Origin', '*');
                   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT');
                   res.setHeader('Content-Type','application/x-www-form-urlencoded');
+                  res.setHeader('Access-Control-Allow-Credentials', true);
                   next();
                 }
             ];

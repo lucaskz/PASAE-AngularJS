@@ -23,18 +23,19 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 			$http.post('http://localhost:8080/web-module/login', $httpParamSerializer(credentials), {
 			    headers: {
 			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-			        }
+			        },
+			    withCredentials:true
 				}).then(function(data) {
-				$cookie.authenticated = true;		
-				$cookie.token = data.token;
-			    deferred.resolve(data);
+					$cookies.authenticated = true;		
+					$cookies.token = data.token;
+					deferred.resolve(data);
 			    }),function(error) {
-			      $cookie.authenticated = false;
-			      console.log(data);
-			      console.log(status);
-			      console.log(headers);
-			      console.log(config);
-			      deferred.reject(error);
+					$cookies.authenticated = false;
+					console.log(data);
+					console.log(status);
+					console.log(headers);
+					console.log(config);
+					deferred.reject(error);
 			    }
 			return deferred.promise;
 //		    var headers = {

@@ -28,10 +28,14 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/profile',{
+    	  templateUrl: 'views/profile.html',
+    	  controller: 'ProfileCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
-    
-    $httpProvider.interceptors.push('SessionInterceptor');
+    $httpProvider.defaults.withCredentials = true;
+//    $httpProvider.interceptors.push('SessionInterceptor');
     
   });
