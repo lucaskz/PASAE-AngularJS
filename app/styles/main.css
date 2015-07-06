@@ -106,4 +106,8 @@ body {
     font-size: 30px;
   }
 
+  body > div.container > div > div > p:nth-child(4) {
+    font-size: 30px;
+  }
+
 }
