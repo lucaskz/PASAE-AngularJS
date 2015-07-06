@@ -80,4 +80,30 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+  body .navbar-form {
+     margin-top: 80px;
+     margin-bottom: 30px;
+     margin-left: 15%;
+  }
+
+  body .navbar-form button {
+    border-radius: 20px;
+    width: 80px;
+  }
+
+  body .navbar-form .input-group {
+    width: 110%;
+  }
+
+
+  #navbar-collapsible > ul.nav.navbar-nav.navbar-left {
+    padding-left:35px;
+  }
+
+  body > div.header.ng-scope > nav > div > div.navbar-header > div {
+    margin-left: -18px;
+    font-size: 30px;
+  }
+
 }
