@@ -29,7 +29,7 @@ angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies
 
             if (rejection.status == 401)
             {
-                $rootScope.signOut();
+            	$rootScope.$broadcast('errorStatus', rejection);
             }
 
             return $q.reject(rejection);
