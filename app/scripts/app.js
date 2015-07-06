@@ -32,10 +32,13 @@ angular
     	  templateUrl: 'views/profile.html',
     	  controller: 'ProfileCtrl'
       })
+      .when('/error',{
+    	  templateUrl: 'views/error.html',
+    	  controller: 'ErrorCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
     $httpProvider.defaults.withCredentials = true;
-//    $httpProvider.interceptors.push('SessionInterceptor');
-    
+    $httpProvider.interceptors.push('ErrorInterceptor');    
   });
