@@ -110,4 +110,8 @@ body {
     font-size: 30px;
   }
 
+  .span3 {
+   width: 270px;
+  }
+
 }
