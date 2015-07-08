@@ -9,9 +9,7 @@
  */
 angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$modal,$modalInstance,SessionService) {
 	  
-	$scope.loading = false;
-	
-	
+	$scope.loading = false;	
 	
     $scope.register = function (user){
     	$modalInstance.close();   	
@@ -27,14 +25,22 @@ angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$mo
 //    	SessionService.login();    	
     	$scope.loading = true;
     	SessionService.authenticate($scope.user).then(
-    			function(){
-    				//aca okParam es lo que se devuelve en deferred.resolve(DATA) desde el service
+    			function(data){
     				$scope.loading = false;
+    				//aca okParam es lo que se devuelve en deferred.resolve(DATA) desde el service
+    				$rootScope.authenticated = true;
+    				$rootScope.username = data.username;
+    				$rootScope.role = data.role;
+    				$rootScope.$broadcast('loginEvent', true);
+    				
     			},
     			function(error){
     				// el error funciona igual
     				$scope.loading = false;
-    				console.log(error);
+    				$rootScope.authenticated = false;
+    				$rootScope.username = {};
+    				$rootScope.role = {};
+    				$rootScope.$broadcast('loginEvent', false);
     			});
     };
    });

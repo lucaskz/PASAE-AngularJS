@@ -8,7 +8,7 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('HeaderCtrl', function ($scope, $modal, $log) {	
+  .controller('HeaderCtrl', function ($scope, $modal, $log,$rootScope) {	
 	  
 	  $scope.login = function () {
 		  var modalInstance = $modal.open({
@@ -32,4 +32,13 @@ angular.module('pasaeAngularJsApp')
 		      controller: 'RegisterCtrl',
 		    });
 	 };	  
+	 
+	 $scope.$on('loginEvent', function(event, data) {
+			if($rootScope.authenticated){
+				$scope.username = $rootScope.username;
+				$scope.authenticated = true;				
+			}else{
+				$scope.authenticated = false;
+			}
+		});
   });
