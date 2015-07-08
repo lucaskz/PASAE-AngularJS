@@ -31,8 +31,8 @@ angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$mo
     				$rootScope.authenticated = true;
     				$rootScope.username = data.username;
     				$rootScope.role = data.role;
-    				$rootScope.$broadcast('loginEvent', true);
-    				
+    				$rootScope.user = data.user;
+    				$rootScope.$broadcast('loginEvent', true);    				
     			},
     			function(error){
     				// el error funciona igual
@@ -40,6 +40,7 @@ angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$mo
     				$rootScope.authenticated = false;
     				$rootScope.username = {};
     				$rootScope.role = {};
+    				$rootScope.user = {};
     				$rootScope.$broadcast('loginEvent', false);
     			});
     };
