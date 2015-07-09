@@ -14,7 +14,7 @@
 
 'use strict';
 
-angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies',function($q,$cookies){
+angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies','$rootScope',function($q,$cookies,$rootScope){
 	return {
 //	 'request': function(config) {
 //	      // do something on success
@@ -27,7 +27,7 @@ angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies
         {
             // Error found ..
 
-            if (rejection.status == 401)
+            if (rejection.status == 401 && !rejection.config.url.endsWith('login'))
             {
             	$rootScope.$broadcast('errorStatus', rejection);
             }
