@@ -18,6 +18,9 @@
                         <i class="spinner tu-icono-fav" ng-show="loading"></i>
                         <span class="pull-right"><a  ng-click="register()">Register</a></span><span><a href="#">Need help?</a></span>
                     </div>
+                    <div class="form-group" ng-show="error">
+                        <div class="alert alert-warning" role="alert">{{errorMsg}}</div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

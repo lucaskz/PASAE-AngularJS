@@ -4,11 +4,11 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 	return {
 		register : function(user){
 			var deferred = $q.defer();
-			$http.post('http://localhost:8080/web-module/espectador', user).then(function(successData){
+			$http.post('http://localhost:8080/web-module/espectador', user).success(function(successData){
 				var data = successData;
 				// se registra exitosamente el usuario devuelvo la informacion para logearlo
 				deferred.resolve(data);				
-				},function(error){
+				}).error(function(error){
 					deferred.reject(error);
 				});
 			return deferred.promise;
@@ -25,18 +25,18 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			        },
 			    withCredentials:true
-				}).then(function(data) {
-					$cookies.authenticated = true;		
-					$cookies.token = data.token;
+				}).success(function(data) {
+//					$cookies.authenticated = true;		
+//					$cookies.token = data.token;
 					deferred.resolve(data);
-			    }),function(error) {
-					$cookies.authenticated = false;
-					console.log(data);
-					console.log(status);
-					console.log(headers);
-					console.log(config);
+			    }).error(function(error) {
+//					$cookies.authenticated = false;
+//					console.log(data);
+//					console.log(status);
+//					console.log(headers);
+//					console.log(config);
 					deferred.reject(error);
-			    }
+			    })
 			return deferred.promise;
 //		    var headers = {
 //					'Access-Control-Allow-Origin' : '*',

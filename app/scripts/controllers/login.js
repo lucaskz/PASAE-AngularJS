@@ -7,7 +7,7 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$modal,$modalInstance,SessionService) {
+angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$modal,$modalInstance,SessionService,$rootScope,$cookies) {
 	  
 	$scope.loading = false;	
 	
@@ -28,20 +28,25 @@ angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$mo
     			function(data){
     				$scope.loading = false;
     				//aca okParam es lo que se devuelve en deferred.resolve(DATA) desde el service
-    				$rootScope.authenticated = true;
-    				$rootScope.username = data.username;
-    				$rootScope.role = data.role;
-    				$rootScope.user = data.user;
-    				$rootScope.$broadcast('loginEvent', true);    				
+    				$cookies.authenticated = true;
+    				$cookies.username = data.username;
+    				$cookies.roles = data.roles;
+    				$cookies.user = data.user;
+    				$rootScope.$broadcast('loginEvent', true);   
+    				$scope.error = false;
+    				$scope.errorMsg = {};
+    				$modalInstance.close();
     			},
     			function(error){
     				// el error funciona igual
     				$scope.loading = false;
-    				$rootScope.authenticated = false;
-    				$rootScope.username = {};
-    				$rootScope.role = {};
-    				$rootScope.user = {};
+    				$cookies.authenticated = false;
+    				$cookies.username = {};
+    				$cookies.role = {};
+    				$cookies.user = {};
     				$rootScope.$broadcast('loginEvent', false);
+    				$scope.error = true;
+    				$scope.errorMsg = error;
     			});
     };
    });
