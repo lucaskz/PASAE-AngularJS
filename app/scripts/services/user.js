@@ -13,10 +13,10 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 //				});
 //			return deferred.promise;
 //		},
-		/*getUserData : function(){
+		getUserData : function(){
 			var deferred = $q.defer();
 
-			$http.get('http://localhost:8080/web-module/espectador/1').then(function(successData){
+			$http.get('http://localhost:8080/web-module/espectador/0').then(function(successData){
 				var data = successData;
 
 				deferred.resolve(data);
@@ -24,7 +24,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 					deferred.reject(error);
 				});
 			return deferred.promise;
-		}*/
+		}
 
 	};
 }]);

@@ -62,7 +62,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1200px;
   }
 
   /* Remove the padding we set earlier */
@@ -81,18 +81,37 @@ body {
     border-bottom: 0;
   }
 
-/*espectaculo */
+  body .navbar-form {
+     margin-top: 80px;
+     margin-bottom: 30px;
+     margin-left: 15%;
+  }
 
-body > div.container > div > div > div > div.panel.panel-default > div {
-  background-color: black;
-  color:white;
-}
+  body .navbar-form button {
+    border-radius: 20px;
+    width: 80px;
+  }
+
+  body .navbar-form .input-group {
+    width: 110%;
+  }
 
 
+  #navbar-collapsible > ul.nav.navbar-nav.navbar-left {
+    padding-left:30px;
+  }
 
+  body > div.header.ng-scope > nav > div > div.navbar-header > div {
+    margin-left: -18px;
+    font-size: 30px;
+  }
 
+  body > div.container > div > div > p:nth-child(4) {
+    font-size: 30px;
+  }
 
-
-
+  .span3 {
+   width: 270px;
+  }
 
 }
