@@ -52,6 +52,22 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($sco
 
  };
 
+ $scope.listado= function(){
+      EspectaculoService.getEspectaculos().then(
+       function(){
+
+       },
+
+       function(error){
+
+        $loading=false;
+         console.log(error);
+       })
+
+
+
+ };
+
 
 
 });

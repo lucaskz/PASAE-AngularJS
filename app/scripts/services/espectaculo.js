@@ -28,6 +28,22 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
           					deferred.reject(error);
           				});
           			return deferred.promise;
+         },
+
+         getEspectaculos() : function(){
+
+            var deferred = $q.defer();
+
+                   $http.get('http://localhost:8080/web-module/espectaculo/listadoEspectaculos').then(function(successData){
+                      		var data = successData;
+
+                      		deferred.resolve(data);
+                      		},function(error){
+                      					deferred.reject(error);
+
+                      		});
+                      		return deferred.promise;
+
          }
 
 
