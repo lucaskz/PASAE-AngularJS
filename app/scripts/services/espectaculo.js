@@ -30,7 +30,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
           			return deferred.promise;
          },
 
-         getEspectaculos() : function(){
+         getEspectaculos : function(){
 
             var deferred = $q.defer();
 
