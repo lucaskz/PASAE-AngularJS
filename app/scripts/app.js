@@ -32,7 +32,25 @@ angular
     	  templateUrl: 'views/profile.html',
     	  controller: 'ProfileCtrl'
       })
-      .when('/error',{
+      .when('/espectaculo',{
+        templateUrl: 'views/espectaculo.html',
+        controller: 'EspectaculoCtrl'
+      })
+      .when('/espectaculo/agregar', {
+         templateUrl:'views/agregarEspectaculo.html',
+         controller: 'EspectaculoCtrl'
+      })
+      .when('/espectaculo/editar', {
+         templateUrl:'views/editarEspectaculo.html',
+         controller:'EspectaculoCtrl'
+
+      })
+      .when('/funcion', {
+               templateUrl:'views/funcion.html',
+               controller:'FuncionCtrl'
+
+      })
+       .when('/error',{
     	  templateUrl: 'views/error.html',
     	  controller: 'ErrorCtrl'
       })
@@ -40,5 +58,5 @@ angular
         redirectTo: '/'
       });
     $httpProvider.defaults.withCredentials = true;
-    $httpProvider.interceptors.push('ErrorInterceptor');    
+    $httpProvider.interceptors.push('ErrorInterceptor');
   });

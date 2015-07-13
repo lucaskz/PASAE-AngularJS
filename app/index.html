@@ -8,10 +8,10 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="assets/styles/styles.css">
     <!-- endbuild -->
@@ -37,9 +37,9 @@
 		        <div class="navbar-collapse collapse" id="navbar-collapsible">
 		            <ul class="nav navbar-nav navbar-left">
 		                <li><a ng-href="#/profile">Profile</a></li>
-		                <li><a href="#section2">Next</a></li>
-		                <li><a href="#section3">Then</a></li>
-		                <li><a href="#section4">Form</a></li>
+		                <li><a ng-href="#/espectaculo">Espectaculo</a></li>
+		                <li><a href="#/espectaculo/editar">Editar</a></li>
+		                <li><a href="#/funcion">Funciones</a></li>
 		                <li><a href="#section5">More</a></li>
 		                <li><a href="#section6">Last</a></li>
 		                <li>&nbsp;</li>
@@ -55,7 +55,7 @@
     <div class="container">
     <div ng-view></div>
     </div>
-    
+
 	<footer id="footer">
 	    <div class="container">
 	        <div class="row">
@@ -138,9 +138,20 @@
         <script src="scripts/controllers/header.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/controllers/error.js"></script>
+        <script src="scripts/controllers/espectaculo.js"></script>
+        <script src="scripts/controllers/categoria.js"></script>
+        <script src="scripts/controllers/teatro.js"></script>
+        <script src="scripts/controllers/funcion.js"></script>
         <script src="scripts/interceptors/error.js"></script>
         <script src="scripts/services/session.js"></script>
+        <script src="scripts/services/espectaculo.js"></script>
         <script src="scripts/services/user.js"></script>
-        <!-- endbuild -->
+        <script src="scripts/services/categoria.js"></script>
+        <script src="scripts/services/teatro.js"></script>
+        <script src="scripts/services/funcion.js"></script>
+
+
+
+    <!-- endbuild -->
 </body>
 </html>

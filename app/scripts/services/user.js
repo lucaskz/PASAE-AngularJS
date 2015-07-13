@@ -7,24 +7,24 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 //			$http.post('http://localhost:8080/web-module/espectador', user).then(function(successData){
 //				var data = successData;
 //				// se registra exitosamente el usuario devuelvo la informacion para logearlo
-//				deferred.resolve(data);				
+//				deferred.resolve(data);
 //				},function(error){
 //					deferred.reject(error);
 //				});
 //			return deferred.promise;
 //		},
-		getUserData : function(){
+		/*getUserData : function(){
 			var deferred = $q.defer();
-			
+
 			$http.get('http://localhost:8080/web-module/espectador/1').then(function(successData){
 				var data = successData;
-				
-				deferred.resolve(data);				
+
+				deferred.resolve(data);
 				},function(error){
 					deferred.reject(error);
 				});
 			return deferred.promise;
-		}
-	
+		}*/
+
 	};
 }]);

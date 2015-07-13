@@ -80,4 +80,19 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+/*espectaculo */
+
+body > div.container > div > div > div > div.panel.panel-default > div {
+  background-color: black;
+  color:white;
+}
+
+
+
+
+
+
+
+
 }
