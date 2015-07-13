@@ -8,8 +8,8 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('HeaderCtrl', function ($scope, $modal, $log,$rootScope,$cookies) {	
-	  
+  .controller('HeaderCtrl', function ($scope, $modal, $log,$rootScope,$cookies) {
+
 	  $scope.login = function () {
 		  var modalInstance = $modal.open({
 		      animation: $scope.animationsEnabled,
@@ -23,10 +23,10 @@ angular.module('pasaeAngularJsApp')
 		      }
 		  });
 	};
-	  
+
 	  $scope.register = function () {
-		  
-		  
+
+
 		  var modalInstance = $modal.open({
 		      animation: $scope.animationsEnabled,
 		      templateUrl: 'views/register.html',
@@ -44,8 +44,8 @@ angular.module('pasaeAngularJsApp')
 //		      templateUrl: 'views/register.html',
 //		      controller: 'RegisterCtrl',
 //		    });
-	 };	  
-	 
+	 };
+
 	 $scope.$on('loginEvent', function(event, data) {
 			if($cookies.authenticated){
 				$scope.username = $cookies.username;

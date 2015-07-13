@@ -1,11 +1,44 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="http://placehold.it/300x200" alt="...">
+        <div class="caption">
+          <h3>PainKiller</h3>
+          <p>Favio Posca se presenta en su nuevo espectaculo</p>
+          <p>
+            <a ng-show="roles=='ROLE_Administrador'" href="#" class="btn btn-warning" role="button">
+              <span class="glyphicon glyphicon-edit"></span> Editar
+            </a>
+            <a ng-show="roles=='ROLE_Administrador'" href="#" class="btn btn-danger" role="button">
+              <span class="glyphicon glyphicon-erase"></span> Eliminar
+            </a>
+
+
+            <a ng-show="roles=='ROLE_Espectador'" href="#" class="btn-info btn-lg" role="button">
+              <span class="glyphicon glyphicon-info-sign"></span> Más información
+            </a>
+
+            <div>El rol es: {{roles}}</div>
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="http://placehold.it/300x200" alt="...">
+        <div class="caption">
+          <h3>PainKiller</h3>
+          <p>Favio Posca se presenta en su nuevo espectaculo</p>
+          <p>
+            <a href="#" class="btn btn-primary" role="button">Botón</a>
+            <a href="#" class="btn btn-default" role="button">Botón</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <p></p>
 
