@@ -7,7 +7,7 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($scope,EspectaculoService,CategoriaService,TeatroService) {
+angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($scope,$routeParams,EspectaculoService,CategoriaService,TeatroService) {
 
 
   TeatroService.getTeatros().then(
@@ -62,11 +62,27 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($sco
 
         $loading=false;
          console.log(error);
-       })
+       });
 
 
 
  };
+
+   EspectaculoService.editarEspectaculo(routeParams).then(
+
+          function(data){
+              $scope.espectactulo=routeParams.id;
+
+          },
+          function(error){
+           $loading=false;
+           console.log(error);
+
+   });
+
+
+}
+
 
 
 
