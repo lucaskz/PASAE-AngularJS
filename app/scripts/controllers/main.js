@@ -8,7 +8,7 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('MainCtrl', function ($scope,$cookies) {
+  .controller('MainCtrl', function ($scope,$cookies,EspectaculoService) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -26,6 +26,23 @@ angular.module('pasaeAngularJsApp')
     				$scope.authenticated = false;
     			}
     		});
+
+
+     EspectaculoService.getEspectaculos().then(
+          function(data){
+            $scope.espectaculos=data.data;
+
+          },
+
+          function(error){
+
+            $loading=false;
+            console.log(error);
+          }
+     )
+
+
+
 
 
   });

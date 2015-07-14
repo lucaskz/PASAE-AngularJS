@@ -40,7 +40,7 @@ angular
          templateUrl:'views/agregarEspectaculo.html',
          controller: 'EspectaculoCtrl'
       })
-      .when('/espectaculo/editar', {
+      .when('/espectaculo/editar/:idespectaculo', {
          templateUrl:'views/editarEspectaculo.html',
          controller:'EspectaculoCtrl'
 

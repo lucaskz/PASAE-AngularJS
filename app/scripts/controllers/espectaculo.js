@@ -35,16 +35,15 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($sco
 
    $scope.agregar = function () {
     	$scope.loading = true;
+      EspectaculoService.crearEspectaculo($scope.espectaculo).then(
 
-          EspectaculoService.crearEspectaculo($scope.espectaculo).then(
-          		   function(){
-                   console.log("agrego espectaculo");
+         function(){
+           console.log("agrego espectaculo");
 
+         },
+    		 function(error){
 
-          		  },
-          			function(error){
-
-          				$scope.loading = false;
+   				$scope.loading = false;
           				console.log(error);
 
 
@@ -52,21 +51,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($sco
 
  };
 
- $scope.listado= function(){
-      EspectaculoService.getEspectaculos().then(
-       function(){
 
-       },
-
-       function(error){
-
-        $loading=false;
-         console.log(error);
-       })
-
-
-
- };
 
 
 

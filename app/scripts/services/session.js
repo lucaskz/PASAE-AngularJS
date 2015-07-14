@@ -7,7 +7,7 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 			$http.post('http://localhost:8080/web-module/espectador', user).then(function(successData){
 				var data = successData;
 				// se registra exitosamente el usuario devuelvo la informacion para logearlo
-				deferred.resolve(data);				
+				deferred.resolve(data);
 				},function(error){
 					deferred.reject(error);
 				});
@@ -15,28 +15,28 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 		},
 		authenticate : function(credentials){
 			var deferred = $q.defer();
-		
-			//Defino el header	
+
+			//Defino el header
 //			var headers = credentials ? {authorization : 'Basic ' + btoa(credentials.username + ":" + credentials.password)
 //		    } : {};
-			
+
 			$http.post('http://localhost:8080/web-module/login', $httpParamSerializer(credentials), {
 			    headers: {
 			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			        },
 			    withCredentials:true
-				}).then(function(data) {
-					$cookies.authenticated = true;		
-					$cookies.token = data.token;
+				}).success(function(data) {
+//					$cookies.authenticated = true;
+//					$cookies.token = data.token;
 					deferred.resolve(data);
-			    }),function(error) {
-					$cookies.authenticated = false;
-					console.log(data);
-					console.log(status);
-					console.log(headers);
-					console.log(config);
+			    }).error(function(error) {
+//					$cookies.authenticated = false;
+//					console.log(data);
+//					console.log(status);
+//					console.log(headers);
+//					console.log(config);
 					deferred.reject(error);
-			    }
+			    })
 			return deferred.promise;
 //		    var headers = {
 //					'Access-Control-Allow-Origin' : '*',
@@ -61,8 +61,8 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 //		        console.log(config);
 //		    });
 		}
-		
-		
+
+
 //		login :  function() {
 //		      authenticate($scope.credentials, function() {
 //		          if ($cookie.authenticated) {
