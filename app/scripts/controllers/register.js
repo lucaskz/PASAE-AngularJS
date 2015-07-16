@@ -36,9 +36,11 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl', function ($scope,
     	
     	$modalInstance.close();
     	
+    	$modalInstance.dismiss();
+    	
 	    var modalInstance = $modal.open({
-	      animation: true,
-	      templateUrl: 'views/login.html',
+	      animation: false,
+	      templateUrl: 'views/login.html',	      
 	      controller: 'LoginCtrl',
 	    });
     };	   
