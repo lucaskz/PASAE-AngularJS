@@ -28,6 +28,10 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl', function ($scope,
     			});
     };    
     
+    $scope.close = function(){
+    	$modalInstance.dismiss('cancel');
+    }
+    
     $scope.login = function () {
     	
     	$modalInstance.close();
@@ -37,6 +41,6 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl', function ($scope,
 	      templateUrl: 'views/login.html',
 	      controller: 'LoginCtrl',
 	    });
- };	   
+    };	   
     	
    });

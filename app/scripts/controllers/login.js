@@ -21,6 +21,12 @@ angular.module('pasaeAngularJsApp').controller('LoginCtrl', function ($scope,$mo
 	    });
 
     };
+    
+    $scope.close = function(){
+    	$modalInstance.dismiss('cancel');
+    }
+    
+    
     $scope.login = function(){
 //    	SessionService.login();
     	$scope.loading = true;
