@@ -10,20 +10,21 @@
  */
 angular
   .module('pasaeAngularJsApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ui.bootstrap'
-  ])
+        'ngAnimate',
+        'ngCookies',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch',
+        'ui.bootstrap'
+   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
@@ -40,11 +41,15 @@ angular
          templateUrl:'views/agregarEspectaculo.html',
          controller: 'EspectaculoCtrl'
       })
-      .when('/espectaculo/editar/:idespectaculo', {
-         templateUrl:'views/editarEspectaculo.html',
+      .when('/espectaculo/info/:idespectaculo', {
+         templateUrl:'views/funcion.html',
          controller:'EspectaculoCtrl'
 
       })
+      .when('/espectaculo/eliminar/:idespectaculo', {
+                       templateUrl:'views/main.html',
+                       controller:'EspectaculoCtrl'
+       })
       .when('/funcion', {
                templateUrl:'views/funcion.html',
                controller:'FuncionCtrl'
