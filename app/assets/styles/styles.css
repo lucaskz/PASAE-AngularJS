@@ -195,3 +195,7 @@ footer .nav>li>a:hover {
     background-color:transparent;
 	color:#fff;
 }
+.modal-backdrop{
+bottom: 0;
+position: fixed;
+}

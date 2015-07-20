@@ -1,0 +1,26 @@
+
+  <div class="container ">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <textarea class="form-control" rows="3" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion"></textarea>
+      </div>
+      <div class="pull-left" >
+        <select class=" form-control" ng-model="espectaculo.categoria">
+          <option value="">Seleccione Categoria </option>
+          <option  ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+        </select>
+        <p></p>
+        <select class=" form-control"  ng-model="espectaculo.teatro">
+          <option value="">Seleccione Teatro </option>
+
+          <option ng-repeat="teatro in teatros" value="{{teatro.id}}">{{teatro.nombre}}</option>
+        </select>
+        <p>
+        <p>
+          <button ng-click="agregar()" class="btn-small btn-primary btn-block :hover">Agregar Espectaculo</button>
+      </div>
+
+    </form>
+
+  </div>
+
