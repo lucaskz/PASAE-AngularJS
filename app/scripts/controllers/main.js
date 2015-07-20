@@ -17,15 +17,17 @@ angular.module('pasaeAngularJsApp')
     ];
 
 
-     $scope.$on('loginEvent', function(event, data) {
-    			if($sessionStorage.authenticated){
-    				$scope.username = $sessionStorage.username;
-    				$scope.authenticated = true;
-    				$scope.roles = $sessionStorage.roles[0].authority;
-    			}else{
-    				$scope.authenticated = false;
-    			}
-    		});
+     var checkLogin = function(){
+   		  if($sessionStorage.authenticated){
+   				$scope.username = $sessionStorage.username;
+   				$scope.authenticated = true;
+   				$scope.roles = $sessionStorage.roles[0].authority;
+   			}else{
+   				$scope.authenticated = false;
+   			}
+   	  }
+
+   	  checkLogin();
 
 
      EspectaculoService.getEspectaculos().then(
