@@ -32,6 +32,10 @@ angular
     	  templateUrl: 'views/profile.html',
     	  controller: 'ProfileCtrl'
       })
+      .when('/usuario/agregar', {
+        templateUrl: 'views/agregarUsuario.html',
+        controller: 'UsuarioCtrl'
+      })
       .when('/espectaculo',{
         templateUrl: 'views/espectaculo.html',
         controller: 'EspectaculoCtrl'

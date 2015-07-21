@@ -8,13 +8,13 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp').controller('RegisterCtrl', function ($scope,$modal,$modalInstance,SessionService) {
-	  
-	$scope.loading = false;
-	
+
+	  $scope.loading = false;
+
     $scope.register = function (user){
     	//Control de los input del usuario
-    	
-    	
+
+
     	$scope.loading = true;
     	SessionService.register(user).then(
     			function(){
@@ -26,17 +26,17 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl', function ($scope,
     				$scope.loading = false;
     				console.log(error);
     			});
-    };    
-    
+    };
+
     $scope.login = function () {
-    	
+
     	$modalInstance.close();
-    	
+
 	    var modalInstance = $modal.open({
 	      animation: true,
 	      templateUrl: 'views/login.html',
 	      controller: 'LoginCtrl',
 	    });
- };	   
-    	
-   });
+    };
+
+});

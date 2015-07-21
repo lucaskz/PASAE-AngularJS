@@ -47,7 +47,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($sco
           				console.log(error);
 
 
-               });
+          });
 
  };
 
