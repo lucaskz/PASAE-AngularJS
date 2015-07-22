@@ -21,6 +21,22 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
                   deferred.reject(error);
                 });
               return deferred.promise;
+          },
+
+          getDataTeatro : function(idTeatro){
+            var deferred = $q.defer();
+                     alert(idTeatro);
+                         $http.get('http://localhost:8080/web-module/teatro/' + idTeatro).then(function(successData){
+                           var data = successData;
+
+                           deferred.resolve(data);
+                           },function(error){
+                             deferred.reject(error);
+                           });
+                         return deferred.promise;
+
+
+
           }
 
 

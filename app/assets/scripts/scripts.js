@@ -13,22 +13,36 @@ $('a[href*=#]:not([href=#])').click(function() {
         $('html,body').animate({
           scrollTop: target.offset().top - 50
         }, 800);
-        
+
         if (this.hash=="#section1") {
             $('.scroll-up').hide();
         }
         else {
             $('.scroll-up').show();
         }
-        
-        
+
+
         // activte animations in this section
         target.find('.animate').delay(1200).addClass("animated");
         setTimeout(function(){
             target.find('.animated').removeClass("animated");
         },2000);
-        
+
         return false;
       }
-    }
-});
+    },
+
+
+//  $('#confirm-delete').on('show.bs.modal', function(e) {
+//
+//  alert("hola");
+//  $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+//   $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+//
+//  })
+
+
+
+
+
+);
