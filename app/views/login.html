@@ -1,27 +1,23 @@
-<div id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">    
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h2 class="text-center"><img src="//placehold.it/110" class="img-circle"><br>Login</h2>
-            </div>
-            <div class="modal-body row">
-                <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
-                <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
-                    <div class="form-group">
-                        <input type="text" class="form-control input-lg" ng-model="user.username" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-lg" ng-model="user.password" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-danger btn-lg btn-block" ng-click="login()" value="Sign In" />
-                        <i class="spinner tu-icono-fav" ng-show="loading"></i>
-                        <span class="pull-right"><a  ng-click="register()">Register</a></span><span><a href="#">Need help?</a></span>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <h6 class="text-center"><a href="">Privacy is important to us. Click here to read why.</a></h6>
-            </div>
-        </div>    
+<div class="modal-header">
+	<button type="button" class="close" ng-click="close()" aria-hidden="true">×</button>
+	<h2 class="text-center"><img src="//placehold.it/110" class="img-circle"><br>Login</h2>
+</div>
+<div class="modal-body row">
+	<h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
+	<form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+	    <div class="form-group">
+	        <input type="text" class="form-control input-lg" ng-model="user.username" placeholder="Email">
+	    </div>
+	    <div class="form-group">
+	        <input type="password" class="form-control input-lg" ng-model="user.password" placeholder="Password">
+	    </div>
+	    <div class="form-group">
+	        <input type="submit" class="btn btn-danger btn-lg btn-block" ng-click="login()" value="Sign In" />
+	        <i class="spinner tu-icono-fav" ng-show="loading"></i>
+	        <span class="pull-right"><a  ng-click="register()">Register</a></span><span><a href="#">Need help?</a></span>
+	    </div>
+	</form>
+</div>
+<div class="modal-footer">
+	<h6 class="text-center"><a href="">Privacy is important to us. Click here to read why.</a></h6>
 </div>

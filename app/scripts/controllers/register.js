@@ -28,15 +28,21 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl', function ($scope,
     			});
     };    
     
+    $scope.close = function(){
+    	$modalInstance.dismiss('cancel');
+    }
+    
     $scope.login = function () {
     	
     	$modalInstance.close();
     	
+    	$modalInstance.dismiss();
+    	
 	    var modalInstance = $modal.open({
-	      animation: true,
-	      templateUrl: 'views/login.html',
+	      animation: false,
+	      templateUrl: 'views/login.html',	      
 	      controller: 'LoginCtrl',
 	    });
- };	   
+    };	   
     	
    });

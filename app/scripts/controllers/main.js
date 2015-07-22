@@ -8,7 +8,7 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('MainCtrl', function ($scope,$cookies,EspectaculoService,$modal) {
+  .controller('MainCtrl', function ($scope,$cookies,EspectaculoService,$sessionStorage,$modal) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,11 +17,12 @@ angular.module('pasaeAngularJsApp')
     ];
     console.log("mainctrl instanciado");
 
+
      $scope.$on('loginEvent', function(event, data) {
-    			if($cookies.authenticated){
-    				$scope.username = $cookies.username;
+    			if($sessionStorage.authenticated){
+    				$scope.username = $sessionStorage.username;
     				$scope.authenticated = true;
-    				$scope.roles = $cookies.roles[0].authority;
+    				$scope.roles = $sessionStorage.roles[0].authority;
     			}else{
     				$scope.authenticated = false;
     			}
