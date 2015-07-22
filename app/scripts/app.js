@@ -33,6 +33,14 @@ angular
     	  templateUrl: 'views/profile.html',
     	  controller: 'ProfileCtrl'
       })
+      .when('/usuario/agregar', {
+        templateUrl: 'views/agregarUsuario.html',
+        controller: 'UsuarioCtrl'
+      })
+      .when('/listadousuarios', {
+        templateUrl: 'views/listadousuarios.html',
+        controller: 'UsuarioCtrl'
+      })
       .when('/espectaculo',{
         templateUrl: 'views/espectaculo.html',
         controller: 'EspectaculoCtrl'
@@ -46,7 +54,19 @@ angular
          controller:'EspectaculoCtrl'
 
       })
-      .when('/funcion', {
+      .when('/espectaculo/eliminar/:idespectaculo', {
+                             templateUrl:'views/main.html',
+                             controller:'EspectaculoCtrl'
+       })
+      .when('/espectaculo/info/:idespectaculo', {
+               templateUrl:'views/funcion.html',
+               controller:'EspectaculoCtrl'
+
+       })
+
+
+
+       .when('/funcion', {
                templateUrl:'views/funcion.html',
                controller:'FuncionCtrl'
 

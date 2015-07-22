@@ -1,4 +1,16 @@
+
+
 <div class="container">
+
+  <div id="search-bar "class="navbar-form" role="search">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Encuentre lo mejor del teatro..." name="srch-term" id="srch-term">
+      <div class="input-group-btn">
+        <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div ng-repeat="espectaculo in espectaculos" class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -7,15 +19,18 @@
           <h3>{{espectaculo.nombre}}</h3>
           <p>{{espectaculo.descripcion}}</p>
           <p>
-            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button">
+            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button">
               <span class="glyphicon glyphicon-edit"></span> Editar
             </a>
-            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#" class="btn btn-lg btn-danger" role="button">
+            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo.id}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
               <span class="glyphicon glyphicon-erase"></span> Eliminar
+            </a>
+            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/info/{{espectaculo.id}}"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
+              <span class="glyphicon glyphicon-erase"></span> Prueba
             </a>
 
 
-            <a ng-hide="roles=='ROLE_ADMINISTRADOR' "href="#" class="btn-info btn-lg" role="button">
+            <a ng-hide="roles=='ROLE_ADMINISTRADOR'" href="#" class="btn-info btn-lg" role="button">
               <span class="glyphicon glyphicon-info-sign"></span> Más información
             </a>
 
@@ -26,9 +41,14 @@
       </div>
     </div>
 
+
+
+
+
   </div>
 
   <p></p>
+
 
 
 

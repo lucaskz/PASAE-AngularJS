@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -56,15 +56,6 @@
 		</nav>
    	</div>
 
-    <div id="search-bar "class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Encuentre lo mejor del teatro..." name="srch-term" id="srch-term">
-            <div class="input-group-btn">
-                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-    </div>
-
 
     <div class="container">
     <div ng-view></div>
@@ -116,6 +107,11 @@
 	</footer>
 
 
+
+
+
+
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -125,7 +121,14 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
+
+
+
+
+
+
     </script>
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -151,6 +154,7 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/usuario.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/controllers/error.js"></script>
         <script src="scripts/controllers/espectaculo.js"></script>
@@ -160,7 +164,7 @@
         <script src="scripts/interceptors/error.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/espectaculo.js"></script>
-        <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/usuario.js"></script>
         <script src="scripts/services/categoria.js"></script>
         <script src="scripts/services/teatro.js"></script>
         <script src="scripts/services/funcion.js"></script>
