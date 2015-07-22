@@ -30,4 +30,29 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
 
    };
 
+   UsuarioService.getListadoEspectadores().then(
+         function(data){
+          $scope.usuarios=data.data;
+         },
+         function(error){
+          $loading=false;
+          console.log(error);
+         }
+   );
+
+
+  $scope.displayedUsuarios=[].concat($scope.usuarios);
+
+   UsuarioService.getListadoEmpleados().then(
+
+          function(data){
+            $scope.usuarios=data.data;
+          },
+          function(error){
+            $loading=false;
+            console.log(error);
+          }
+
+   );
+
 });
