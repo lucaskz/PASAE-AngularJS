@@ -33,6 +33,9 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
    UsuarioService.getListadoEspectadores().then(
          function(data){
           $scope.usuarios=data.data;
+          $scope.apellido=data.data.apellido;
+          $scope.nombre=data.data.nombre;
+          $scope.email=data.data.email;
          },
          function(error){
           $loading=false;
