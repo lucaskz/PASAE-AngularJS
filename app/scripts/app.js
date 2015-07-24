@@ -67,8 +67,6 @@ angular
 
         })
 
-
-
        .when('/funcion', {
                templateUrl:'views/funcion.html',
                controller:'FuncionCtrl'
