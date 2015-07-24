@@ -44,7 +44,7 @@ angular.module('pasaeAngularJsApp')
 
           function(error){
 
-            $loading=false;
+            $scope.loading=false;
             console.log(error);
           }
      );

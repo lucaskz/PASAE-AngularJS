@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngStorage',
+    'ngTable'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
