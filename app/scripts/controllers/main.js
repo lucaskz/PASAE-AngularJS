@@ -54,12 +54,12 @@ angular.module('pasaeAngularJsApp')
             $scope.espectaculoSelected = espectaculo;
              $scope.modalInstance = $modal.open({
               animation: true,
-              scope:$scope,
+              scope:$scope,              
               templateUrl: 'views/eliminarEspectaculo.html'
             });
      }
 
-     $scope.confirmDelete = function(){
+     $scope.confirmDelete = function(espectaculo){
         EspectaculoService.eliminarEspectaculo($scope.espectaculoSelected.id).then(
                             function(data){
 //                               EspectaculoService.getEspectaculos().then(
@@ -75,7 +75,14 @@ angular.module('pasaeAngularJsApp')
 //                                         }
 //                                    );
                                 console.log(data);
-                                $scope.espectaculos.pop($scope.espectaculoSelected);
+                                var index = -1,i=0;
+                                while(index==-1 && i<=$scope.espectaculos.length-1){
+                                	if($scope.espectaculos[i].id==espectaculo.id){
+                                		index=i;
+                                	}
+                                	i++;
+                                }
+                                $scope.espectaculos.splice(index, 1 );                                
                                 $scope.modalInstance.close();
                             },
                             function(error){
@@ -88,17 +95,17 @@ angular.module('pasaeAngularJsApp')
 
      }
 
-     EspectaculoService.listadoEspectaculoSegunCategoria($routeParams.categoria).then(
-
-                  function(data){
-                      $scope.espectaculos2=data.data;
-
-                  },
-
-                  function(error){
-                              console.log(error);
-                  }
-      );
+//     EspectaculoService.listadoEspectaculoSegunCategoria($routeParams.categoria).then(
+//
+//                  function(data){
+//                      $scope.espectaculos2=data.data;
+//
+//                  },
+//
+//                  function(error){
+//                              console.log(error);
+//                  }
+//      );
 
 
 
