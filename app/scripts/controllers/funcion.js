@@ -7,7 +7,8 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('FuncionCtrl', function ($scope) {
+angular.module('pasaeAngularJsApp').controller('FuncionCtrl', function ($scope,FuncionService) {
+
 
 
 

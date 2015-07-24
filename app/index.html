@@ -36,12 +36,14 @@
 		            <div class="navbar-brand text-danger">TicketYA</div>
 		        </div>
 		        <div class="navbar-collapse collapse" id="navbar-collapsible">
+
+
 		            <ul class="nav navbar-nav navbar-left">
-                  <li><a href="#section1">Comedia/Comedia Musical</a></li>
-                  <li><a href="#section2">Drama</a></li>
-                  <li><a href="#section3">Infantiles</a></li>
-                  <li><a href="#section4">Recitales</a></li>
-                  <li><a href="#section5">Opera/Clasica/Ballet</a></li>
+                  <li><a href="#/categorias/comedia">Comedia/Comedia Musical</a></li>
+                  <li><a href="#/categorias/drama">Drama</a></li>
+                  <li><a href="#/">Infantiles</a></li>
+                  <li><a href="#">Recitales</a></li>
+                  <li><a href="#/">Opera/Clasica/Ballet</a></li>
                   <li>&nbsp;</li>
 		            </ul>
 		            <ul class="nav navbar-nav navbar-right" ng-hide="authenticated">
@@ -49,21 +51,14 @@
 		                <li><a  ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Sign up</a></li>
 		            </ul>
 		            <ul class="nav navbar-nav navbar-right" ng-show="authenticated">
-		                <li><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}},{{roles}}</a></li>
+		                <li><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
 		            </ul>
+
+              {{ espectaculo.nombre }}
 		        </div>
 		    </div>
 		</nav>
    	</div>
-
-    <div id="search-bar "class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Encuentre lo mejor del teatro..." name="srch-term" id="srch-term">
-            <div class="input-group-btn">
-                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-    </div>
 
 
     <div class="container">
@@ -140,17 +135,19 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/ng-table/dist/ng-table.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        
+
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/usuario.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/controllers/error.js"></script>
         <script src="scripts/controllers/espectaculo.js"></script>
@@ -160,7 +157,7 @@
         <script src="scripts/interceptors/error.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/espectaculo.js"></script>
-        <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/usuario.js"></script>
         <script src="scripts/services/categoria.js"></script>
         <script src="scripts/services/teatro.js"></script>
         <script src="scripts/services/funcion.js"></script>

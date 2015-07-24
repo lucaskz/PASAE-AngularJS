@@ -1,26 +1,64 @@
+<div class="container">
+  <div class="div-form">
+    <img src="images/favio-posca.jpg" class="img-thumbnail"/>
 
-  <div class="container ">
-    <form class="form-horizontal">
-      <div class="form-group">
-        <textarea class="form-control" rows="3" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion"></textarea>
+    <div class="panel panel-default ">
+      <div class="panel-heading black-bg">
+        <h3  class="panel-title"> {{ espectaculo.nombre}}  </h3>
       </div>
-      <div class="pull-left" >
-        <select class=" form-control" ng-model="espectaculo.categoria">
-          <option value="">Seleccione Categoria </option>
-          <option  ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
-        </select>
-        <p></p>
-        <select class=" form-control"  ng-model="espectaculo.teatro">
-          <option value="">Seleccione Teatro </option>
-
-          <option ng-repeat="teatro in teatros" value="{{teatro.id}}">{{teatro.nombre}}</option>
-        </select>
-        <p>
-        <p>
-          <button ng-click="agregar()" class="btn-small btn-primary btn-block :hover">Agregar Espectaculo</button>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3  class="panel-title">SINOPSIS
+        </h3>
+      </div>
+      <div class="panel-body">
+         {{ espectaculo.descripcion }}
       </div>
 
-    </form>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Funciones</h3>
+      </div>
+      <div class="panel-body">
+
+        <!--<a href="#/funcion/agregar" class="btn-small btn-primary :hover">-->
+          <!--<span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Funcion</span>-->
+          <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Agregar funcion</button>
+        <!--</a> -->
+
+       <div collapse="isCollapsed">
+          <form>
+            <div style="display:inline-block; min-height:290px;">
+              <datepicker ng-model="fecha" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+            </div>
+
+            <h4>La fecha seleccionada es :</h4>
+            <div class="row">
+              <div class="col-md-6">
+                  <input type="date" class="form-control" datepicker-popup ng-model="fecha" is-open="opened" min-date="minDate" max-date="'2016-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <button ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+    <p></p>
+        <ul class="list-group">
+          <li ng-repeat="e in datos"class="list-group-item">
+
+
+            <p> {{ e.fecha | date:'fullDate' }} a las {{ e.fecha | date:'h:mma'}}
+              <button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e.id}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
+            </p>
+
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
 
   </div>
+</div>
 
