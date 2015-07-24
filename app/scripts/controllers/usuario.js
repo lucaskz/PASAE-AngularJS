@@ -7,7 +7,7 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$modal,$filter,UsuarioService, ngTableParams) {
+angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$modal,UsuarioService) {
 
 	//scope.user = UsuarioService.getUserData();
 
@@ -35,7 +35,7 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
 
    UsuarioService.getListadoEspectadores().then(
          function(data){
-          $scope.usuarios=data.data;
+          $scope.list=data.data;
          },
          function(error){
           $loading=false;
@@ -43,23 +43,11 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
          }
    );
 
-   $scope.tableParams = new ngTableParams({
-           page: 1,            // show first page
-           count: 10,          // count per page
-           sorting: {
-               name: 'asc'     // initial sorting
-           }
-       }, {
-           total: usuarios.length, // length of data
-           getData: function($defer, params) {
-               // use build-in angular filter
-               var orderedData = params.sorting() ?
-                       $filter('orderBy')(usuarios, params.orderBy()) :
-                       usuarios;
-
-               $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-           }
-       });
+    $scope.config = {
+       itemsPerPage: 5,
+       maxPages: 5,
+       fillLastPage: "yes"
+     };
 
 
 
@@ -74,11 +62,5 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
           }
 
    );
-
-    $scope.seleccion = function() {
-           $scope.seleccion = this.usuario;
-           console.log($scope.seleccion);
-    };
-
 
 });
