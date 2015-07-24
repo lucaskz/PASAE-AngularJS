@@ -8,8 +8,9 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('MainCtrl', function ($scope,$cookies,EspectaculoService,$sessionStorage,$modal) {
-    $scope.awesomeThings = [
+  .controller('MainCtrl', function ($scope,$cookies,$routeParams,EspectaculoService,$sessionStorage,$modal) {
+
+   $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
@@ -18,7 +19,7 @@ angular.module('pasaeAngularJsApp')
     console.log("mainctrl instanciado");
 
 
-     var checkLogin = function(){
+   	  var checkLogin = function(){
    		  if($sessionStorage.authenticated){
    				$scope.username = $sessionStorage.username;
    				$scope.authenticated = true;
@@ -29,6 +30,10 @@ angular.module('pasaeAngularJsApp')
    	  }
 
    	  checkLogin();
+
+     $scope.$on('loginEvent', function(event, data) {
+       checkLogin();
+      });
 
 
      EspectaculoService.getEspectaculos().then(
@@ -55,20 +60,22 @@ angular.module('pasaeAngularJsApp')
      }
 
      $scope.confirmDelete = function(){
-        EspectaculoService.eliminarEspectaculo($scope.espectaculoSelected).then(
+        EspectaculoService.eliminarEspectaculo($scope.espectaculoSelected.id).then(
                             function(data){
-                               EspectaculoService.getEspectaculos().then(
-                                         function(data){
-                                           $scope.espectaculos=data.data;
-
-                                         },
-
-                                         function(error){
-
-                                           $loading=false;
-                                           console.log(error);
-                                         }
-                                    );
+//                               EspectaculoService.getEspectaculos().then(
+//                                         function(data){
+//                                           $scope.espectaculos=data.data;
+//
+//                                         },
+//
+//                                         function(error){
+//
+//                                           $loading=false;
+//                                           console.log(error);
+//                                         }
+//                                    );
+                                console.log(data);
+                                $scope.espectaculos.pop($scope.espectaculoSelected);
                                 $scope.modalInstance.close();
                             },
                             function(error){
@@ -80,6 +87,19 @@ angular.module('pasaeAngularJsApp')
 
 
      }
+
+     EspectaculoService.listadoEspectaculoSegunCategoria($routeParams.categoria).then(
+
+                  function(data){
+                      $scope.espectaculos2=data.data;
+
+                  },
+
+                  function(error){
+                              console.log(error);
+                  }
+      );
+
 
 
 

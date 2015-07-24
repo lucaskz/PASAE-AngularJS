@@ -16,13 +16,16 @@
       <div class="thumbnail">
         <img src="http://placehold.it/300x200" alt="...">
         <div class="caption">
+
           <h3>{{espectaculo.nombre}}</h3>
           <p>{{espectaculo.descripcion}}</p>
+
+
           <p>
             <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button">
               <span class="glyphicon glyphicon-edit"></span> Editar
             </a>
-            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo.id}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
+            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
               <span class="glyphicon glyphicon-erase"></span> Eliminar
             </a>
             <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/info/{{espectaculo.id}}"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">

@@ -65,7 +65,11 @@ angular
 
        })
 
+       .when('/categorias/:categoria', {
+                       templateUrl:'views/espectaculosSegunCategoria.html',
+                       controller:'MainCtrl'
 
+        })
 
        .when('/funcion', {
                templateUrl:'views/funcion.html',
