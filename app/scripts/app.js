@@ -18,7 +18,6 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngStorage',
-    'smart-table'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
