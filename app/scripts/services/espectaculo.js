@@ -69,6 +69,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
                                     },function(error){
                                          deferred.reject(error);
 
+
                                     }
                              );
                              return deferred.promise;
@@ -79,17 +80,31 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          getFuncionesEspectaculo : function(idEspectaculo){
 
                        var deferred = $q.defer();
-                                       $http.get('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/listado_funciones').then(function(successData){
-                                             		var data = successData;
+                       $http.get('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/listado_funciones').then(function(successData){
+                                var data = successData;
 
-                                             		deferred.resolve(data);
-                                             		},function(error){
-                                             					deferred.reject(error);
+                                deferred.resolve(data);
+                       },function(error){
+                             deferred.reject(error);
 
-                                             		});
-                                             		return deferred.promise;
+                       });
+                       return deferred.promise;
 
-                    },
+         },
+
+         listadoEspectaculoSegunCategoria : function(categoria){
+
+                      var deferred = $q.defer();
+                      $http.get('http://localhost:8080/web-module/espectaculo/listadoespectaculosporcategoria/' + categoria).then(function(successData){
+                            var data = successData;
+
+                            deferred.resolve(data);
+                       },function(error){
+                            deferred.reject(error);
+
+                       });
+                       return deferred.promise;
+          }
 
 
 
