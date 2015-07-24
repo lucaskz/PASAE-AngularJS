@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ngStorage'
+    'ngStorage',
+    'smart-table'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
@@ -32,6 +33,14 @@ angular
       .when('/profile',{
     	  templateUrl: 'views/profile.html',
     	  controller: 'ProfileCtrl'
+      })
+      .when('/usuario/agregar', {
+        templateUrl: 'views/agregarUsuario.html',
+        controller: 'UsuarioCtrl'
+      })
+      .when('/listadousuarios', {
+        templateUrl: 'views/listadousuarios.html',
+        controller: 'UsuarioCtrl'
       })
       .when('/espectaculo',{
         templateUrl: 'views/espectaculo.html',

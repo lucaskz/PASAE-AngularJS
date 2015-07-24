@@ -16,7 +16,7 @@ angular.module('pasaeAngularJsApp')
       'Karma'
 
     ];
-
+    console.log("mainctrl instanciado");
 
 
    	  var checkLogin = function(){
