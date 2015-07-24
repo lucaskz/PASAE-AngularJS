@@ -59,18 +59,13 @@ angular
                              templateUrl:'views/main.html',
                              controller:'EspectaculoCtrl'
        })
-       .when('/espectaculo/info/:idespectaculo', {
+      .when('/espectaculo/info/:idespectaculo', {
                templateUrl:'views/funcion.html',
                controller:'EspectaculoCtrl'
 
        })
-       .when('/espectaculo/info/:idespectaculo', {
-                     templateUrl:'views/funcion.html',
-                     controller:'EspectaculoCtrl'
 
-        })
-
-        .when('/categorias/:categoria', {
+       .when('/categorias/:categoria', {
                        templateUrl:'views/espectaculosSegunCategoria.html',
                        controller:'MainCtrl'
 
@@ -80,9 +75,8 @@ angular
                templateUrl:'views/funcion.html',
                controller:'FuncionCtrl'
 
-       })
-
-       .when('/error', {
+      })
+       .when('/error',{
     	  templateUrl: 'views/error.html',
     	  controller: 'ErrorCtrl'
       })
