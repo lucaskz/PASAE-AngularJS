@@ -7,7 +7,7 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$modal,UsuarioService) {
+angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$modal,$filter,UsuarioService, ngTableParams) {
 
 	//scope.user = UsuarioService.getUserData();
 
@@ -30,12 +30,12 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
 
    };
 
+   //$scope.orderByField = 'nombre';
+  // $scope.reverseSort = false;
+
    UsuarioService.getListadoEspectadores().then(
          function(data){
           $scope.usuarios=data.data;
-          $scope.apellido=data.data.apellido;
-          $scope.nombre=data.data.nombre;
-          $scope.email=data.data.email;
          },
          function(error){
           $loading=false;
@@ -43,13 +43,30 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
          }
    );
 
+   $scope.tableParams = new ngTableParams({
+           page: 1,            // show first page
+           count: 10,          // count per page
+           sorting: {
+               name: 'asc'     // initial sorting
+           }
+       }, {
+           total: usuarios.length, // length of data
+           getData: function($defer, params) {
+               // use build-in angular filter
+               var orderedData = params.sorting() ?
+                       $filter('orderBy')(usuarios, params.orderBy()) :
+                       usuarios;
 
-  $scope.displayedUsuarios=[].concat($scope.usuarios);
+               $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+           }
+       });
+
+
 
    UsuarioService.getListadoEmpleados().then(
 
           function(data){
-            $scope.usuarios=data.data;
+            $scope.empleados=data.data;
           },
           function(error){
             $loading=false;
@@ -57,5 +74,11 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
           }
 
    );
+
+    $scope.seleccion = function() {
+           $scope.seleccion = this.usuario;
+           console.log($scope.seleccion);
+    };
+
 
 });
