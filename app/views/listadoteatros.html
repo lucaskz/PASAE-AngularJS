@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="input-form-container">
+    <button type="button" ng-click="" class="btn btn-sm btn-success">
+      <i class="glyphicon glyphicon-plus">
+      </i> Agregar Teatro
+    </button>
+    <p></p>
+    <table>
+      <thead></thead>
+      <tbody>
+      <tr>
+
+        <td width="150" ></td>
+        <td width="150" ></td>
+        <td width="250" > </td>
+
+          <a class="btn btn-sm btn-danger" href="#/teatro/editar/"> <i class="glyphicon glyphicon-edit"></i> </a>
+
+        </td>
+
+       <td at-title="id"> <code> {{list.id}}</code> </td>
+
+        <td width="250" > <button type="button" ng-click="" class="btn btn-sm btn-danger"> <i class="glyphicon glyphicon-remove-circle"></i> </button></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <tr><td><b>Nombre</b></td><td><b>País</b></td></tr>
+      <tr ng-repeat="x in names">
+        <td>{{ x.Name }}</td>
+        <td>{{ x.Country }}</td>
+      </tr>
+    </table>
+
+
+  </div>
+</div>

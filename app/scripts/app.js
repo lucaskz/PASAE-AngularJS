@@ -42,7 +42,13 @@ angular
         templateUrl: 'views/listadousuarios.html',
         controller: 'UsuarioCtrl'
       })
-      .when('/espectaculo',{
+
+       .when('/listadoteatros', {
+              templateUrl: 'views/listadoteatros.html',
+              controller: 'TeatroCtrl'
+       })
+
+       .when('/espectaculo',{
         templateUrl: 'views/espectaculo.html',
         controller: 'EspectaculoCtrl'
       })
@@ -70,6 +76,15 @@ angular
                        controller:'MainCtrl'
 
         })
+
+        .when('/teatro/editar/', {
+                 templateUrl:'views/editarTeatro.html',
+                 controller:'TeatroCtrl'
+
+        })
+
+
+
 
        .when('/funcion', {
                templateUrl:'views/funcion.html',

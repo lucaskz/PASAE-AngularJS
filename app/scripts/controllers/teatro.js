@@ -9,7 +9,26 @@
  */
 angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,TeatroService) {
 
-   $scope.teatros=TeatroService.getTeatros();
+//   $scope.teatros=TeatroService.getTeatros();
+
+    TeatroService.getTeatros().then(
+     function(data){
+
+        $scope.teatros=data.data;
+
+     },
+     function (error){
+        $scope.loading=false;
+        $scope.log(error);
+      }
+  );
+
+
+
+
+
+
+
 
 
 });
