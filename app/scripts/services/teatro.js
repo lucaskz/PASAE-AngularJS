@@ -13,7 +13,7 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
          getTeatros : function(){
               var deferred = $q.defer();
 
-              $http.get('http://localhost:8080/web-module/teatro/listadoTeatros').then(function(successData){
+              $http.get('http://localhost:8080/web-module/teatro/listadoteatros').then(function(successData){
                 var data = successData;
 
                 deferred.resolve(data);

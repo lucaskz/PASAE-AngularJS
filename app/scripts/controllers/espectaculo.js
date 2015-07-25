@@ -138,11 +138,11 @@ $scope.eliminar=function(){
 
     $scope.agregar_funcion = function(){
 
-          $scope.fecha= $filter('date')($scope.fecha, "yyyy-MM-dd");
+          var fecha = $filter('date')($scope.fecha, "yyyy-MM-dd");
 
 
 
-             FuncionService.crearFuncion($scope.fecha, $scope.espectaculo.id).then(
+             FuncionService.crearFuncion(fecha, $scope.espectaculo.id).then(
 
 
                       function(data){
