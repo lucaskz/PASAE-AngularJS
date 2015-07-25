@@ -35,7 +35,7 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
 
    UsuarioService.getListadoEspectadores().then(
          function(data){
-          $scope.list=data.data;
+          $scope.usuarios=data.data;
          },
          function(error){
           $loading=false;
@@ -43,11 +43,11 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
          }
    );
 
-    $scope.config = {
+   /* $scope.config = {
        itemsPerPage: 5,
        maxPages: 5,
        fillLastPage: "yes"
-     };
+     };*/
 
 
 
