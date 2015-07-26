@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngStorage',
-    'smart-table'
+    'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
@@ -65,7 +65,11 @@ angular
 
        })
 
+       .when('/categorias/:categoria', {
+                       templateUrl:'views/espectaculosSegunCategoria.html',
+                       controller:'MainCtrl'
 
+        })
 
        .when('/funcion', {
                templateUrl:'views/funcion.html',

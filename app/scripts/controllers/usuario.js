@@ -30,6 +30,9 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
 
    };
 
+   //$scope.orderByField = 'nombre';
+  // $scope.reverseSort = false;
+
    UsuarioService.getListadoEspectadores().then(
          function(data){
           $scope.usuarios=data.data;
@@ -40,8 +43,13 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
          }
    );
 
+   /* $scope.config = {
+       itemsPerPage: 5,
+       maxPages: 5,
+       fillLastPage: "yes"
+     };*/
 
-  $scope.displayedUsuarios=[].concat($scope.usuarios);
+
 
    UsuarioService.getListadoEmpleados().then(
 

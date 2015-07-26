@@ -8,8 +8,9 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('MainCtrl', function ($scope,$cookies,EspectaculoService,$sessionStorage,$modal) {
-    $scope.awesomeThings = [
+  .controller('MainCtrl', function ($scope,$cookies,$routeParams,EspectaculoService,$sessionStorage,$modal) {
+
+   $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
@@ -18,7 +19,7 @@ angular.module('pasaeAngularJsApp')
     console.log("mainctrl instanciado");
 
 
-     var checkLogin = function(){
+   	  var checkLogin = function(){
    		  if($sessionStorage.authenticated){
    				$scope.username = $sessionStorage.username;
    				$scope.authenticated = true;
@@ -30,6 +31,10 @@ angular.module('pasaeAngularJsApp')
 
    	  checkLogin();
 
+     $scope.$on('loginEvent', function(event, data) {
+       checkLogin();
+      });
+
 
      EspectaculoService.getEspectaculos().then(
           function(data){
@@ -39,7 +44,7 @@ angular.module('pasaeAngularJsApp')
 
           function(error){
 
-            $loading=false;
+            $scope.loading=false;
             console.log(error);
           }
      );
@@ -54,21 +59,18 @@ angular.module('pasaeAngularJsApp')
             });
      }
 
-     $scope.confirmDelete = function(){
-        EspectaculoService.eliminarEspectaculo($scope.espectaculoSelected).then(
+     $scope.confirmDelete = function(espectaculo){
+        EspectaculoService.eliminarEspectaculo($scope.espectaculoSelected.id).then(
                             function(data){
-                               EspectaculoService.getEspectaculos().then(
-                                         function(data){
-                                           $scope.espectaculos=data.data;
-
-                                         },
-
-                                         function(error){
-
-                                           $loading=false;
-                                           console.log(error);
-                                         }
-                                    );
+                                console.log(data);
+                                var index = -1,i=0;
+                                while(index==-1 && i<=$scope.espectaculos.length-1){
+                                	if($scope.espectaculos[i].id==espectaculo.id){
+                                		index=i;
+                                	}
+                                	i++;
+                                }
+                                $scope.espectaculos.splice(index, 1 );
                                 $scope.modalInstance.close();
                             },
                             function(error){
@@ -80,6 +82,19 @@ angular.module('pasaeAngularJsApp')
 
 
      }
+
+     EspectaculoService.listadoEspectaculoSegunCategoria($routeParams.categoria).then(
+
+                 function(data){
+                     $scope.espectaculos2=data.data;
+
+                 },
+
+                 function(error){
+                            console.log(error);
+              }
+    );
+
 
 
 

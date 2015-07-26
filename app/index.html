@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" xmlns="http://www.w3.org/1999/html">
+<html class="no-js">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -19,7 +19,7 @@
   </head>
   <body ng-app="pasaeAngularJsApp">
     <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+
     <![endif]-->
 
     <!-- Add your site or application content here -->
@@ -36,12 +36,14 @@
 		            <div class="navbar-brand text-danger">TicketYA</div>
 		        </div>
 		        <div class="navbar-collapse collapse" id="navbar-collapsible">
+
+
 		            <ul class="nav navbar-nav navbar-left">
-                  <li><a href="#section1">Comedia/Comedia Musical</a></li>
-                  <li><a href="#section2">Drama</a></li>
-                  <li><a href="#section3">Infantiles</a></li>
-                  <li><a href="#section4">Recitales</a></li>
-                  <li><a href="#section5">Opera/Clasica/Ballet</a></li>
+                  <li><a href="#/categorias/comedia">Comedia/Comedia Musical</a></li>
+                  <li><a href="#/categorias/drama">Drama</a></li>
+                  <li><a href="#/">Infantiles</a></li>
+                  <li><a href="#">Recitales</a></li>
+                  <li><a href="#/">Opera/Clasica/Ballet</a></li>
                   <li>&nbsp;</li>
 		            </ul>
 		            <ul class="nav navbar-nav navbar-right" ng-hide="authenticated">
@@ -51,6 +53,8 @@
 		            <ul class="nav navbar-nav navbar-right" ng-show="authenticated">
 		                <li><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
 		            </ul>
+
+              {{ espectaculo.nombre }}
 		        </div>
 		    </div>
 		</nav>
@@ -107,11 +111,6 @@
 	</footer>
 
 
-
-
-
-
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -121,14 +120,7 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
-
-
-
-
-
-
     </script>
-
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -140,10 +132,10 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

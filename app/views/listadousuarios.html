@@ -1,34 +1,57 @@
-<div class="container">
-  <div class="input-form-container">
-    <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">
-      <i class="glyphicon glyphicon-plus">
-      </i> Add random item
+<div class="container"> 
+  <div class="input-form-container"> 
+    <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">  <i
+      class="glyphicon glyphicon-plus">  </i> Add random item 
     </button>
-    <p></p>
-    <table st-table="displayedUsuarios" st-safe-src="usuarios" class="table table-stripped">
-      <thead>
-      <tr class="success">
-        <th st-sort="apellido">APELLIDO</th>
-        <th st-sort="nombre">NOMBRE</th>
-        <th st-sort="email">E-MAIL</th>
+      <p></p> 
+    <table class="table"> 
+      <thead> 
+      <tr> 
+        <th colspan="5"><input class="form-control" placeholder="Búsqueda global ..." type="text"/></th>
+         
       </tr>
-      <tr>
-        <th colspan="5"><input st-search="" class="form-control" placeholder="Búsqueda global ..." type="text"/></th>
+       
+      <tr> 
+        <th>  <a href="#listadousuarios" ng-click="orderByField='apellido'; reverseSort = !reverseSort">  Apellido <span
+          ng-show="orderByField == 'apellido'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span> 
+        </a> 
+        </th>
+         
+        <th>  <a href="#listadousuarios" ng-click="orderByField='nombre'; reverseSort = !reverseSort">  Nombre <span
+          ng-show="orderByField == 'nombre'"><span ng-show="!reverseSort">^</span><span
+          ng-show="reverseSort">v</span></span>  </a> 
+        </th>
+         
+        <th>  <a href="#listadousuarios" ng-click="orderByField='email'; reverseSort = !reverseSort">  E-mail <span
+          ng-show="orderByField == 'email'"><span ng-show="!reverseSort">^</span><span
+          ng-show="reverseSort">v</span></span>  </a> 
+        </th>
+         
       </tr>
+       
       </thead>
-      <tbody>
-      <tr class="warning" ng-repeat="usuario in usuarios">
-        <td>{{usuario.apellido}}</td>
+       
+      <tbody> 
+      <tr dir-paginate="usuario in usuarios | itemsPerPage: 1" pagination-id="apellido" ng-click="seleccion()"> 
+        <td> {{usuario.apellido}}</td>
+         
         <td>{{usuario.nombre}}</td>
+         
         <td>{{usuario.email}}</td>
-        <td>
-          <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
-            <i class="glyphicon glyphicon-remove-circle">
-            </i>
+         
+        <td> 
+          <button type="button" ng-click="disableUser(usuario)" class="btn btn-sm btn-danger">  <i
+            class="glyphicon glyphicon-remove-circle">  </i> 
           </button>
+           
         </td>
+         
       </tr>
+       
       </tbody>
+       
     </table>
+    <dir-pagination-controls template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" class="ng-isolate-scope"></dir-pagination-controls>
   </div>
+   
 </div>

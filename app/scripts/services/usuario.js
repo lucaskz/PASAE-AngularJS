@@ -54,6 +54,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
           },
 
+
            getDataEspectadores : function(idEspectador){
 
                 var deferred = $q.defer();

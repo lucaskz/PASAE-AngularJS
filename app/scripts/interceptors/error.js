@@ -14,7 +14,7 @@
 
 'use strict';
 
-angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies',function($q,$cookies){
+angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies','$location','$rootScope',function($q,$cookies,$location,$rootScope){
 	return {
 //	 'request': function(config) {
 //	      // do something on success
@@ -26,10 +26,21 @@ angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies
 	'responseError': function(rejection)
         {
             // Error found ..
-
+		$rootScope.error = {};
+		
+			if(rejection.status == 404){
+				$rootScope.error.status = rejection.status;
+				$rootScope.error.code = 404;
+				$rootScope.error.msg = 'Page not found';
+				$location.path('/error');
+			}
+			
             if (rejection.status == 401)
             {
-            	$rootScope.$broadcast('errorStatus', rejection);
+            	$rootScope.error.status = rejection.status;
+            	$rootScope.error.code = 401;
+            	$rootScope.error.msg = 'Unauthorized';
+            	$location.path('/error');
             }
 
             return $q.reject(rejection);

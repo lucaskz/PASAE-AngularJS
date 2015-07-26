@@ -21,7 +21,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
 
             var deferred = $q.defer();
 
-                   $http.get('http://localhost:8080/web-module/espectaculo/listadoEspectaculos').then(function(successData){
+                   $http.get('http://localhost:8080/web-module/espectaculo/listadoespectaculos').then(function(successData){
                       		var data = successData;
 
                       		deferred.resolve(data);
@@ -49,7 +49,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          editarEspectaculo : function(idEspectaculo,espectaculo){
 
                                var deferred = $q.defer();
-                               $http.post('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/cambiardatos', espectaculo).then(function(successData){
+                               $http.post('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/modificardatos', espectaculo).then(function(successData){
                                           var data = successData;
                                           deferred.resolve(data);
 
@@ -69,6 +69,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
                                     },function(error){
                                          deferred.reject(error);
 
+
                                     }
                              );
                              return deferred.promise;
@@ -79,17 +80,31 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          getFuncionesEspectaculo : function(idEspectaculo){
 
                        var deferred = $q.defer();
-                                       $http.get('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/listado_funciones').then(function(successData){
-                                             		var data = successData;
+                       $http.get('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/listadofunciones').then(function(successData){
+                                var data = successData;
 
-                                             		deferred.resolve(data);
-                                             		},function(error){
-                                             					deferred.reject(error);
+                                deferred.resolve(data);
+                       },function(error){
+                             deferred.reject(error);
 
-                                             		});
-                                             		return deferred.promise;
+                       });
+                       return deferred.promise;
 
-                    },
+         },
+
+         listadoEspectaculoSegunCategoria : function(categoria){
+
+                      var deferred = $q.defer();
+                      $http.get('http://localhost:8080/web-module/espectaculo/listadoespectaculosporcategoria/' + categoria).then(function(successData){
+                            var data = successData;
+
+                            deferred.resolve(data);
+                       },function(error){
+                            deferred.reject(error);
+
+                       });
+                       return deferred.promise;
+          }
 
 
 
