@@ -15,14 +15,7 @@
         <input type="password" class="form-control input-lg" ng-model="usuario.password" placeholder="Password"/>
       </div>
       <div class="form-group">
-        <select class="form-control input-lg" ng-model="usuario.rol">
-          <option value="" disabled selected>Select your option</option>
-          <option value="ROLE_EMPLEADO">Empleado</option>
-          <option value="ROLE_ADMINISTRADOR">Administrador</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <button ng-click="agregar()" class="btn btn-danger btn-lg btn-block">Agregar usuario</button>
+        <a ng-click="agregarEmpleado()" href="#/admin/listadoempleados" class="btn btn-danger btn-lg btn-block">Agregar Empleado</a>
       </div>
     </form>
   </div>

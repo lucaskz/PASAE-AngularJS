@@ -211,6 +211,10 @@ table {
     border-spacing: 0 5px;
 }
 
+th,td {
+    width:
+}
+
 thead th {
     background-color: #006DCC;
     color: white;
