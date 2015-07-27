@@ -34,11 +34,15 @@ angular
     	  templateUrl: 'views/profile.html',
     	  controller: 'ProfileCtrl'
       })
-      .when('/usuario/agregar', {
-        templateUrl: 'views/agregarUsuario.html',
+      .when('/admin/agregarempleado', {
+        templateUrl: 'views/agregarEmpleado.html',
         controller: 'UsuarioCtrl'
       })
-      .when('/listadousuarios', {
+      .when('/admin/listadoespectadores', {
+        templateUrl: 'views/listadousuarios.html',
+        controller: 'UsuarioCtrl'
+      })
+      .when('/admin/listadoempleados', {
         templateUrl: 'views/listadousuarios.html',
         controller: 'UsuarioCtrl'
       })

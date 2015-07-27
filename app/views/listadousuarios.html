@@ -1,30 +1,30 @@
 <div class="container"> 
   <div class="input-form-container"> 
-    <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">  <i
-      class="glyphicon glyphicon-plus">  </i> Add random item 
-    </button>
+    <a ng-show="rol=='empleado'" type="button" href="#/admin/agregarempleado" class="btn btn-sm btn-success">  <i
+      class="glyphicon glyphicon-plus">  </i> Crear nuevo empleado
+    </a>
       <p></p> 
-    <table class="table"> 
+    <table class="table table-striped"> 
       <thead> 
       <tr> 
-        <th colspan="5"><input class="form-control" placeholder="Búsqueda global ..." type="text"/></th>
+        <th colspan="5"><input ng-change="search()" ng-model="searchValue"  class="form-control" placeholder="Búsqueda global ..." type="text"/></th>
          
       </tr>
        
       <tr> 
-        <th>  <a href="#listadousuarios" ng-click="orderByField='apellido'; reverseSort = !reverseSort">  Apellido <span
-          ng-show="orderByField == 'apellido'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span> 
-        </a> 
+        <th></th>
+        <th ng-click="sort('apellido');reverseSort = !reverseSort">Apellido
+          <span class="glyphicon sort-icon" ng-show="sortKey=='apellido'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
         </th>
-         
-        <th>  <a href="#listadousuarios" ng-click="orderByField='nombre'; reverseSort = !reverseSort">  Nombre <span
-          ng-show="orderByField == 'nombre'"><span ng-show="!reverseSort">^</span><span
-          ng-show="reverseSort">v</span></span>  </a> 
+        <th ng-click="sort('nombre');reverseSort = !reverseSort">Nombre
+          <span class="glyphicon sort-icon" ng-show="sortKey=='nombre'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
         </th>
-         
-        <th>  <a href="#listadousuarios" ng-click="orderByField='email'; reverseSort = !reverseSort">  E-mail <span
-          ng-show="orderByField == 'email'"><span ng-show="!reverseSort">^</span><span
-          ng-show="reverseSort">v</span></span>  </a> 
+        <th ng-click="sort('email');reverseSort = !reverseSort">Email
+          <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+
+        <th>
+          <a></a>
         </th>
          
       </tr>
@@ -32,16 +32,20 @@
       </thead>
        
       <tbody> 
-      <tr dir-paginate="usuario in usuarios | itemsPerPage: 1" pagination-id="apellido" ng-click="seleccion()"> 
-        <td> {{usuario.apellido}}</td>
+      <tr dir-paginate="usuario in usuarios|orderBy:sortKey:reverseSort|itemsPerPage: 5" ng-click="seleccion()"> 
+        <td><i class="glyphicon glyphicon-user">  </i> </td>
+        <td>{{usuario.apellido}}</td>
          
         <td>{{usuario.nombre}}</td>
          
         <td>{{usuario.email}}</td>
          
         <td> 
+          <button type="button" ng-click="disableUser(usuario)" class="btn btn-sm btn-success">  <i
+            class="glyphicon glyphicon-ok">  </i> 
+          </button>
           <button type="button" ng-click="disableUser(usuario)" class="btn btn-sm btn-danger">  <i
-            class="glyphicon glyphicon-remove-circle">  </i> 
+            class="glyphicon glyphicon-ban-circle">  </i> 
           </button>
            
         </td>
@@ -51,7 +55,11 @@
       </tbody>
        
     </table>
-    <dir-pagination-controls template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" class="ng-isolate-scope"></dir-pagination-controls>
+    <dir-pagination-controls
+      max-size="5"
+      direction-links="true"
+      boundary-links="true" >
+    </dir-pagination-controls>
   </div>
    
 </div>
