@@ -1,6 +1,6 @@
 <div class="container"> 
   <div class="input-form-container"> 
-    <a ng-show="sonEmpleados" type="button" href="#/admin/agregarempleado" class="btn btn-sm btn-success">  <i
+    <a ng-show="rol=='empleado'" type="button" href="#/admin/agregarempleado" class="btn btn-sm btn-success">  <i
       class="glyphicon glyphicon-plus">  </i> Crear nuevo empleado
     </a>
       <p></p> 
@@ -12,6 +12,7 @@
       </tr>
        
       <tr> 
+        <th></th>
         <th ng-click="sort('apellido');reverseSort = !reverseSort">Apellido
           <span class="glyphicon sort-icon" ng-show="sortKey=='apellido'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
         </th>
@@ -32,6 +33,7 @@
        
       <tbody> 
       <tr dir-paginate="usuario in usuarios|orderBy:sortKey:reverseSort|itemsPerPage: 5" ng-click="seleccion()"> 
+        <td><i class="glyphicon glyphicon-user">  </i> </td>
         <td>{{usuario.apellido}}</td>
          
         <td>{{usuario.nombre}}</td>
@@ -39,8 +41,11 @@
         <td>{{usuario.email}}</td>
          
         <td> 
+          <button type="button" ng-click="disableUser(usuario)" class="btn btn-sm btn-success">  <i
+            class="glyphicon glyphicon-ok">  </i> 
+          </button>
           <button type="button" ng-click="disableUser(usuario)" class="btn btn-sm btn-danger">  <i
-            class="glyphicon glyphicon-remove-circle">  </i> 
+            class="glyphicon glyphicon-ban-circle">  </i> 
           </button>
            
         </td>

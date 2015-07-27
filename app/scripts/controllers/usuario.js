@@ -9,66 +9,66 @@
  */
 angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$modal,$location,UsuarioService) {
 
+   var listadoUsuarios= function () {
+        if($scope.rol==='espectador') {
+          UsuarioService.getListadoEspectadores().then(
 
-    if ($location.url()==="/admin/listadoespectadores"){
-        //$scope.sonEmpleados=false;
-        //listadoEspectadores();
-        $scope.rol="espectador";
-    }
-    else {
-        //$scope.sonEmpleados=true;
-        //listadoEmpleados();
-         $scope.rol="espectador";
-    }
-
-   var listadoEspectadores= function () {
-
-         UsuarioService.getListadoEspectadores().then(
-
-         function(data){
-          $scope.usuarios=data.data;
-         },
-         function(error){
-          $loading=false;
-          console.log(error);
-         });
-
-   };
-
-  var listadoEmpleados= function () {
-         UsuarioService.getListadoEmpleados().then(
-
-         function(data){
+          function(data){
             $scope.usuarios=data.data;
-         },
+          },
           function(error){
             $loading=false;
             console.log(error);
           });
+        }
+        else {
+          UsuarioService.getListadoEmpleados().then(
+
+           function(data){
+            $scope.usuarios=data.data;
+           },
+           function(error){
+            loading=false;
+            console.log(error);
+          });
+        };
+
    };
 
-    var listadoEspectadoresFiltrado= function () {
-        UsuarioService.getListadoEspectadoresFiltrado($scope.searchValue).then(
 
-        function(data){
-           $scope.usuarios=data.data;
-        },
-        function(error){
-           $loading=false;
-           console.log(error);
-        });
-    };
+   var listadoUsuariosFiltrado= function () {
+          if($scope.rol==='espectador') {
+            UsuarioService.getListadoEspectadoresFiltrado($scope.searchValue).then(
+
+            function(data){
+              $scope.usuarios=data.data;
+            },
+            function(error){
+              $loading=false;
+              console.log(error);
+            });
+          }
+          else {
+            UsuarioService.getListadoEmpleadosFiltrado($scope.searchValue).then(
+
+             function(data){
+              $scope.usuarios=data.data;
+             },
+             function(error){
+              loading=false;
+              console.log(error);
+            });
+          };
+
+     };
 
     $scope.search=function(){
            if (!$scope.searchValue) {
-             if (!$scope.sonEmpleados)
-              listadoEspectadores();
-             else
-              listadoEmpleados();
+              listadoUsuarios();
 
            }
            else {
-              listadoEspectadoresFiltrado();
+              listadoUsuariosFiltrado();
            }
     };
 
@@ -93,6 +93,13 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
            });
     };
 
+
+    if ($location.url()==="/admin/listadoespectadores")
+          $scope.rol="espectador";
+    else
+          $scope.rol="empleado";
+
+    listadoUsuarios();
 
 
 
