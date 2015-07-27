@@ -32,8 +32,8 @@
       </thead>
        
       <tbody> 
-      <tr ng-repeat="usuario in usuarios|orderBy:orderByField:reverseSort" ng-click="seleccion()"> 
-        <td>{{usuario.apellido}}</td>
+      <tr dir-paginate="usuario in usuarios | itemsPerPage: 1" pagination-id="apellido" ng-click="seleccion()"> 
+        <td> {{usuario.apellido}}</td>
          
         <td>{{usuario.nombre}}</td>
          
@@ -51,7 +51,7 @@
       </tbody>
        
     </table>
-     
+    <dir-pagination-controls template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" class="ng-isolate-scope"></dir-pagination-controls>
   </div>
    
 </div>
