@@ -24,7 +24,7 @@
 
         <!--<a href="#/funcion/agregar" class="btn-small btn-primary :hover">-->
           <!--<span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Funcion</span>-->
-          <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Agregar funcion</button>
+          <button type="button" class="btn btn-sm btn-success glyphicon glyphicon-plus" ng-click="isCollapsed = !isCollapsed">Agregar funcion</button>
         <!--</a> -->
 
        <div collapse="isCollapsed">
@@ -36,19 +36,28 @@
             <h4>La fecha seleccionada es :</h4>
             <div class="row">
               <div class="col-md-6">
-                  <input type="date" class="form-control" datepicker-popup ng-model="fecha" is-open="opened" min-date="minDate" max-date="'2016-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                  <button ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
+                  <input type="date" class="form-control" datepicker-popup ng-model="fecha"  min-date="minDate" max-date="'2016-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+
+
+                <h4>Seleccione hora</h4>
+                <input type="time" id="exampleInput" name="input" ng-model="hora"
+                       placeholder="HH:mm:ss"  required />
+                <p></p>
+                <p></p>
+
+                  <button  ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
 
               </div>
             </div>
+
           </form>
         </div>
     <p></p>
         <ul class="list-group">
-          <li ng-repeat="e in datos"class="list-group-item">
+          <li ng-repeat="e in datos" class="list-group-item">
 
 
-            <p> {{ e.fecha | date:'fullDate' }} a las {{ e.fecha | date:'h:mma'}}
+            <p> {{ e.fecha | date:'fullDate' }} a las {{ e.hora | date:'"HH:mm'}}
               <button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
             </p>
 
@@ -61,4 +70,4 @@
 
   </div>
 </div>
-
+</div>

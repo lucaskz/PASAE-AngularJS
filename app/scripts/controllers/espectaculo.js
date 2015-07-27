@@ -139,8 +139,11 @@ $scope.eliminar=function(){
     $scope.agregar_funcion = function(){
 
           var fecha = $filter('date')($scope.fecha, "yyyy-MM-dd");
+         var hora=$filter('date')($scope.hora, "HH:mm");
 
-             FuncionService.crearFuncion({"fecha":fecha,"espectaculoId":$scope.espectaculo.id}).then(
+
+
+             FuncionService.crearFuncion({"fecha":fecha,"hora":hora,"espectaculoId":$scope.espectaculo.id}).then(
 
 
                       function(data){

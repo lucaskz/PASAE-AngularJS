@@ -17,8 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ngStorage',
-    'angularUtils.directives.dirPagination'
+    'ngStorage'
+//    'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
