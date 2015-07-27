@@ -138,11 +138,9 @@ $scope.eliminar=function(){
 
     $scope.agregar_funcion = function(){
 
-          var fecha = $filter('date')($scope.fecha, "yyyy-MM-dd");
+         // var fecha = $filter('date')($scope.fecha, "yyyy-MM-dd");
 
-
-
-             FuncionService.crearFuncion(fecha, $scope.espectaculo.id).then(
+             FuncionService.crearFuncion({"fecha":$scope.fecha,"espectaculoId":$scope.espectaculo.id}).then(
 
 
                       function(data){
@@ -173,23 +171,22 @@ $scope.eliminar=function(){
                });
     }
 
-    $scope.confirmDelete2 = function(){
-           FuncionService.eliminarFuncion($scope.funcionSelected).then(
+    $scope.confirmDelete2 = function(funcion){
+           FuncionService.eliminarFuncion($scope.funcionSelected.id).then(
                                function(data){
-                                  EspectaculoService.getFuncionesEspectaculo($scope.espectaculo.id).then(
-                                            function(data){
-                                              $scope.funciones=data.data;
 
-                                            },
-
-                                            function(error){
-
-                                              $loading=false;
-                                              console.log(error);
-                                            }
-                                       );
+                                   console.log(data);
+                                   var index = -1,i=0;
+                                   while(index==-1 && i<=$scope.datos.length-1){
+                                          if($scope.datos[i].id==funcion.id){
+                                              index=i;
+                                          }
+                                          i++;
+                                   }
+                                   $scope.datos.splice(index, 1 );
                                    $scope.modalInstance.close();
-                               },
+
+                             },
                                function(error){
 
                                   console.log(error);
@@ -198,7 +195,10 @@ $scope.eliminar=function(){
 
 
 
-        }
+   }
+
+
+
 
 
 });

@@ -1,29 +1,29 @@
 
 <div class="container">
-  <form class="form-horizontal col-sm-offset-3">
-    <fieldset>
+  <div class="input-form-container">
 
-      <!-- Form Name -->
-      <legend>Editar Teatro</legend>
+  <form class="form-horizontal col-sm-offset-3">
+
+    <!-- Form Name -->
+    <legend>Editar Teatro</legend>
 
       <!-- Text input-->
       <div class="form-group">
         <div class="col-md-8">
-          <input id="textinput"  ng-model="" name="textinput" type="text"  placeholder="Ingrese un nombre" class="form-control input-md" required>
+          <input id="input-nombre"  ng-model="teatro.nombre" name="textinput" type="text"  placeholder="Ingrese un nombre" class="form-control input-md" required>
         </div>
       </div>
 
       <!-- Textarea -->
       <div class="form-group">
         <div class="col-md-8">
-          <textarea class="form-control" id="textarea"  ng-model="" placeholder="Ingrese una descripcion" required></textarea>
+          <input id="input-direccion"  ng-model="teatro.direccion" name="textinput" type="text"  placeholder="Ingrese un direccion" class="form-control input-md" required>
         </div>
       </div>
 
       <button   ng-click="editar()" name="submit-form" class="btn btn-lg btn-primary :hover">Finalizar Edicion</button>
-
-
-    </fieldset>
+    
   </form>
+    </div>
 
 </div>

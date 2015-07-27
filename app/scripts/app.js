@@ -76,14 +76,10 @@ angular
 
         })
 
-        .when('/teatro/editar/', {
+       .when('/teatro/editar/:idteatro', {
                  templateUrl:'views/editarTeatro.html',
                  controller:'TeatroCtrl'
-
-        })
-
-
-
+       })
 
        .when('/funcion', {
                templateUrl:'views/funcion.html',
