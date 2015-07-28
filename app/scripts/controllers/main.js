@@ -8,7 +8,7 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('MainCtrl', function ($scope,$cookies,$routeParams,EspectaculoService,$sessionStorage,$modal) {
+  .controller('MainCtrl', function ($scope,$cookies,$routeParams,$location,EspectaculoService,$sessionStorage,$modal) {
 
    $scope.awesomeThings = [
       'HTML5 Boilerplate',
@@ -36,7 +36,9 @@ angular.module('pasaeAngularJsApp')
       });
 
 
-     EspectaculoService.getEspectaculos().then(
+    var listadoEspectaculos=function() {
+
+      EspectaculoService.getEspectaculos().then(
           function(data){
             $scope.espectaculos=data.data;
 
@@ -48,6 +50,8 @@ angular.module('pasaeAngularJsApp')
             console.log(error);
           }
      );
+
+    }
 
      $scope.eliminar = function(espectaculo){
 
@@ -96,6 +100,64 @@ angular.module('pasaeAngularJsApp')
     );
 
 
+  var listadoEspectaculosFiltrado= function () {
+
+              EspectaculoService.listadoEspectaculosFiltrado($scope.busqueda).then(
+                                    function(data){
+
+                                             $scope.espectaculos=data.data;
+
+                                    },
+                                    function(error){
+
+                                       $scope.loading=false;
+                                       console.log(error);
+                                     }
+
+               );
 
 
-  });
+
+
+  };
+
+/*
+$scope.search = function(searchValue){
+
+            $scope.input_search = searchValue;
+
+            $location.path('/busquedaespectaculosfiltrados/' );
+
+
+
+ }*/
+
+
+
+ $scope.search=function(){
+
+
+     if (!$scope.busqueda) {
+
+          listadoEspectaculos();
+
+
+      }
+      else{
+         listadoEspectaculosFiltrado();
+        $location.path('/busquedaespectaculosfiltrados' );
+
+
+     }
+
+ }
+$scope.isCollapsed = true;
+if ($location.url()==="/busquedaespectaculosfiltrados")
+     listadoEspectaculosFiltrado();
+
+     else
+        listadoEspectaculos();
+
+});
+
+

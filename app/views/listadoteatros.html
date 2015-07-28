@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="input-form-container">
+    <button type="button"  ng-click="isCollapsed = !isCollapsed" class="btn btn-sm btn-success"> <i
+      class="glyphicon glyphicon-plus"> </i> Agregar Teatro
+    </button>
+    <div collapse="isCollapsed">
+
+
+      <form name="formAdd"class="form-horizontal col-sm-offset-3">
+        <div class="form-group">
+            <div class="col-md-8">
+              <input  ng-model="teatro.nombre" type="text" placeholder="Ingrese un nombre" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-8">
+              <input  ng-model="teatro.direccion" type="text" placeholder="Ingrese una direccion" class="form-control input-md" required>
+            </div>
+        </div>
+
+        <button ng-click="agregar()" class="btn btn-lg btn-primary :hover">Aceptar</button>
+        </form>
+      </div>
+    </div>
+   <p></p>
+    <table class="table">
+      <thead>
+      <tr>
+        <th colspan="5"><input class="form-control" placeholder="" type="text"/></th>
+      </tr>
+      <tr>
+        <th>
+          <a href="#listadoteatros" ng-click="orderByField='nombre'; reverseSort = !reverseSort"><b> Nombre </b> <span
+            ng-show="orderByField == 'nombre'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+          </a>
+        </th>
+
+        <th><a href="#listadoteatros" ng-click="orderByField='direccion'; reverseSort = !reverseSort"><b> Direccion </b> <span
+          ng-show="orderByField == 'direccion'"><span ng-show="!reverseSort">^</span><span
+          ng-show="reverseSort">v</span></span> </a>
+        </th>
+      </tr>
+
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="teatro in teatros |orderBy:orderByField:reverseSort">
+        <td>{{teatro.nombre}}</td>
+        <td>{{teatro.direccion}}</td>
+        <td>
+          <a class="btn btn-sm btn-danger" href="#/teatro/editar/{{teatro.id}}"> <i class="glyphicon glyphicon-edit"></i> </a>
+        </td>
+        <td>
+          <button type="button" ng-click="eliminar({{teatro}})" class="btn btn-sm btn-danger"> <i
+           class="glyphicon glyphicon-remove-circle"> </i>
+         </button>
+
+       </td>
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+
+
+
+
+

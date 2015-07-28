@@ -10,6 +10,20 @@
 angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http,$cookies,$httpParamSerializer) {
 
     return{
+        crearTeatro : function(teatro){
+                      var deferred = $q.defer();
+
+                      $http.post('http://localhost:8080/web-module/teatro',teatro).then(function(successData){
+
+
+                        var data = successData;
+
+                        deferred.resolve(data);
+                        },function(error){
+                          deferred.reject(error);
+                        });
+                      return deferred.promise;
+         },
          getTeatros : function(){
               var deferred = $q.defer();
 
@@ -25,7 +39,6 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
 
           getDataTeatro : function(idTeatro){
             var deferred = $q.defer();
-                     alert(idTeatro);
                          $http.get('http://localhost:8080/web-module/teatro/' + idTeatro).then(function(successData){
                            var data = successData;
 
@@ -37,10 +50,39 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
 
 
 
-          }
+          },
+
+          editarTeatro : function(idTeatro,teatro){
+
+                                         var deferred = $q.defer();
+                                         $http.post('http://localhost:8080/web-module/teatro/' + idTeatro + '/modificardatos', teatro).then(function(successData){
+                                                    var data = successData;
+                                                    deferred.resolve(data);
+
+                                               },function(error){
+                                                    deferred.reject(error);
+
+                                       });
+                                       return deferred.promise;
+
+           },
+           eliminarTeatro: function(idTeatro){
+
+                                       var deferred = $q.defer();
+                                       $http.post('http://localhost:8080/web-module/teatro/eliminar/' + idTeatro).then(function(successData){
+                                                 var data = successData;
+                                                  deferred.resolve(data);
+                                               },function(error){
+                                                    deferred.reject(error);
+
+
+                                               }
+                                        );
+                                        return deferred.promise;
 
 
 
+            }
 
     }
    }]);

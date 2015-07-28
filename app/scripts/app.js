@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngStorage',
-    'angularUtils.directives.dirPagination'
+  'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
@@ -46,7 +46,13 @@ angular
         templateUrl: 'views/listadousuarios.html',
         controller: 'UsuarioCtrl'
       })
-      .when('/espectaculo',{
+
+       .when('/listadoteatros', {
+              templateUrl: 'views/listadoteatros.html',
+              controller: 'TeatroCtrl'
+       })
+
+       .when('/espectaculo',{
         templateUrl: 'views/espectaculo.html',
         controller: 'EspectaculoCtrl'
       })
@@ -75,11 +81,23 @@ angular
 
         })
 
+       .when('/teatro/editar/:idteatro', {
+                 templateUrl:'views/editarTeatro.html',
+                 controller:'TeatroCtrl'
+       })
+
        .when('/funcion', {
                templateUrl:'views/funcion.html',
                controller:'FuncionCtrl'
 
       })
+
+     .when('/busquedaespectaculosfiltrados', {
+                     templateUrl:'views/espectaculosFiltradosSegunNombre.html',
+                     controller:'MainCtrl'
+
+       })
+
        .when('/error',{
     	  templateUrl: 'views/error.html',
     	  controller: 'ErrorCtrl'

@@ -1,0 +1,23 @@
+<div class="container">
+
+  Resultados para: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  <div class="row">
+    <div ng-repeat="espectaculo in espectaculos3" class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="http://placehold.it/300x200" alt="...">
+        <div class="caption">
+          <h3>{{espectaculo.nombre}}</h3>
+          <p>{{espectaculo.descripcion}}</p>
+
+          <p>
+            <a ng-hide="roles=='ROLE_ADMINISTRADOR'" href="#" class="btn-info btn-lg" role="button">
+              <span class="glyphicon glyphicon-info-sign"></span> Más información
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p></p>
+</div>
