@@ -91,6 +91,13 @@ angular
                controller:'FuncionCtrl'
 
       })
+
+     .when('/busquedaespectaculosfiltrados', {
+                     templateUrl:'views/espectaculosFiltradosSegunNombre.html',
+                     controller:'MainCtrl'
+
+       })
+
        .when('/error',{
     	  templateUrl: 'views/error.html',
     	  controller: 'ErrorCtrl'

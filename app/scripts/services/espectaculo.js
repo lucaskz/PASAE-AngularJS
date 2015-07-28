@@ -104,7 +104,20 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
 
                        });
                        return deferred.promise;
+          },
+          listadoEspectaculosFiltrado : function(nombreEspectaculo){
+               var deferred = $q.defer();
+                                    $http.get('http://localhost:8080/web-module/espectaculo/listado/' + nombreEspectaculo).then(function(successData){
+                                          var data = successData;
+
+                                          deferred.resolve(data);
+                                     },function(error){
+                                          deferred.reject(error);
+
+                                     });
+                                     return deferred.promise;
           }
+
 
 
 
