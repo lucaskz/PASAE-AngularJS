@@ -93,6 +93,42 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
            });
     };
 
+    $scope.habilitarUsuario = function (usuario) {
+      $scope.loading=true;
+      usuario.estado='activo';
+      UsuarioService.modificarDatosEmpleado (usuario).then(
+
+      function() {
+        console.log("modifico empleado");
+      },
+
+      function (error) {
+        $scope.loading=false;
+        console.log(error);
+
+      });
+
+    };
+
+      $scope.deshabilitarUsuario = function (usuario) {
+          $scope.loading=true;
+          usuario.estado='inactivo';
+          UsuarioService.modificarDatosEmpleado (usuario).then(
+
+          function() {
+            console.log("modifico empleado");
+          },
+
+          function (error) {
+            $scope.loading=false;
+            console.log(error);
+
+          });
+
+        };
+
+
+
 
     if ($location.url()==="/admin/listadoespectadores")
           $scope.rol="espectador";

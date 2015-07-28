@@ -101,11 +101,11 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
            },
 
-          editarUsuario:function() {
+          modificarDatosEmpleado:function(usuario) {
 
                  var deferred = $q.defer();
 
-                 $http.get('http://localhost:8080/web-module/usuario/0').then(function(successData){
+                 $http.post('http://localhost:8080/web-module/empleado/'+usuario.id+'/cambiardatospersonales',usuario).then(function(successData){
                     var data = successData;
                    	deferred.resolve(data);
                  },function(error){
