@@ -112,6 +112,47 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
                     deferred.reject(error);
                  });
                  return deferred.promise;
-          }
+          },
+
+              modificarDatosEspectador:function(usuario) {
+
+                           var deferred = $q.defer();
+
+                           $http.post('http://localhost:8080/web-module/espectador/'+usuario.id+'/cambiardatospersonales',usuario).then(function(successData){
+                              var data = successData;
+                             	deferred.resolve(data);
+                           },function(error){
+                              deferred.reject(error);
+                           });
+                           return deferred.promise;
+              },
+
+
+
+              modificarEstadoEmpleado:function(usuario) {
+
+                           var deferred = $q.defer();
+
+                           $http.post('http://localhost:8080/web-module/empleado/'+usuario.id+'/cambiarestado',usuario).then(function(successData){
+                              var data = successData;
+                             	deferred.resolve(data);
+                           },function(error){
+                              deferred.reject(error);
+                           });
+                           return deferred.promise;
+              },
+
+               modificarEstadoEspectador:function(usuario) {
+
+                                         var deferred = $q.defer();
+
+                                         $http.post('http://localhost:8080/web-module/espectador/'+usuario.id+'/cambiarestado',usuario).then(function(successData){
+                                            var data = successData;
+                                           	deferred.resolve(data);
+                                         },function(error){
+                                            deferred.reject(error);
+                                         });
+                                         return deferred.promise;
+                }
   }
 }]);
