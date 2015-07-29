@@ -102,7 +102,7 @@ angular.module('pasaeAngularJsApp')
 
   var listadoEspectaculosFiltrado= function () {
 
-              EspectaculoService.listadoEspectaculosFiltrado($scope.busqueda).then(
+              EspectaculoService.listadoEspectaculosFiltrado($routeParams.busqueda).then(
                                     function(data){
 
                                              $scope.espectaculos=data.data;
@@ -144,19 +144,18 @@ $scope.search = function(searchValue){
 
       }
       else{
-         listadoEspectaculosFiltrado();
-        $location.path('/busquedaespectaculosfiltrados' );
+        $location.path('/busquedaespectaculosfiltrados/' + $scope.busqueda );
 
 
      }
 
  }
 $scope.isCollapsed = true;
-if ($location.url()==="/busquedaespectaculosfiltrados")
+if ($location.url()==="/busquedaespectaculosfiltrados/"+$routeParams.busqueda)
      listadoEspectaculosFiltrado();
 
      else
-        listadoEspectaculos();
+      listadoEspectaculos();
 
 });
 

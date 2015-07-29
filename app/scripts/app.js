@@ -92,7 +92,7 @@ angular
 
       })
 
-     .when('/busquedaespectaculosfiltrados', {
+     .when('/busquedaespectaculosfiltrados/:busqueda', {
                      templateUrl:'views/espectaculosFiltradosSegunNombre.html',
                      controller:'MainCtrl'
 
