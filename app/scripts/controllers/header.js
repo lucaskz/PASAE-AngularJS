@@ -8,8 +8,8 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('HeaderCtrl', function ($scope, $modal, $log,$rootScope,$cookies,$sessionStorage) {
-	  
+  .controller('HeaderCtrl', function ($scope, $modal, $log,$rootScope,$cookies,$sessionStorage,$filter,$location,EspectaculoService) {
+
 	  var checkLogin = function(){
 		  if($sessionStorage.authenticated){
 				$scope.username = $sessionStorage.username;
@@ -19,14 +19,14 @@ angular.module('pasaeAngularJsApp')
 				$scope.authenticated = false;
 			}
 	  }
-	  
+
 	  checkLogin();
 
 	  $scope.login = function () {
 		  var modalInstance = $modal.open({
 		      animation: false,
 		      templateUrl: 'views/login.html',
-		      controller: 'LoginCtrl',		      
+		      controller: 'LoginCtrl',
 		      size: 4,
 		      resolve: {
 		        items: function () {
@@ -42,7 +42,7 @@ angular.module('pasaeAngularJsApp')
 		  var modalInstance = $modal.open({
 		      animation: false,
 		      templateUrl: 'views/register.html',
-		      controller: 'RegisterCtrl',		      
+		      controller: 'RegisterCtrl',
 		      size: 4,
 		      resolve: {
 		        items: function () {
@@ -52,7 +52,54 @@ angular.module('pasaeAngularJsApp')
 		  });
 	 };
 
-	 $scope.$on('loginEvent', function(event, data) {
+	 $scope.open = function (size) {
+
+                      $scope.modalInstance = $modal.open({
+                      animation: true,
+                      size: size,
+                      scope:$scope,
+                      templateUrl: 'views/espectaculosFiltradosEntreFechas.html'
+                    });
+   }
+
+
+
+   $scope.buscarEspectaculosEntreFechas = function(fecha1,fecha2){
+
+             var fechaInferior = $filter('date')(fecha1, "yyyy-MM-dd");
+             var fechaSuperior =$filter('date')(fecha2, "yyyy-MM-dd");
+
+
+
+         EspectaculoService.listadoEspectaculosFiltradoPorFechas(fechaInferior,fechaSuperior).then(
+                  function(data){
+
+
+                           $scope.espectaculos=data.data;
+                          $scope.modalInstance.close();
+                           $location.path('/busquedaespectaculosfiltrados/' + $scope.espectaculos );
+
+
+
+                  },
+                  function(error){
+
+                             $scope.loading=false;
+                             console.log(error);
+                  }
+
+         );
+
+
+   }
+
+
+  $scope.cancel = function () {
+    $scope.modalInstance.close();
+  };
+
+
+  $scope.$on('loginEvent', function(event, data) {
 		 checkLogin();
 		});
   });
