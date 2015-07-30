@@ -121,19 +121,6 @@ angular.module('pasaeAngularJsApp')
 
   };
 
-/*
-$scope.search = function(searchValue){
-
-            $scope.input_search = searchValue;
-
-            $location.path('/busquedaespectaculosfiltrados/' );
-
-
-
- }*/
-
-
-
  $scope.search=function(){
 
 
@@ -150,12 +137,19 @@ $scope.search = function(searchValue){
      }
 
  }
+
+
 $scope.isCollapsed = true;
 if ($location.url()==="/busquedaespectaculosfiltrados/"+$routeParams.busqueda)
      listadoEspectaculosFiltrado();
 
      else
       listadoEspectaculos();
+
+
+
+
+
 
 });
 

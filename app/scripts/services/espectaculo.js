@@ -116,9 +116,22 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
 
                                      });
                                      return deferred.promise;
-          }
+          },
 
 
+         listadoEspectaculosFiltradoPorFechas: function(fechaInferior,fechaSuperior){
+               var deferred = $q.defer();
+                                     $http.get('http://localhost:8080/web-module/espectaculo/listadoespectaculosentrefechas/'+ fechaInferior + '/' + fechaSuperior).then(function(successData){
+                                          var data = successData;
+                                          deferred.resolve(data);
+                                      },function(error){
+                                          deferred.reject(error);
+
+                                      });
+                                       return deferred.promise;
+
+
+         }
 
 
 
