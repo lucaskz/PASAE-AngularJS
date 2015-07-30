@@ -3,139 +3,154 @@
 /**
  * @ngdoc function
  * @name pasaeAngularJsApp.controller:MainCtrl
- * @description # MainCtrl Controller of the pasaeAngularJsApp
+ * @description
+ * # MainCtrl
+ * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller(
-		'MainCtrl',
-		function($scope, $cookies, $routeParams, $location, EspectaculoService,
-				$sessionStorage, $modal) {
+angular.module('pasaeAngularJsApp')
+  .controller('MainCtrl', function ($scope,$cookies,$routeParams,$location,EspectaculoService,$sessionStorage,$modal) {
 
-			$scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS', 'Karma'
+   $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
 
-			];
-			console.log("mainctrl instanciado");
+    ];
+    console.log("mainctrl instanciado");
 
-			var checkLogin = function() {
-				if ($sessionStorage.authenticated) {
-					$scope.username = $sessionStorage.username;
-					$scope.authenticated = true;
-					$scope.roles = $sessionStorage.roles[0].authority;
-				} else {
-					$scope.authenticated = false;
-				}
-			}
 
-			checkLogin();
+   	  var checkLogin = function(){
+   		  if($sessionStorage.authenticated){
+   				$scope.username = $sessionStorage.username;
+   				$scope.authenticated = true;
+   				$scope.roles = $sessionStorage.roles[0].authority;
+   			}else{
+   				$scope.authenticated = false;
+   			}
+   	  }
 
-			$scope.$on('loginEvent', function(event, data) {
-				checkLogin();
-			});
+   	  checkLogin();
 
-			var listadoEspectaculos = function() {
+     $scope.$on('loginEvent', function(event, data) {
+       checkLogin();
+      });
 
-				EspectaculoService.getEspectaculos().then(function(data) {
-					$scope.espectaculos = data.data;
 
-				},
+    var listadoEspectaculos=function() {
 
-				function(error) {
+      EspectaculoService.getEspectaculos().then(
+          function(data){
+            $scope.espectaculos=data.data;
 
-					$scope.loading = false;
-					console.log(error);
-				});
+          },
 
-			}
+          function(error){
 
-			$scope.eliminar = function(espectaculo) {
+            $scope.loading=false;
+            console.log(error);
+          }
+     );
 
-				$scope.espectaculoSelected = espectaculo;
-				$scope.modalInstance = $modal.open({
-					animation : true,
-					scope : $scope,
-					templateUrl : 'views/eliminarEspectaculo.html'
-				});
-			}
+    }
 
-			$scope.confirmDelete = function(espectaculo) {
-				EspectaculoService.eliminarEspectaculo(
-						$scope.espectaculoSelected.id).then(function(data) {
-					console.log(data);
-					var index = -1, i = 0;
-					while (index == -1 && i <= $scope.espectaculos.length - 1) {
-						if ($scope.espectaculos[i].id == espectaculo.id) {
-							index = i;
-						}
-						i++;
-					}
-					$scope.espectaculos.splice(index, 1);
-					$scope.modalInstance.close();
-				}, function(error) {
+     $scope.eliminar = function(espectaculo){
 
-					console.log(error);
-					$scope.modalInstance.close();
-				});
+            $scope.espectaculoSelected = espectaculo;
+             $scope.modalInstance = $modal.open({
+              animation: true,
+              scope:$scope,
+              templateUrl: 'views/eliminarEspectaculo.html'
+            });
+     }
 
-			}
+     $scope.confirmDelete = function(espectaculo){
+        EspectaculoService.eliminarEspectaculo($scope.espectaculoSelected.id).then(
+                            function(data){
+                                console.log(data);
+                                var index = -1,i=0;
+                                while(index==-1 && i<=$scope.espectaculos.length-1){
+                                	if($scope.espectaculos[i].id==espectaculo.id){
+                                		index=i;
+                                	}
+                                	i++;
+                                }
+                                $scope.espectaculos.splice(index, 1 );
+                                $scope.modalInstance.close();
+                            },
+                            function(error){
 
-			EspectaculoService.listadoEspectaculoSegunCategoria(
-					$routeParams.categoria).then(
+                               console.log(error);
+                                $scope.modalInstance.close();
+                            });
 
-			function(data) {
-				$scope.espectaculos2 = data.data;
 
-			},
 
-			function(error) {
-				console.log(error);
-			});
+     }
 
-			var listadoEspectaculosFiltrado = function() {
+     EspectaculoService.listadoEspectaculoSegunCategoria($routeParams.categoria).then(
 
-				EspectaculoService.listadoEspectaculosFiltrado(
-						$routeParams.busqueda).then(function(data) {
+                 function(data){
+                     $scope.espectaculos2=data.data;
 
-					$scope.espectaculos = data.data;
+                 },
 
-				}, function(error) {
+                 function(error){
+                            console.log(error);
+              }
+    );
 
-					$scope.loading = false;
-					console.log(error);
-				}
 
-				);
+  var listadoEspectaculosFiltrado= function () {
 
-			};
+              EspectaculoService.listadoEspectaculosFiltrado($routeParams.busqueda).then(
+                                    function(data){
 
-			/*
-			 * $scope.search = function(searchValue){
-			 * 
-			 * $scope.input_search = searchValue;
-			 * 
-			 * $location.path('/busquedaespectaculosfiltrados/' );
-			 * 
-			 * 
-			 *  }
-			 */
+                                             $scope.espectaculos=data.data;
 
-			$scope.search = function() {
+                                    },
+                                    function(error){
 
-				if (!$scope.busqueda) {
+                                       $scope.loading=false;
+                                       console.log(error);
+                                     }
 
-					listadoEspectaculos();
+               );
 
-				} else {
-					$location.path('/busquedaespectaculosfiltrados/'
-							+ $scope.busqueda);
 
-				}
 
-			}
-			$scope.isCollapsed = true;
-			if ($location.url() === "/busquedaespectaculosfiltrados/"
-					+ $routeParams.busqueda)
-				listadoEspectaculosFiltrado();
 
-			else
-				listadoEspectaculos();
+  };
 
-		});
+ $scope.search=function(){
+
+
+     if (!$scope.busqueda) {
+
+          listadoEspectaculos();
+
+
+      }
+      else{
+        $location.path('/busquedaespectaculosfiltrados/' + $scope.busqueda );
+
+
+     }
+
+ }
+
+
+$scope.isCollapsed = true;
+if ($location.url()==="/busquedaespectaculosfiltrados/"+$routeParams.busqueda)
+     listadoEspectaculosFiltrado();
+
+     else
+      listadoEspectaculos();
+
+
+
+
+
+
+});
+
+

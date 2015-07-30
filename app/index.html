@@ -44,7 +44,7 @@
                   <li><a href="#/">Infantiles</a></li>
                   <li><a href="#">Recitales</a></li>
                   <li><a href="#/">Opera/Clasica/Ballet</a></li>
-                 <li ><a class="glyphicon glyphicon-calendar" href=""> Calendario </a></li>
+                 <li ><a class="glyphicon glyphicon-calendar" ng-click="open('lg')"> Calendario </a></li>
                   <li>&nbsp;</li>
 		            </ul>
 		            <ul class="nav navbar-nav navbar-right" ng-hide="authenticated">
@@ -54,8 +54,6 @@
 		            <ul class="nav navbar-nav navbar-right" ng-show="authenticated">
 		                <li><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
 		            </ul>
-
-              {{ espectaculo.nombre }}
 		        </div>
 		    </div>
 		</nav>
