@@ -95,37 +95,75 @@ angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$
 
     $scope.habilitarUsuario = function (usuario) {
       $scope.loading=true;
-      usuario.estado='activo';
-      UsuarioService.modificarDatosEmpleado (usuario).then(
+               usuario.estado='activo';
+               if ($scope.rol==='espectador') {
+                 UsuarioService.modificarEstadoEspectador (usuario).then(
 
-      function() {
-        console.log("modifico empleado");
-      },
+                 function() {
+                   console.log("modifico estado espectador");
+                 },
 
-      function (error) {
-        $scope.loading=false;
-        console.log(error);
+                 function (error) {
+                   $scope.loading=false;
+                   console.log(error);
 
-      });
+                 });
+
+              }
+              else {
+
+                 UsuarioService.modificarEstadoEmpleado (usuario).then(
+
+                          function() {
+                            console.log("modifico estado empleado");
+                          },
+
+                          function (error) {
+                            $scope.loading=false;
+                            console.log(error);
+
+                          });
+
+
+              }
 
     };
 
       $scope.deshabilitarUsuario = function (usuario) {
           $scope.loading=true;
           usuario.estado='inactivo';
-          UsuarioService.modificarDatosEmpleado (usuario).then(
+          if ($scope.rol==='espectador') {
+            UsuarioService.modificarEstadoEspectador (usuario).then(
 
-          function() {
-            console.log("modifico empleado");
-          },
+            function() {
+              console.log("modifico estado espectador");
+            },
 
-          function (error) {
-            $scope.loading=false;
-            console.log(error);
+            function (error) {
+              $scope.loading=false;
+              console.log(error);
 
-          });
+            });
 
-        };
+         }
+         else {
+
+            UsuarioService.modificarEstadoEmpleado (usuario).then(
+
+                     function() {
+                       console.log("modifico estado empleado");
+                     },
+
+                     function (error) {
+                       $scope.loading=false;
+                       console.log(error);
+
+                     });
+
+
+         }
+
+      };
 
 
 
