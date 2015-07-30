@@ -96,6 +96,17 @@ $scope.isCollapsed = true;
           TeatroService.crearTeatro($scope.teatro).then(
           		   function(){
                    console.log("agrego teatro");
+                   TeatroService.getTeatros().then(
+                        function(data){
+
+                           $scope.teatros=data.data;
+
+                        },
+                        function (error){
+                           $scope.loading=false;
+                           $scope.log(error);
+                         }
+                     );
 
 
           		  },
