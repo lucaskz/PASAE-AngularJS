@@ -3,179 +3,167 @@
 /**
  * @ngdoc function
  * @name pasaeAngularJsApp.controller:UsuarioCtrl
- * @description
- * # RegisterController
- * Controller of the pasaeAngularJsApp
+ * @description # RegisterController Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('UsuarioCtrl', function ($scope,$modal,$location,UsuarioService) {
+angular.module('pasaeAngularJsApp').controller(
+		'UsuarioCtrl',
+		function($scope, $modal, $location, UsuarioService) {
 
-   var listadoUsuarios= function () {
-        if($scope.rol==='espectador') {
-          UsuarioService.getListadoEspectadores().then(
+			var listadoUsuarios = function() {
+				if ($scope.rol === 'espectador') {
+					UsuarioService.getListadoEspectadores().then(
 
-          function(data){
-            $scope.usuarios=data.data;
-          },
-          function(error){
-            $loading=false;
-            console.log(error);
-          });
-        }
-        else {
-          UsuarioService.getListadoEmpleados().then(
+					function(data) {
+						$scope.usuarios = data.data;
+					}, function(error) {
+						$loading = false;
+						console.log(error);
+					});
+				} else {
+					UsuarioService.getListadoEmpleados().then(
 
-           function(data){
-            $scope.usuarios=data.data;
-           },
-           function(error){
-            loading=false;
-            console.log(error);
-          });
-        };
+					function(data) {
+						$scope.usuarios = data.data;
+					}, function(error) {
+						loading = false;
+						console.log(error);
+					});
+				}
+				;
 
-   };
+			};
 
+			var listadoUsuariosFiltrado = function() {
+				if ($scope.rol === 'espectador') {
+					UsuarioService.getListadoEspectadoresFiltrado(
+							$scope.searchValue).then(
 
-   var listadoUsuariosFiltrado= function () {
-          if($scope.rol==='espectador') {
-            UsuarioService.getListadoEspectadoresFiltrado($scope.searchValue).then(
+					function(data) {
+						$scope.usuarios = data.data;
+					}, function(error) {
+						$loading = false;
+						console.log(error);
+					});
+				} else {
+					UsuarioService.getListadoEmpleadosFiltrado(
+							$scope.searchValue).then(
 
-            function(data){
-              $scope.usuarios=data.data;
-            },
-            function(error){
-              $loading=false;
-              console.log(error);
-            });
-          }
-          else {
-            UsuarioService.getListadoEmpleadosFiltrado($scope.searchValue).then(
+					function(data) {
+						$scope.usuarios = data.data;
+					}, function(error) {
+						loading = false;
+						console.log(error);
+					});
+				}
+				;
 
-             function(data){
-              $scope.usuarios=data.data;
-             },
-             function(error){
-              loading=false;
-              console.log(error);
-            });
-          };
+			};
 
-     };
+			$scope.search = function() {
+				if (!$scope.searchValue) {
+					listadoUsuarios();
 
-    $scope.search=function(){
-           if (!$scope.searchValue) {
-              listadoUsuarios();
+				} else {
+					listadoUsuariosFiltrado();
+				}
+			};
 
-           }
-           else {
-              listadoUsuariosFiltrado();
-           }
-    };
+			$scope.sort = function(keyname) {
+				$scope.sortKey = keyname; // set the sortKey to the param
+											// passed
+				$scope.reverse = !$scope.reverse; // if true make it false and
+													// vice versa
+			};
 
-    $scope.sort = function(keyname){
-           $scope.sortKey = keyname;   //set the sortKey to the param passed
-           $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-    };
+			$scope.agregarEmpleado = function() {
+				$scope.loading = true;
+				UsuarioService.agregarEmpleado($scope.usuario).then(
 
-    $scope.agregarEmpleado = function () {
-         	 $scope.loading = true;
-           UsuarioService.agregarEmpleado ($scope.usuario).then(
+				function() {
+					console.log("agrego empleado");
 
-           function(){
-               console.log("agrego empleado");
+				},
 
-            },
+				function(error) {
 
-         	function(error){
+					$scope.loading = false;
+					console.log(error);
+				});
+			};
 
-        		 $scope.loading = false;
-             console.log(error);
-           });
-    };
+			$scope.habilitarUsuario = function(usuario) {
+				$scope.loading = true;
+				usuario.estado = 'activo';
+				if ($scope.rol === 'espectador') {
+					UsuarioService.modificarEstadoEspectador(usuario).then(
 
-    $scope.habilitarUsuario = function (usuario) {
-      $scope.loading=true;
-               usuario.estado='activo';
-               if ($scope.rol==='espectador') {
-                 UsuarioService.modificarEstadoEspectador (usuario).then(
+					function() {
+						console.log("modifico estado espectador");
+					},
 
-                 function() {
-                   console.log("modifico estado espectador");
-                 },
+					function(error) {
+						$scope.loading = false;
+						console.log(error);
 
-                 function (error) {
-                   $scope.loading=false;
-                   console.log(error);
+					});
 
-                 });
+				} else {
 
-              }
-              else {
+					UsuarioService.modificarEstadoEmpleado(usuario).then(
 
-                 UsuarioService.modificarEstadoEmpleado (usuario).then(
+					function() {
+						console.log("modifico estado empleado");
+					},
 
-                          function() {
-                            console.log("modifico estado empleado");
-                          },
+					function(error) {
+						$scope.loading = false;
+						console.log(error);
 
-                          function (error) {
-                            $scope.loading=false;
-                            console.log(error);
+					});
 
-                          });
+				}
 
+			};
 
-              }
+			$scope.deshabilitarUsuario = function(usuario) {
+				$scope.loading = true;
+				usuario.estado = 'inactivo';
+				if ($scope.rol === 'espectador') {
+					UsuarioService.modificarEstadoEspectador(usuario).then(
 
-    };
+					function() {
+						console.log("modifico estado espectador");
+					},
 
-      $scope.deshabilitarUsuario = function (usuario) {
-          $scope.loading=true;
-          usuario.estado='inactivo';
-          if ($scope.rol==='espectador') {
-            UsuarioService.modificarEstadoEspectador (usuario).then(
+					function(error) {
+						$scope.loading = false;
+						console.log(error);
 
-            function() {
-              console.log("modifico estado espectador");
-            },
+					});
 
-            function (error) {
-              $scope.loading=false;
-              console.log(error);
+				} else {
 
-            });
+					UsuarioService.modificarEstadoEmpleado(usuario).then(
 
-         }
-         else {
+					function() {
+						console.log("modifico estado empleado");
+					},
 
-            UsuarioService.modificarEstadoEmpleado (usuario).then(
+					function(error) {
+						$scope.loading = false;
+						console.log(error);
 
-                     function() {
-                       console.log("modifico estado empleado");
-                     },
+					});
 
-                     function (error) {
-                       $scope.loading=false;
-                       console.log(error);
+				}
 
-                     });
+			};
 
+			if ($location.url() === "/admin/listadoespectadores")
+				$scope.rol = "espectador";
+			else
+				$scope.rol = "empleado";
 
-         }
+			listadoUsuarios();
 
-      };
-
-
-
-
-    if ($location.url()==="/admin/listadoespectadores")
-          $scope.rol="espectador";
-    else
-          $scope.rol="empleado";
-
-    listadoUsuarios();
-
-
-
-
-});
+		});

@@ -73,9 +73,21 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
            },
 
 
+                getDataAdministrador : function(idAdmin){
+
+                          var deferred = $q.defer();
+                          $http.get('http://localhost:8080/web-module/administador/' + idAdmin).then(function(successData){
+                            var data = successData;
+                            deferred.resolve(data);
+                          },function(error){
+                            deferred.reject(error);
+                          });
+                          return deferred.promise;
+
+                     },
 
 
-           getDataEspectadores : function(idEspectador){
+           getDataEspectador : function(idEspectador){
 
                 var deferred = $q.defer();
                 $http.get('http://localhost:8080/web-module/espectador/' + idEspectador).then(function(successData){
@@ -88,7 +100,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
            },
 
-           getDataEmpleados: function(idEmpleado){
+           getDataEmpleado: function(idEmpleado){
 
                            var deferred = $q.defer();
                            $http.get('http://localhost:8080/web-module/empleado/' + idEmpleado).then(function(successData){

@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngStorage',
-  'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
@@ -30,8 +30,8 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/profile',{
-    	  templateUrl: 'views/profile.html',
+      .when('/perfil/editardatos',{
+    	  templateUrl: 'views/editarPerfil.html',
     	  controller: 'ProfileCtrl'
       })
       .when('/admin/agregarempleado', {
@@ -92,11 +92,11 @@ angular
 
       })
 
-     .when('/busquedaespectaculosfiltrados/:busqueda', {
+      .when('/busquedaespectaculosfiltrados/:busqueda', {
                      templateUrl:'views/espectaculosFiltradosSegunNombre.html',
                      controller:'MainCtrl'
 
-       })
+      })
 
        .when('/error',{
     	  templateUrl: 'views/error.html',
