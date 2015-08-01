@@ -11,7 +11,9 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$r
 
 //   $scope.teatros=TeatroService.getTeatros();
 
-    TeatroService.getTeatros().then(
+  var teatros= function(){
+  TeatroService.getTeatros().then(
+
      function(data){
 
         $scope.teatros=data.data;
@@ -22,7 +24,7 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$r
         $scope.log(error);
       }
   );
-
+  }
   TeatroService.getDataTeatro($routeParams.idteatro).then(
    	function(data){
          				// los datos estan en data.data
@@ -96,17 +98,7 @@ $scope.isCollapsed = true;
           TeatroService.crearTeatro($scope.teatro).then(
           		   function(){
                    console.log("agrego teatro");
-                   TeatroService.getTeatros().then(
-                        function(data){
-
-                           $scope.teatros=data.data;
-
-                        },
-                        function (error){
-                           $scope.loading=false;
-                           $scope.log(error);
-                         }
-                     );
+                   teatros();
 
 
           		  },
@@ -121,6 +113,7 @@ $scope.isCollapsed = true;
 
   };
 
+ teatros();
 
 
 

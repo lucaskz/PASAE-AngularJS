@@ -97,6 +97,13 @@ angular
                      controller:'MainCtrl'
 
       })
+       .when('/busquedaespectaculosfiltradosporfecha/:fecha1/:fecha2', {
+                           templateUrl:'views/espectaculosFiltradosSegunNombre.html',
+                           controller:'MainCtrl'
+
+       })
+
+
 
        .when('/error',{
     	  templateUrl: 'views/error.html',
