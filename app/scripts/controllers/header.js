@@ -65,23 +65,13 @@ angular.module('pasaeAngularJsApp').controller(
 
 				var fechaInferior = $filter('date')(fecha1, "yyyy-MM-dd");
 				var fechaSuperior = $filter('date')(fecha2, "yyyy-MM-dd");
+			 if ((fechaInferior != null) && (fechaSuperior != null)){
 
-				EspectaculoService.listadoEspectaculosFiltradoPorFechas(
-						fechaInferior, fechaSuperior).then(
-						function(data) {
+				$scope.cancel();
+				$location.path('/busquedaespectaculosfiltradosporfecha/'
+									+ fechaInferior + '/'+ fechaSuperior);
+        }
 
-							$scope.espectaculos = data.data;
-							$scope.modalInstance.close();
-							$location.path('/busquedaespectaculosfiltrados/'
-									+ $scope.espectaculos);
-
-						}, function(error) {
-
-							$scope.loading = false;
-							console.log(error);
-						}
-
-				);
 
 			}
 

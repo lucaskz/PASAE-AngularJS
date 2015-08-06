@@ -3,97 +3,118 @@
 /**
  * @ngdoc function
  * @name pasaeAngularJsApp.controller:AboutCtrl
- * @description # RegisterController Controller of the pasaeAngularJsApp
+ * @description
+ * # RegisterController
+ * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller(
-		'TeatroCtrl',
-		function($scope, $routeParams, $modal, TeatroService) {
+angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$routeParams,$modal,TeatroService) {
 
-			// $scope.teatros=TeatroService.getTeatros();
+//   $scope.teatros=TeatroService.getTeatros();
 
-			TeatroService.getTeatros().then(function(data) {
+  var teatros= function(){
+  TeatroService.getTeatros().then(
 
-				$scope.teatros = data.data;
+     function(data){
 
-			}, function(error) {
-				$scope.loading = false;
-				$scope.log(error);
-			});
+        $scope.teatros=data.data;
 
-			TeatroService.getDataTeatro($routeParams.idteatro).then(
-					function(data) {
-						// los datos estan en data.data
-						$scope.teatro = data.data;
+     },
+     function (error){
+        $scope.loading=false;
+        $scope.log(error);
+      }
+  );
+  }
+  TeatroService.getDataTeatro($routeParams.idteatro).then(
+   	function(data){
+         				// los datos estan en data.data
+          				$scope.teatro=data.data;
 
-					}, function(error) {
-						// el error funciona igual
-						$scope.loading = false;
-						console.log(error);
-					});
+     },
+      function(error){
+          				 //el error funciona igual
+          				$scope.loading = false;
+          				console.log(error);
+  });
 
-			$scope.editar = function() {
-				$scope.loading = true;
+    $scope.editar=function(){
+    $scope.loading = true;
 
-				TeatroService
-						.editarTeatro($routeParams.idteatro, $scope.teatro)
-						.then(function() {
-							console.log("edito teatro");
+              TeatroService.editarTeatro($routeParams.idteatro,$scope.teatro).then(
+              		   function(){
+                       console.log("edito teatro");
 
-						}, function(error) {
 
-							$scope.loading = false;
-							console.log(error);
+              		  },
+              			function(error){
 
-						});
-			}
+              				$scope.loading = false;
+              				console.log(error);
 
-			$scope.eliminar = function(teatro) {
 
-				$scope.teatroSelected = teatro;
-				$scope.modalInstance = $modal.open({
-					animation : true,
-					scope : $scope,
-					templateUrl : 'views/eliminarTeatro.html'
-				});
-			}
+                   }
+              );
+    }
 
-			$scope.confirmDeleteTeatro = function(teatro) {
-				TeatroService.eliminarTeatro($scope.teatroSelected.id).then(
-						function(data) {
-							console.log(data);
-							var index = -1, i = 0;
-							while (index == -1
-									&& i <= $scope.teatros.length - 1) {
-								if ($scope.teatros[i].id == teatro.id) {
-									index = i;
-								}
-								i++;
-							}
-							$scope.teatros.splice(index, 1);
-							$scope.modalInstance.close();
-						}, function(error) {
+   $scope.eliminar = function(teatro){
 
-							console.log(error);
-							$scope.modalInstance.close();
-						});
+            $scope.teatroSelected = teatro;
+             $scope.modalInstance = $modal.open({
+              animation: true,
+              scope:$scope,
+              templateUrl: 'views/eliminarTeatro.html'
+            });
+   }
 
-			}
+  $scope.confirmDeleteTeatro = function(teatro){
+               TeatroService.eliminarTeatro($scope.teatroSelected.id).then(
+                                   function(data){
+                                            console.log(data);
+                                            var index = -1,i=0;
+                                            while(index==-1 && i<=$scope.teatros.length-1){
+                                                  if($scope.teatros[i].id==teatro.id){
+                                                        index=i;
+                                                 	}
+                                                 	i++;
+                                             }
+                                             $scope.teatros.splice(index, 1 );
+                                             $scope.modalInstance.close();
+                                   },
+                                   function(error){
 
-			$scope.isCollapsed = true;
+                                       console.log(error);
+                                       $scope.modalInstance.close();
+                                   });
 
-			$scope.agregar = function() {
-				$scope.loading = true;
 
-				TeatroService.crearTeatro($scope.teatro).then(function() {
-					console.log("agrego teatro");
 
-				}, function(error) {
+  }
 
-					$scope.loading = false;
-					console.log(error);
+$scope.isCollapsed = true;
 
-				});
+ $scope.agregar = function () {
+    	$scope.loading = true;
 
-			};
+          TeatroService.crearTeatro($scope.teatro).then(
+          		   function(){
+                   console.log("agrego teatro");
+                   teatros();
 
-		});
+
+          		  },
+          			function(error){
+
+          				$scope.loading = false;
+          				console.log(error);
+
+
+               }
+          );
+
+  };
+
+ teatros();
+
+
+
+});

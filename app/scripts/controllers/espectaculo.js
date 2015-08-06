@@ -78,6 +78,8 @@ angular.module('pasaeAngularJsApp').controller(
 						$routeParams.idespectaculo, $scope.espectaculo).then(
 						function() {
 							console.log("edito espectaculo");
+             $location.path("/");
+
 
 						}, function(error) {
 
@@ -104,7 +106,9 @@ angular.module('pasaeAngularJsApp').controller(
 				})
 			}
 
-			EspectaculoService.getFuncionesEspectaculo(
+		var funciones=function(){
+		   EspectaculoService.getFuncionesEspectaculo(
+
 					$routeParams.idespectaculo).then(function(data) {
 				// los datos estan en data.data
 				$scope.datos = data.data;
@@ -114,6 +118,7 @@ angular.module('pasaeAngularJsApp').controller(
 				$scope.loading = false;
 				console.log(error);
 			});
+			}
 
 			$scope.agregar_funcion = function() {
 
@@ -128,6 +133,9 @@ angular.module('pasaeAngularJsApp').controller(
 
 				function(data) {
 					console.log("creo funcion");
+					funciones();
+
+
 
 				}, function(error) {
 
@@ -136,6 +144,7 @@ angular.module('pasaeAngularJsApp').controller(
 
 				});
 			}
+
 
 			$scope.isCollapsed = true;
 
@@ -173,5 +182,6 @@ angular.module('pasaeAngularJsApp').controller(
 								});
 
 			}
+			funciones();
 
 		});

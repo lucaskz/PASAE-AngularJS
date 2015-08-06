@@ -24,24 +24,24 @@
       </div>
     </div>
    <p></p>
-    <table class="table">
-      <thead>
-      <tr>
-        <th colspan="5"><input class="form-control" placeholder="" type="text"/></th>
-      </tr>
-      <tr>
-        <th>
-          <a href="#listadoteatros" ng-click="orderByField='nombre'; reverseSort = !reverseSort"><b> Nombre </b> <span
-            ng-show="orderByField == 'nombre'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-          </a>
-        </th>
+    <table class="table table-striped">
 
-        <th><a href="#listadoteatros" ng-click="orderByField='direccion'; reverseSort = !reverseSort"><b> Direccion </b> <span
-          ng-show="orderByField == 'direccion'"><span ng-show="!reverseSort">^</span><span
-          ng-show="reverseSort">v</span></span> </a>
-        </th>
-      </tr>
+      <thead> 
 
+       
+      <tr> 
+
+        <th ng-click="sort('nombre');reverseSort = !reverseSort">Nombre
+          <span class="glyphicon sort-icon" ng-show="sortKey=='nombre'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th ng-click="sort('direccion');reverseSort = !reverseSort">Direccion
+          <span class="glyphicon sort-icon" ng-show="sortKey=='direccion'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th></th>
+        <th></th>
+         
+      </tr>
+       
       </thead>
 
       <tbody>

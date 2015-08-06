@@ -106,7 +106,26 @@ angular.module('pasaeAngularJsApp').controller(
 
 			};
 
-			$scope.search = function() {
+			 if (($routeParams.fecha1 != null) && ($routeParams.fecha2 != null)){
+
+		  EspectaculoService.listadoEspectaculosFiltradoPorFechas(
+           						$routeParams.fecha1, $routeParams.fecha2).then(
+           						function(data) {
+
+           							$scope.espectaculos = data.data;
+
+
+
+           						}, function(error) {
+
+           							$scope.loading = false;
+           							console.log(error);
+           						}
+
+           				);
+      }
+
+		  $scope.search = function() {
 
 				if (!$scope.busqueda) {
 
@@ -120,10 +139,15 @@ angular.module('pasaeAngularJsApp').controller(
 
 			}
 
+		  $scope.cancel = function() {
+      				$scope.modalInstance.close();
+      };
+
+
 			$scope.isCollapsed = true;
 			if ($location.url() === "/busquedaespectaculosfiltrados/"
 					+ $routeParams.busqueda)
-				listadoEspectaculosFiltrado();
+				  listadoEspectaculosFiltrado();
 
 			else
 				listadoEspectaculos();
