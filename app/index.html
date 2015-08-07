@@ -51,11 +51,16 @@
 		                <li><a  ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Login</a></li>
 		                <li><a  ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Sign up</a></li>
 		            </ul>
-		            <ul class="nav navbar-nav navbar-right" ng-show="authenticated">
-		                <li><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
-		            </ul>
+		            <p class="nav navbar-nav navbar-right" ng-show="authenticated">
+               <a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>{{username}}</a></p>
+
+              <a href="" ng-show="authenticated==true"  ng-click="logout()">Salir</a>
+          </div>
+          </div>
+          </nav>
 		        </div>
 		    </div>
+
 		</nav>
    	</div>
 

@@ -7,9 +7,27 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$routeParams,$modal,TeatroService) {
+angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$routeParams,$modal,TeatroService,EspectaculoService) {
 
 //   $scope.teatros=TeatroService.getTeatros();
+
+ $scope.cantidadEspectaculos=function(nombre){
+     TeatroService.tieneEspectaculosAsociados(nombre).then(
+
+         function(data){
+            $scope.cantidad=data.data;
+
+         },
+         function (error){
+            $scope.loading=false;
+            $scope.log(error);
+          }
+      );
+
+ }
+
+
+
 
   var teatros= function(){
   TeatroService.getTeatros().then(
@@ -66,8 +84,18 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$r
             });
    }
 
+
+
+
+
+
   $scope.confirmDeleteTeatro = function(teatro){
-               TeatroService.eliminarTeatro($scope.teatroSelected.id).then(
+    var cant= $scope.cantidadEspectaculos(teatro.nombre);
+    if(cant != 0){
+           alert("tiene espectaculos asociados");
+     }
+     else{
+         TeatroService.eliminarTeatro($scope.teatroSelected.id).then(
                                    function(data){
                                             console.log(data);
                                             var index = -1,i=0;
@@ -89,6 +117,7 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$r
 
 
   }
+}
 
 $scope.isCollapsed = true;
 
@@ -111,6 +140,10 @@ $scope.isCollapsed = true;
                }
           );
 
+  };
+
+  $scope.cancel = function() {
+  				$scope.modalInstance.close();
   };
 
  teatros();
