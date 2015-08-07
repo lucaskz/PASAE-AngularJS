@@ -144,6 +144,8 @@ angular.module('pasaeAngularJsApp').controller(
       };
 
 
+
+
 			$scope.isCollapsed = true;
 			if ($location.url() === "/busquedaespectaculosfiltrados/"
 					+ $routeParams.busqueda)

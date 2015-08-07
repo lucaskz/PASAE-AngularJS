@@ -79,6 +79,12 @@ angular.module('pasaeAngularJsApp').controller(
 				$scope.modalInstance.close();
 			};
 
+			$scope.logout = function() {
+            			  $scope.authenticated=false;
+            			  $location.path('/');
+
+       };
+
 			$scope.$on('loginEvent', function(event, data) {
 				checkLogin();
 			});

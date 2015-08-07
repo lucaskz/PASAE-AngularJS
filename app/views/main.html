@@ -20,6 +20,15 @@
 
 
   </div>
+
+    <a ng-show="authenticated==true && roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/agregar" class="btn btn-lg" role="button">
+      <span class=" btn btn-success btn-lg">Agregar Espectaculo</span>
+    </a>
+
+
+
+
+
   <div class="row">
     <div ng-repeat="espectaculo in espectaculos track by espectaculo.id" class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -30,26 +39,26 @@
           <p>{{espectaculo.descripcion}}</p>
 
 
-          <p>
-            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button">
-              <span class="glyphicon glyphicon-edit"></span> Editar
-            </a>
-            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
-              <span class="glyphicon glyphicon-erase"></span> Eliminar
-            </a>
-            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/info/{{espectaculo.id}}"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
-              <span class="glyphicon glyphicon-erase"></span> Prueba
-            </a>
+        <p>
+          <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button">
+            <span class="glyphicon glyphicon-edit"></span> Editar
+          </a>
+          <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
+            <span class="glyphicon glyphicon-erase"></span> Eliminar
+          </a>
+          <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/info/{{espectaculo.id}}"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button">
+            <span class="glyphicon glyphicon-erase"></span> Prueba
+          </a>
 
 
-            <a ng-hide="roles=='ROLE_ADMINISTRADOR'" href="#" class="btn-info btn-lg" role="button">
-              <span class="glyphicon glyphicon-info-sign"></span> Más información
-            </a>
+          <a ng-hide="roles=='ROLE_ADMINISTRADOR'" href="#" class="btn-info btn-lg" role="button">
+            <span class="glyphicon glyphicon-info-sign"></span> Más información
+          </a>
 
 
-          </p>
-        </div>
+        </p>
       </div>
+    </div>
     </div>
 
 
