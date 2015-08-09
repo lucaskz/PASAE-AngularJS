@@ -5,17 +5,8 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
         crearEspectaculo : function(espectaculo){
               var deferred = $q.defer();
 
-              var req = {
-               method: 'POST',
-               url: 'http://localhost:8080/web-module/espectaculo',
-               headers: {
-                 'Content-Type': undefined
-               },
-               transformRequest: angular.identity,
-               data: { espectaculo }
-              }
+              $http.post('http://localhost:8080/web-module/espectaculo',espectaculo).then(function(successData){
 
-              $http.post(req).then(function(successData){
 
                 var data = successData;
 
