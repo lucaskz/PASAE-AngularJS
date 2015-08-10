@@ -35,6 +35,7 @@ module.exports = function(config) {
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-utils-pagination/dirPagination.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
+      'bower_components/angular-wurfl-image-tailor/src/angular-wurfl-image-tailor.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

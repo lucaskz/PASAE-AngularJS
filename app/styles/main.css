@@ -114,4 +114,10 @@ body {
    width: 270px;
   }
 
+  .thumbnail img {
+      max-width: 300px;
+      max-height:200px;
+
+  }
+
 }
