@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ngStorage',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'file-model'
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
