@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http,$cookies,$httpParamSerializer){
+angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,$cookies,$httpParamSerializer,config){
     return {
         crearEspectaculo : function(espectaculo){
               var deferred = $q.defer();
 
-              $http.post('http://localhost:8080/web-module/espectaculo',espectaculo).then(function(successData){
+              $http.post(config.apiUrl+'web-module/espectaculo',espectaculo).then(function(successData){
 
 
                 var data = successData;
@@ -21,7 +21,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
 
             var deferred = $q.defer();
 
-                   $http.get('http://localhost:8080/web-module/espectaculo/listadoEspectaculos').then(function(successData){
+                   $http.get(config.apiUrl+'web-module/espectaculo/listadoEspectaculos').then(function(successData){
                       		var data = successData;
 
                       		deferred.resolve(data);
@@ -35,7 +35,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          getDataEspectaculo : function(idEspectaculo){
 
             var deferred = $q.defer();
-                            $http.get('http://localhost:8080/web-module/espectaculo/' + idEspectaculo).then(function(successData){
+                            $http.get(config.apiUrl+'web-module/espectaculo/' + idEspectaculo).then(function(successData){
                                   		var data = successData;
 
                                   		deferred.resolve(data);
@@ -49,7 +49,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          editarEspectaculo : function(idEspectaculo,espectaculo){
 
                                var deferred = $q.defer();
-                               $http.post('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/cambiardatos', espectaculo).then(function(successData){
+                               $http.post(config.apiUrl+'web-module/espectaculo/' + idEspectaculo + '/cambiardatos', espectaculo).then(function(successData){
                                           var data = successData;
                                           deferred.resolve(data);
 
@@ -63,7 +63,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          eliminarEspectaculo: function(idEspectaculo){
 
                             var deferred = $q.defer();
-                            $http.post('http://localhost:8080/web-module/espectaculo/eliminar/' + idEspectaculo).then(function(successData){
+                            $http.post(config.apiUrl+'web-module/espectaculo/eliminar/' + idEspectaculo).then(function(successData){
                                       var data = successData;
                                        deferred.resolve(data);
                                     },function(error){
@@ -80,7 +80,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          getFuncionesEspectaculo : function(idEspectaculo){
 
                        var deferred = $q.defer();
-                       $http.get('http://localhost:8080/web-module/espectaculo/' + idEspectaculo + '/listado_funciones').then(function(successData){
+                       $http.get(config.apiUrl+'web-module/espectaculo/' + idEspectaculo + '/listado_funciones').then(function(successData){
                                 var data = successData;
 
                                 deferred.resolve(data);
@@ -95,7 +95,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          listadoEspectaculoSegunCategoria : function(categoria){
 
                       var deferred = $q.defer();
-                      $http.get('http://localhost:8080/web-module/espectaculo/listadoespectaculosporcategoria/' + categoria).then(function(successData){
+                      $http.get(config.apiUrl+'web-module/espectaculo/listadoespectaculosporcategoria/' + categoria).then(function(successData){
                             var data = successData;
 
                             deferred.resolve(data);

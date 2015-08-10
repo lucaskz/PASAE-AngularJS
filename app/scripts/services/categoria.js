@@ -7,13 +7,13 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').service('CategoriaService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http,$cookies,$httpParamSerializer) {
+angular.module('pasaeAngularJsApp').service('CategoriaService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,$cookies,$httpParamSerializer,config) {
 
       return{
            getCategorias : function(){
                 var deferred = $q.defer();
 
-                $http.get('http://localhost:8080/web-module/categoria/listado_categorias').then(function(successData){
+                $http.get(config.apiUrl+'web-module/categoria/listado_categorias').then(function(successData){
                   var data = successData;
 
                   deferred.resolve(data);

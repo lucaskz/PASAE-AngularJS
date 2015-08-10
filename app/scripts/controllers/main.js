@@ -8,7 +8,7 @@
  * Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp')
-  .controller('MainCtrl', function ($scope,$cookies,$routeParams,EspectaculoService,$sessionStorage,$modal) {
+  .controller('MainCtrl', function ($scope,$cookies,$stateParams,EspectaculoService,$sessionStorage,$modal) {
 
    $scope.awesomeThings = [
       'HTML5 Boilerplate',

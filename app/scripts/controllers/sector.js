@@ -7,11 +7,15 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,TeatroService,$state) {
+angular.module('pasaeAngularJsApp').controller('SectorCtrl', function ($scope,SectorService,EspectaculoService,$state) {
 
 	$scope.teatro = {};
 	
-	$scope.teatro=TeatroService.getTeatros();
+	$scope.especatulos = EspectaculoService.getEspectaculos();
+	
+	$scope.teatro  = {};
+	
+	
 	
 	$scope.crearSectores = function(){
 		$scope.teatro.sectores = [];
@@ -36,10 +40,14 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,Te
 	};
 	
 	if($state.current.name == 'teatro-crear'){
-		$state.go('teatro-crear.sectores'); 
+		$state.go('sector-crear.sectores'); 
 	}
 	
 	
-	console.log('Teatro ctrl instanciado');
+	
+	
+	
+	
+	console.log('Sector ctrl instanciado');
    
 });

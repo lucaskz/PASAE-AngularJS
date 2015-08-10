@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$httpParamSerializer','$rootScope',function($q,$http,$httpParamSerializer,$rootScope){
+angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$httpParamSerializer','$rootScope','config',function($q,$http,$httpParamSerializer,$rootScope,config){
   return {
 
 	        crearUsuario : function(usuario){
                 var deferred = $q.defer();
                 if (usuario.rol=='ROLE_EMPLEADO') {
-                  $http.post('http://localhost:8080/web-module/empleado',usuario).then(function(successData){
+                  $http.post(config.apiUrl+'web-module/empleado',usuario).then(function(successData){
                     var data = successData;
                     deferred.resolve(data);
                   },function(error){
@@ -14,7 +14,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
                   });
                 }
                 else {
-                  $http.post('http://localhost:8080/web-module/administrador',usuario).then(function(successData){
+                  $http.post(config.apiUrl+'web-module/administrador',usuario).then(function(successData){
                     var data = successData;
                     deferred.resolve(data);
                   },function(error){
@@ -29,7 +29,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
           getListadoEmpleados : function () {
 
                 var deferred = $q.defer();
-                $http.get('http://localhost:8080/web-module/empleado/listadoempleados').then(function(successData) {
+                $http.get(config.apiUrl+'web-module/empleado/listadoempleados').then(function(successData) {
 
                   var data = successData;
                   deferred.resolve(data);
@@ -43,7 +43,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
          getListadoEspectadores : function () {
 
                     var deferred = $q.defer();
-                    $http.get('http://localhost:8080/web-module/espectador/listadoespectadores').then(function(successData) {
+                    $http.get(config.apiUrl+'web-module/espectador/listadoespectadores').then(function(successData) {
 
                       var data = successData;
                       deferred.resolve(data);
@@ -58,7 +58,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
            getDataEspectadores : function(idEspectador){
 
                 var deferred = $q.defer();
-                $http.get('http://localhost:8080/web-module/espectador/' + idEspectador).then(function(successData){
+                $http.get(config.apiUrl+'web-module/espectador/' + idEspectador).then(function(successData){
                   var data = successData;
                   deferred.resolve(data);
                 },function(error){
@@ -71,7 +71,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
            getDataEmpleados: function(idEmpleado){
 
                            var deferred = $q.defer();
-                           $http.get('http://localhost:8080/web-module/empleado/' + idEmpleado).then(function(successData){
+                           $http.get(config.apiUrl+'web-module/empleado/' + idEmpleado).then(function(successData){
                              var data = successData;
                              deferred.resolve(data);
                            },function(error){
@@ -85,7 +85,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
                  var deferred = $q.defer();
 
-                 $http.get('http://localhost:8080/web-module/usuario/0').then(function(successData){
+                 $http.get(config.apiUrl+'web-module/usuario/0').then(function(successData){
                     var data = successData;
                    	deferred.resolve(data);
                  },function(error){
