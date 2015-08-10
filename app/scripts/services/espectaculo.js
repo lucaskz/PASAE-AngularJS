@@ -18,7 +18,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
                        }
 
 
-               $http.post(req.url,req.data).then(function(successData){
+               $http(req).then(function(successData){
 
 
                 var data = successData;
