@@ -19,7 +19,7 @@ angular
     'ui.bootstrap',
     'ngStorage',
     'angularUtils.directives.dirPagination',
-    'file-model',
+    'file-model'
 
   ])
   .config(function ($routeProvider,$httpProvider) {
