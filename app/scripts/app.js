@@ -20,6 +20,7 @@ angular
     'ngStorage',
     'angularUtils.directives.dirPagination',
     'file-model'
+
   ])
   .config(function ($routeProvider,$httpProvider) {
     $routeProvider
