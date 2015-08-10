@@ -2,10 +2,23 @@
 
 angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http,$cookies,$httpParamSerializer){
     return {
-        crearEspectaculo : function(espectaculo){
+        crearEspectaculo : function(archivo,espectaculo){
               var deferred = $q.defer();
+             var json={"nombre":espectaculo.nombre,"descripcion":espectaculo.descripcion,"categoriaId":espectaculo.categoriaId,"teatroId":espectaculo.teatroId }
+             var formData = new FormData();
+                  formData.append("imagen", archivo);
+                  formData.append("datos",JSON.stringify(json));//important: convert to string JSON!
+                       var req = {
+                         url: 'http://localhost:8080/web-module/espectaculo',
+                         method: 'POST',
+                         transformRequest: angular.identity,
+                         headers: {'Content-Type': undefined},
+                         data: formData
 
-              $http.post('http://localhost:8080/web-module/espectaculo',espectaculo).then(function(successData){
+                       }
+
+
+               $http.post(req.url,req.data).then(function(successData){
 
 
                 var data = successData;

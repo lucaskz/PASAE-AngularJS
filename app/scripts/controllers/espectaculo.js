@@ -33,8 +33,7 @@ angular.module('pasaeAngularJsApp').controller(
 
 			$scope.agregar = function() {
 				$scope.loading = true;
-
-				EspectaculoService.crearEspectaculo($scope.espectaculo).then(
+        EspectaculoService.crearEspectaculo($scope.archivo,$scope.espectaculo).then(
 						function() {
 							console.log("agrego espectaculo");
 							$location.path('/');
