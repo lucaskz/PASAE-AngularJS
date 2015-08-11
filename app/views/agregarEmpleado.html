@@ -3,7 +3,10 @@
   <div class="row">
     <form class="form-horizontal col-sm-offset-3 col-md-6">
       <div class="form-group">
-        <input type="text" class="form-control input-lg" ng-model="usuario.nombre" placeholder="Nombre"/>
+        <input type="text" class="form-control input-lg" ng-model="usuario.nombre" placeholder="Nombre"
+               ng-minlength="3"
+               ng-maxlength="10"
+               required/>
       </div>
       <div class="form-group">
         <input type="text" class="form-control input-lg" ng-model="usuario.apellido" placeholder="Apellido"/>
