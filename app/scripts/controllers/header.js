@@ -76,7 +76,7 @@ angular.module('pasaeAngularJsApp').controller(
 			}
 
 			$scope.cancel = function() {
-				$scope.modalInstance.close();
+			   $scope.modalInstance.close();
 			};
 
 			$scope.logout = function() {
