@@ -5,7 +5,7 @@
  * @name pasaeAngularJsApp.controller:AboutCtrl
  * @description # RegisterController Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope, $routeParams, $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService) {
+angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope, $stateParams , $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService,$state) {
 
 			TeatroService.getTeatros().then(function(data) {
 
@@ -29,7 +29,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 
 			$scope.agregar = function() {
 				$scope.loading = true;
-        EspectaculoService.crearEspectaculo($scope.archivo,$scope.espectaculo).then(
+				EspectaculoService.crearEspectaculo($scope.archivo,$scope.espectaculo).then(
 						function() {
 							console.log("agrego espectaculo");
 							$location.path('/');
@@ -55,7 +55,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 				});
 			};
 
-			EspectaculoService.getDataEspectaculo($routeParams.idespectaculo)
+			EspectaculoService.getDataEspectaculo($stateParams .idespectaculo)
 					.then(function(data) {
 						// los datos estan en data.data
 						$scope.espectaculo = data.data;
@@ -70,10 +70,10 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 				$scope.loading = true;
 
 				EspectaculoService.editarEspectaculo(
-						$routeParams.idespectaculo, $scope.espectaculo).then(
+						$stateParams .idespectaculo, $scope.espectaculo).then(
 						function() {
 							console.log("edito espectaculo");
-             $location.path("/");
+							$location.path("/");
 
 
 						}, function(error) {
@@ -89,7 +89,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 				$scope.loading = true;
 
 				EspectaculoService.eliminarEspectaculo(
-						$routeParams.idespectaculo).then(function() {
+						$stateParams .idespectaculo).then(function() {
 					console.log("elimino con espectaculo");
 					alert("entro a eliminar");
 
@@ -104,7 +104,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 		var funciones=function(){
 		   EspectaculoService.getFuncionesEspectaculo(
 
-					$routeParams.idespectaculo).then(function(data) {
+				$stateParams .idespectaculo).then(function(data) {
 				// los datos estan en data.data
 				$scope.datos = data.data;
 
@@ -123,7 +123,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 				FuncionService.crearFuncion({
 					"fecha" : fecha,
 					"hora" : hora,
-					"espectaculoId" : $scope.espectaculo.id
+					"espectaculoId" : $stateParams .idespectaculo
 				}).then(
 
 				function(data) {
@@ -151,6 +151,11 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 					scope : $scope,
 					templateUrl : 'views/eliminarFuncion.html'
 				});
+			}
+			
+			$scope.reservarEntrada = function(fn){				
+				$state.go('reserva.sector', {funcion: fn,espectaculo:{ id : $scope.espectaculo.id , nombre : $scope.espectaculo.nombre} })
+				
 			}
 
 			$scope.confirmDelete2 = function(funcion) {

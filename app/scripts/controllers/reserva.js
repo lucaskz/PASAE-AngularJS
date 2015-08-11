@@ -7,22 +7,24 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,EspectaculoService,SectorService,$state) {
+angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,EspectaculoService,SectorService,$state,$stateParams) {
 
 	console.log('reserva instanciado');	
 	
-	
-	$scope.sectores = SectorService.getSectores('test');
-	
-	$scope.data = {};		
-	
 	$scope.reserva = {asientos : []};
 	
+	if($stateParams.funcion!=null){
+		$scope.reserva.espectaculo = $stateParams.espectaculo;
+		$scope.reserva.funcion = $stateParams.funcion;
+	}else{
+		$state.go('home');
+	}
+	
+	$scope.sectores = SectorService.getSectores($scope.reserva.espectaculo);
+	
+	$scope.data = {};	
+	
 	$scope.sectores = SectorService.getSectores('test');
-	
-	$scope.reserva.espectaculo = 'un Espectaculo';
-	
-	$scope.reserva.funcion = '21/3/10 15:30';
 	
 	$scope.reserva.monto = 0 ;
 	

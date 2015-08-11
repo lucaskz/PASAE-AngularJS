@@ -53,17 +53,22 @@
         </form>
       </div>
     <p></p>
-        <ul class="list-group">
-          <li ng-repeat="e in datos" class="list-group-item">
-
-
-            <p> {{ e.fecha | date:'fullDate' }} a las {{ e.hora | date:'"HH:mm'}}
-              <button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
-            </p>
-
-          </li>
-        </ul>
-
+    
+	    <div ng-repeat="e in datos">
+	    	<div class="row">
+	    		<div class="col-md-9">
+	    			<div class="col-md-5">
+	    				{{ e.fecha | date:'fullDate' }} a las {{ e.hora | date:'"HH:mm'}}
+	    			</div>
+	    			<div class="col-md-2">
+	    				<button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>	
+	    			</div>
+	    			<div class="col-md-2">
+	    				<button class="btn-small btn-primary :hover" ng-click="reservarEntrada(e)" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
       </div>
 
     </div>

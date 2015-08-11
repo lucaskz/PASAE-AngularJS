@@ -148,6 +148,7 @@ angular
 	    .state('reserva', {
 	        url: '/reserva',
 	        templateUrl: 'views/reservarFuncion.html',
+	        params: {funcion: null,espectaculo : null},
 	        controller: 'ReservaCtrl'
 	    })
 
@@ -156,7 +157,8 @@ angular
 	    // url will be nested (/form/profile)
 	    .state('reserva.sector', {
 	        url: '/sector',
-	        templateUrl: 'views/reservarSector.html'
+	        templateUrl: 'views/reservarSector.html',
+	        
 	    })
 
 	    // url will be /form/interests
