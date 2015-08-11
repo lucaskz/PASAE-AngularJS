@@ -32,7 +32,7 @@
     <div ng-repeat="espectaculo in espectaculos track by espectaculo.id" class="col-sm-6 col-md-4">
 
       <div class="thumbnail">
-      <img src="http://placehold.it/300x200" alt="...">
+        <img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}"/>
       <div class="caption">
 
         <h3>{{espectaculo.nombre}}</h3>
@@ -51,13 +51,11 @@
           </a>
 
 
-          <a ng-hide="roles=='ROLE_ADMINISTRADOR'" href="#" class="btn-info btn-lg" role="button">
+          <a ng-hide="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/info/{{espectaculo.id}}" class="btn-info btn-lg" role="button">
             <span class="glyphicon glyphicon-info-sign"></span> Más información
           </a>
- 		 </p>	
-         <div>El rol es: {{roles}}</div>
+ 		 </p>
 
-         
          </p>
       </div>
     </div>
