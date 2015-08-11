@@ -13,7 +13,7 @@ angular.module('pasaeAngularJsApp').service('CategoriaService', ['$q','$http','$
            getCategorias : function(){
                 var deferred = $q.defer();
 
-                $http.get(config.apiUrl+'web-module/categoria/listado_categorias').then(function(successData){
+                $http.get(config.apiUrl+'web-module/categoria/listadocategorias').then(function(successData){
                   var data = successData;
 
                   deferred.resolve(data);

@@ -3,24 +3,15 @@
 angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$httpParamSerializer','$rootScope','config',function($q,$http,$httpParamSerializer,$rootScope,config){
   return {
 
-	        crearUsuario : function(usuario){
+	        agregarEmpleado : function(usuario){
                 var deferred = $q.defer();
-                if (usuario.rol=='ROLE_EMPLEADO') {
-                  $http.post(config.apiUrl+'web-module/empleado',usuario).then(function(successData){
+                  $http.post(config.apiUrl+'/web-module/empleado',usuario).then(function(successData){
                     var data = successData;
                     deferred.resolve(data);
                   },function(error){
                     deferred.reject(error);
                   });
-                }
-                else {
-                  $http.post(config.apiUrl+'web-module/administrador',usuario).then(function(successData){
-                    var data = successData;
-                    deferred.resolve(data);
-                  },function(error){
-                    deferred.reject(error);
-                  });
-                }
+
 
                 return deferred.promise;
           },
@@ -54,8 +45,49 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
           },
 
+          getListadoEspectadoresFiltrado : function (searchValue) {
 
-           getDataEspectadores : function(idEspectador){
+                    var deferred = $q.defer();
+                    $http.get(config.apiUrl+'web-module/espectador/busquedaespectadores/' + searchValue).then(function(successData) {
+                      var data = successData;
+                      deferred.resolve(data);
+                    },function(error){
+                       deferred.reject(error);
+                    });
+                    return deferred.promise;
+
+          },
+
+
+           getListadoEmpleadosFiltrado : function (searchValue) {
+
+                    var deferred = $q.defer();
+                    $http.get(config.apiUrl+'web-module/empleado/busquedaempleados/' + searchValue).then(function(successData) {
+                      var data = successData;
+                      deferred.resolve(data);
+                    },function(error){
+                      deferred.reject(error);
+                    });
+                    return deferred.promise;
+
+           },
+
+
+                getDataAdministrador : function(idAdmin){
+
+                          var deferred = $q.defer();
+                          $http.get(config.apiUrl+'web-module/administador/' + idAdmin).then(function(successData){
+                            var data = successData;
+                            deferred.resolve(data);
+                          },function(error){
+                            deferred.reject(error);
+                          });
+                          return deferred.promise;
+
+                     },
+
+
+           getDataEspectador : function(idEspectador){
 
                 var deferred = $q.defer();
                 $http.get(config.apiUrl+'web-module/espectador/' + idEspectador).then(function(successData){
@@ -68,7 +100,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
            },
 
-           getDataEmpleados: function(idEmpleado){
+           getDataEmpleado: function(idEmpleado){
 
                            var deferred = $q.defer();
                            $http.get(config.apiUrl+'web-module/empleado/' + idEmpleado).then(function(successData){
@@ -81,17 +113,58 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
            },
 
-          editarUsuario:function() {
+          modificarDatosEmpleado:function(usuario) {
 
                  var deferred = $q.defer();
 
-                 $http.get(config.apiUrl+'web-module/usuario/0').then(function(successData){
+                 $http.post(config.apiUrl+'web-module/empleado/'+usuario.id+'/cambiardatospersonales',usuario).then(function(successData){
                     var data = successData;
                    	deferred.resolve(data);
                  },function(error){
                     deferred.reject(error);
                  });
                  return deferred.promise;
-          }
+          },
+
+              modificarDatosEspectador:function(usuario) {
+
+                           var deferred = $q.defer();
+
+                           $http.post(config.apiUrl+'web-module/espectador/'+usuario.id+'/cambiardatospersonales',usuario).then(function(successData){
+                              var data = successData;
+                             	deferred.resolve(data);
+                           },function(error){
+                              deferred.reject(error);
+                           });
+                           return deferred.promise;
+              },
+
+
+
+              modificarEstadoEmpleado:function(usuario) {
+
+                           var deferred = $q.defer();
+
+                           $http.post(config.apiUrl+'web-module/empleado/'+usuario.id+'/cambiarestado',usuario).then(function(successData){
+                              var data = successData;
+                             	deferred.resolve(data);
+                           },function(error){
+                              deferred.reject(error);
+                           });
+                           return deferred.promise;
+              },
+
+               modificarEstadoEspectador:function(usuario) {
+
+                                         var deferred = $q.defer();
+
+                                         $http.post(config.apiUrl+'web-module/espectador/'+usuario.id+'/cambiarestado',usuario).then(function(successData){
+                                            var data = successData;
+                                           	deferred.resolve(data);
+                                         },function(error){
+                                            deferred.reject(error);
+                                         });
+                                         return deferred.promise;
+                }
   }
 }]);

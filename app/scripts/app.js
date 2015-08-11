@@ -13,27 +13,118 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
+    'ngRoute',
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
     'ngStorage',
+    'angularUtils.directives.dirPagination',
+    'file-model',
     'ui.router'
-  ])
+    ])
   .constant('config', {
-    appName: 'My App',
-    appVersion: 2.0,
-    apiUrl: 'http://localhost:8080/'
-  })
+	    appName: 'My App',
+	    appVersion: 2.0,
+	    apiUrl: 'http://localhost:8080/'
+   })
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
-	
-	  $stateProvider
-		 // route to show our basic form (/form)
-	    .state('sector-crear', {
+  
+    $stateProvider
+      .state('home',{
+ 	     	url:'/',
+  	        templateUrl: 'views/main.html',
+  		    controller: 'MainCtrl'
+      })
+      .state('about', {
+    	  	url:'/about',
+   	        templateUrl: 'views/about.html',
+            controller: 'AboutCtrl'
+      })
+      .state('editData',{
+      	  url:'/perfil/editardatos',
+    	  templateUrl: 'views/editarPerfil.html',
+    	  controller: 'ProfileCtrl'
+      })
+      .state('addEmployee', {
+	      	url:'/admin/agregarempleado',
+  	        templateUrl: 'views/agregarEmpleado.html',
+   		    controller: 'UsuarioCtrl'
+      })
+      .state('listEspectator', {
+      		url:'/admin/listadoespectadores',
+        	templateUrl: 'views/listadousuarios.html',
+      	    controller: 'UsuarioCtrl'
+      })
+      .state('listEmployee', {
+    	      url:'/admin/listadoempleados',
+       		 templateUrl: 'views/listadousuarios.html',
+       		 controller: 'UsuarioCtrl'
+      })
+       .state('lsitTeather', {
+      		url:'/listadoteatros',
+            templateUrl: 'views/listadoteatros.html',
+            controller: 'TeatroCtrl'
+       })
+       .state('show',{
+     	 	url:'/espectaculo',
+        	templateUrl: 'views/espectaculo.html',
+        	controller: 'EspectaculoCtrl'
+      })
+      .state('addShow', {
+	     url:'/espectaculo/agregar',
+         templateUrl:'views/agregarEspectaculo.html',
+         controller: 'EspectaculoCtrl'
+      })
+      .state('editShow', {
+      		url:'/espectaculo/editar/:idespectaculo',
+        	templateUrl:'views/editarEspectaculo.html',
+        	controller:'EspectaculoCtrl'
+      })
+      .state('showDelete', {
+	      	url:'/espectaculo/eliminar/:idespectaculo',
+            templateUrl:'views/main.html',
+            controller:'EspectaculoCtrl'
+       })
+      .state('showInfo', {
+	      	url:'/espectaculo/info/:idespectaculo',
+            templateUrl:'views/funcion.html',
+            controller:'EspectaculoCtrl'
+       })
+       .state('category', {
+      		url:'/categorias/:categoria',
+            templateUrl:'views/espectaculosSegunCategoria.html',
+            controller:'MainCtrl'
+        })
+       .state('editTeather', {
+		      	url:'/teatro/editar/:idteatro',
+                templateUrl:'views/editarTeatro.html',
+                controller:'TeatroCtrl'
+       })
+       .state('performance', {
+	      	url:'/funcion',
+            templateUrl:'views/funcion.html',
+            controller:'FuncionCtrl'
+      })
+      .state('searchEspectaculoByFilter', {
+		   	url:'/busquedaespectaculosfiltrados/:busqueda',
+            templateUrl:'views/espectaculosFiltradosSegunNombre.html',
+            controller:'MainCtrl'
+      })
+       .state('searchEspectaculoByDate', {
+	      	url:'/busquedaespectaculosfiltradosporfecha/:fecha1/:fecha2',
+            templateUrl:'views/espectaculosFiltradosSegunNombre.html',
+            controller:'MainCtrl'
+       })
+       .state('error',{
+	      	url:'/error',
+            templateUrl: 'views/error.html',
+            controller: 'ErrorCtrl'
+      })
+      .state('sector-crear', {
 	        url: '/sector/crear',
 	        templateUrl: 'views/crearTeatro.html',
 	        controller: 'SectorCtrl'
-	    })
-	    
+	    })	    
 	    // nested states 
 	    // each of these sections will have their own view
 	    // url will be nested (/form/profile)
@@ -53,84 +144,7 @@ angular
 	        url: '/confirmar',
 	        templateUrl: 'views/crearTeatroConfirmar.html'
 	    })
-	    .state('home',{
-	    	url: '/',
-	    	templateUrl: 'views/main.html',
-	        controller: 'MainCtrl'
-	    })
-		.state('profile',{
-	    	url: '/profile',
-	    	templateUrl: 'views/profile.html',
-	    	controller: 'ProfileCtrl'
-	    })
-	    .state('addUser',{
-	    	url: '/usuario/agregar', 
-            templateUrl: 'views/agregarUsuario.html',
-            controller: 'UsuarioCtrl'
-	    })
-	    .state('listUsers',{
-	    	url: '/listadousuarios', 
-            templateUrl: 'views/listadousuarios.html',
-            controller: 'UsuarioCtrl'
-	    })
-	    .state('show',{
-	    	url: '/espectaculo',
-            templateUrl: 'views/espectaculo.html',
-            controller: 'EspectaculoCtrl'
-	    })
-	    .state('addShow',{
-	    	url: '/espectaculo/agregar', 
-            templateUrl:'views/agregarEspectaculo.html',
-            controller: 'EspectaculoCtrl'
-	    })
-	    .state('deleteShow',{
-	    	url: '/espectaculo/editar/:idespectaculo', 
-            templateUrl:'views/editarEspectaculo.html',
-            controller:'EspectaculoCtrl'
-	    })
-	    .state('showinf',{
-	    	url: '/espectaculo/info/:idespectaculo', 
-           templateUrl:'views/funcion.html',
-           controller:'EspectaculoCtrl'
-	    })
-	    .state('category',{
-	    	url: '/categorias/:categoria', 
-            templateUrl:'views/espectaculosSegunCategoria.html',
-            controller:'MainCtrl'
-	    })
-	    .state('concert',{
-	    	url: '/funcion', 
-	    	templateUrl:'views/funcion.html',
-	    	controller:'FuncionCtrl'
-	    })
-	    .state('error',{
-	    	url: '/error',
-	      	templateUrl: 'views/error.html',
-	    	controller: 'ErrorCtrl'
-	    });
-//	    .state('reserva', {
-//	        url: '/reserva',
-//	        templateUrl: 'views/reservarFuncion.html',
-//	        controller: 'ReservaCtrl'
-//	    })
-//	    .state('reserva.sector', {
-//	        url: '/sector',
-//	        templateUrl: 'views/reservarSector.html'
-//	    })
-//	    .state('reserva.seleccion', {
-//	        url: '/seleccion',
-//	        templateUrl: 'views/reservarSeleccion.html'
-//	    })
-//	    .state('reserva.metodo', {
-//	        url: '/metodo',
-//	        templateUrl: 'views/reservarMetodo.html'
-//	    });
-		// catch all route
-	    // send users to the form page 
-	  
-	  $stateProvider
-		 // route to show our basic form (/form)
-	  	.state('reserva', {
+	    .state('reserva', {
 	        url: '/reserva',
 	        templateUrl: 'views/reservarFuncion.html',
 	        controller: 'ReservaCtrl'
@@ -154,76 +168,9 @@ angular
 	        url: '/metodo',
 	        templateUrl: 'views/reservarMetodo.html'
 	    });
-	 
-	  $urlRouterProvider.otherwise('/');
-
-
-//    $routeProvider
-//      .when('/', {
-//        templateUrl: 'views/main.html',
-//        controller: 'MainCtrl'
-//      })
-//      .when('/about', {
-//        templateUrl: 'views/about.html',
-//        controller: 'AboutCtrl'
-//      })
-//      .when('/profile',{
-//    	  templateUrl: 'views/profile.html',
-//    	  controller: 'ProfileCtrl'
-//      })
-//      .when('/usuario/agregar', {
-//        templateUrl: 'views/agregarUsuario.html',
-//        controller: 'UsuarioCtrl'
-//      })
-//      .when('/listadousuarios', {
-//        templateUrl: 'views/listadousuarios.html',
-//        controller: 'UsuarioCtrl'
-//      })
-//      .when('/espectaculo',{
-//        templateUrl: 'views/espectaculo.html',
-//        controller: 'EspectaculoCtrl'
-//      })
-//      .when('/espectaculo/agregar', {
-//         templateUrl:'views/agregarEspectaculo.html',
-//         controller: 'EspectaculoCtrl'
-//      })
-//      .when('/espectaculo/editar/:idespectaculo', {
-//         templateUrl:'views/editarEspectaculo.html',
-//         controller:'EspectaculoCtrl'
-//
-//      })
-//      .when('/espectaculo/eliminar/:idespectaculo', {
-//                             templateUrl:'views/main.html',
-//                             controller:'EspectaculoCtrl'
-//       })
-//      .when('/espectaculo/info/:idespectaculo', {
-//               templateUrl:'views/funcion.html',
-//               controller:'EspectaculoCtrl'
-//
-//       })
-//
-//       .when('/categorias/:categoria', {
-//                       templateUrl:'views/espectaculosSegunCategoria.html',
-//                       controller:'MainCtrl'
-//
-//        })
-//        .when('/teatro/crear', {
-//               templateUrl:'views/crearTeatro.html',
-//               controller:'TeatroCtrl'
-//
-//      })
-//       .when('/funcion', {
-//               templateUrl:'views/funcion.html',
-//               controller:'FuncionCtrl'
-//
-//      })
-//       .when('/error',{
-//    	  templateUrl: 'views/error.html',
-//    	  controller: 'ErrorCtrl'
-//      })
-//      .otherwise({
-//        redirectTo: '/'
-//      });
+      
+    $urlRouterProvider.otherwise("/"); 
+    
     $httpProvider.defaults.withCredentials = true;
     $httpProvider.interceptors.push('ErrorInterceptor');
   });

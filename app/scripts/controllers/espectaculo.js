@@ -3,203 +3,180 @@
 /**
  * @ngdoc function
  * @name pasaeAngularJsApp.controller:AboutCtrl
- * @description
- * # RegisterController
- * Controller of the pasaeAngularJsApp
+ * @description # RegisterController Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function ($scope,$stateParams,$location,$filter,$modal,EspectaculoService,CategoriaService,TeatroService,FuncionService) {
+angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope, $routeParams, $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService) {
 
-  TeatroService.getTeatros().then(
-     function(data){
+			TeatroService.getTeatros().then(function(data) {
 
-        $scope.teatros=data.data;
-     },
-     function (error){
-        $scope.loading=false;
-        $scope.log(error);
-      }
-  );
+				$scope.teatros = data.data;
+			}, function(error) {
+				$scope.loading = false;
+				$scope.log(error);
+			});
 
-  CategoriaService.getCategorias().then(
-       			function(data){
-       				//aca okParam es lo que se devuelve en deferred.resolve(DATA) desde el service
-       				// los datos estan en data.data
-       				$scope.categorias=data.data;
+			CategoriaService.getCategorias().then(function(data) {
+				// aca okParam es lo que se devuelve en deferred.resolve(DATA)
+				// desde el service
+				// los datos estan en data.data
+				$scope.categorias = data.data;
 
-       			},
-       			function(error){
-       				// el error funciona igual
-       				$scope.loading = false;
-       				console.log(error);
-       			}
-  );
+			}, function(error) {
+				// el error funciona igual
+				$scope.loading = false;
+				console.log(error);
+			});
 
-  $scope.agregar = function () {
-    	$scope.loading = true;
+			$scope.agregar = function() {
+				$scope.loading = true;
+        EspectaculoService.crearEspectaculo($scope.archivo,$scope.espectaculo).then(
+						function() {
+							console.log("agrego espectaculo");
+							$location.path('/');
 
-          EspectaculoService.crearEspectaculo($scope.espectaculo).then(
-          		   function(){
-                   console.log("agrego espectaculo");
-                   $location.path('/');
+						}, function(error) {
 
-          		  },
-          			function(error){
+							$scope.loading = false;
+							console.log(error);
 
-          				$scope.loading = false;
-          				console.log(error);
+						});
 
+			};
 
-               }
-          );
+			$scope.listado = function() {
+				EspectaculoService.getEspectaculos().then(function() {
 
-  };
+				},
 
- $scope.listado= function(){
-      EspectaculoService.getEspectaculos().then(
-       function(){
+				function(error) {
 
-       },
+					$loading = false;
+					console.log(error);
+				});
+			};
 
-       function(error){
+			EspectaculoService.getDataEspectaculo($routeParams.idespectaculo)
+					.then(function(data) {
+						// los datos estan en data.data
+						$scope.espectaculo = data.data;
 
-        $loading=false;
-         console.log(error);
-       });
- };
+					}, function(error) {
+						// el error funciona igual
+						$scope.loading = false;
+						console.log(error);
+					});
 
- EspectaculoService.getDataEspectaculo($routeParams.idespectaculo).then(
-   	function(data){
-         				// los datos estan en data.data
-          				$scope.espectaculo=data.data;
+			$scope.editar = function() {
+				$scope.loading = true;
 
-     },
-      function(error){
-          				 //el error funciona igual
-          				$scope.loading = false;
-          				console.log(error);
-    });
+				EspectaculoService.editarEspectaculo(
+						$routeParams.idespectaculo, $scope.espectaculo).then(
+						function() {
+							console.log("edito espectaculo");
+             $location.path("/");
 
 
+						}, function(error) {
 
-$scope.editar=function(){
-$scope.loading = true;
+							$scope.loading = false;
+							console.log(error);
 
-          EspectaculoService.editarEspectaculo($routeParams.idespectaculo,$scope.espectaculo).then(
-          		   function(){
-                   console.log("edito espectaculo");
+						});
 
+			}
 
-          		  },
-          			function(error){
+			$scope.eliminar = function() {
+				$scope.loading = true;
 
-          				$scope.loading = false;
-          				console.log(error);
+				EspectaculoService.eliminarEspectaculo(
+						$routeParams.idespectaculo).then(function() {
+					console.log("elimino con espectaculo");
+					alert("entro a eliminar");
 
+				}, function(error) {
 
-               }
-          );
+					$scope.loading = false;
+					console.log(error);
 
+				})
+			}
 
+		var funciones=function(){
+		   EspectaculoService.getFuncionesEspectaculo(
 
-}
+					$routeParams.idespectaculo).then(function(data) {
+				// los datos estan en data.data
+				$scope.datos = data.data;
 
-$scope.eliminar=function(){
- $scope.loading = true;
+			}, function(error) {
+				// el error funciona igual
+				$scope.loading = false;
+				console.log(error);
+			});
+			}
 
-     EspectaculoService.eliminarEspectaculo($routeParams.idespectaculo).then(
-              		   function(){
-                       console.log("elimino con espectaculo");
-                       alert("entro a eliminar");
+			$scope.agregar_funcion = function() {
 
+				var fecha = $filter('date')($scope.fecha, "yyyy-MM-dd");
+				var hora = $filter('date')($scope.hora, "HH:mm");
 
-              		  },
-              			function(error){
+				FuncionService.crearFuncion({
+					"fecha" : fecha,
+					"hora" : hora,
+					"espectaculoId" : $scope.espectaculo.id
+				}).then(
 
-              				$scope.loading = false;
-              				console.log(error);
+				function(data) {
+					console.log("creo funcion");
+					funciones();
 
 
-                   }
-      )
-}
 
-  EspectaculoService.getFuncionesEspectaculo($routeParams.idespectaculo).then(
-      function(data){
-                  // los datos estan en data.data
-                    $scope.datos=data.data;
+				}, function(error) {
 
-       },
-        function(error){
-                     //el error funciona igual
-                    $scope.loading = false;
-                    console.log(error);
-        });
+					$scope.loading = false;
+					console.log(error);
 
+				});
+			}
 
-    $scope.agregar_funcion = function(){
 
-          $scope.fecha= $filter('date')($scope.fecha, "yyyy-MM-dd");
+			$scope.isCollapsed = true;
 
+			$scope.eliminarFuncion = function(funcion) {
 
+				$scope.funcionSelected = funcion;
+				$scope.modalInstance = $modal.open({
+					animation : true,
+					scope : $scope,
+					templateUrl : 'views/eliminarFuncion.html'
+				});
+			}
 
-             FuncionService.crearFuncion($scope.fecha, $scope.espectaculo.id).then(
+			$scope.confirmDelete2 = function(funcion) {
+				FuncionService.eliminarFuncion($scope.funcionSelected.id)
+						.then(
+								function(data) {
 
+									console.log(data);
+									var index = -1, i = 0;
+									while (index == -1
+											&& i <= $scope.datos.length - 1) {
+										if ($scope.datos[i].id == funcion.id) {
+											index = i;
+										}
+										i++;
+									}
+									$scope.datos.splice(index, 1);
+									$scope.modalInstance.close();
 
-                      function(data){
-                           console.log("creo funcion");
+								}, function(error) {
 
-                      },
-                       function(error){
+									console.log(error);
+									$scope.modalInstance.close();
+								});
 
-                              $scope.loading = false;
-                              console.log(error);
+			}
+			funciones();
 
-
-                      }
-             );
-     }
-
-   $scope.isCollapsed = true;
-
-
-
-   $scope.eliminarFuncion = function(funcion){
-
-               $scope.funcionSelected = funcion;
-                $scope.modalInstance = $modal.open({
-                 animation: true,
-                 scope:$scope,
-                 templateUrl: 'views/eliminarFuncion.html'
-               });
-    }
-
-    $scope.confirmDelete2 = function(){
-           FuncionService.eliminarFuncion($scope.funcionSelected).then(
-                               function(data){
-                                  EspectaculoService.getFuncionesEspectaculo($scope.espectaculo.id).then(
-                                            function(data){
-                                              $scope.funciones=data.data;
-
-                                            },
-
-                                            function(error){
-
-                                              $loading=false;
-                                              console.log(error);
-                                            }
-                                       );
-                                   $scope.modalInstance.close();
-                               },
-                               function(error){
-
-                                  console.log(error);
-                                   $scope.modalInstance.close();
-                               });
-
-
-
-        }
-
-
-});
-
+		});

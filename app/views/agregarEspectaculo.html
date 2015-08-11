@@ -1,19 +1,15 @@
-
-
 <div class="container">
+  <div class="input-form-container">
   <form class="form-horizontal col-sm-offset-3">
-    <fieldset>
-
-      <!-- Form Name -->
+    <!-- Form Name -->
       <legend>ALTA ESPECTACULO</legend>
-
-
-
       <div class="form-group pull-left ">
-        <label class="col-md-4 control-label" for="filebutton">Imagen</label>
+
+        <input type="file" file-model="archivo"/>
+        <!--<label class="col-md-4 control-label" for="filebutton">Imagen</label>
         <div class="col-md-4">
           <input id="filebutton" name="filebutton" class="input-file" type="file">
-        </div>
+        </div>-->
       </div>
 
 
@@ -56,8 +52,9 @@
       </div>
       <button ng-click="agregar()" class="btn btn-lg btn-primary :hover">Agregar Espectaculo</button>
 
-    </fieldset>
+
   </form>
+    </div>
 
 </div>
 

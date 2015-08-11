@@ -4,6 +4,19 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
     return {
         crearEspectaculo : function(espectaculo){
               var deferred = $q.defer();
+             var json={"nombre":espectaculo.nombre,"descripcion":espectaculo.descripcion,"categoriaId":espectaculo.categoriaId,"teatroId":espectaculo.teatroId }
+             var formData = new FormData();
+                  formData.append("imagen", archivo);
+                  formData.append("datos",JSON.stringify(json));//important: convert to string JSON!
+                       var req = {
+                         url: config.apiUrl+'web-module/espectaculo',
+                         method: 'POST',
+                         transformRequest: angular.identity,
+                         headers: {'Content-Type': undefined},
+                         data: formData
+
+                       }
+
 
               $http.post(config.apiUrl+'web-module/espectaculo',espectaculo).then(function(successData){
 
@@ -21,7 +34,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
 
             var deferred = $q.defer();
 
-                   $http.get(config.apiUrl+'web-module/espectaculo/listadoEspectaculos').then(function(successData){
+                   $http.get(config.apiUrl+'web-module/espectaculo/listadoespectaculos').then(function(successData){
                       		var data = successData;
 
                       		deferred.resolve(data);
@@ -49,7 +62,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          editarEspectaculo : function(idEspectaculo,espectaculo){
 
                                var deferred = $q.defer();
-                               $http.post(config.apiUrl+'web-module/espectaculo/' + idEspectaculo + '/cambiardatos', espectaculo).then(function(successData){
+                               $http.post(config.apiUrl+'web-module/espectaculo/' + idEspectaculo + '/modificardatos', espectaculo).then(function(successData){
                                           var data = successData;
                                           deferred.resolve(data);
 
@@ -104,8 +117,34 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
 
                        });
                        return deferred.promise;
-          }
+          },
+          listadoEspectaculosFiltrado : function(nombreEspectaculo){
+               var deferred = $q.defer();
+                                    $http.get(config.apiUrl+'web-module/espectaculo/filtrarespectaculospornombre/' + nombreEspectaculo).then(function(successData){
+                                          var data = successData;
 
+                                          deferred.resolve(data);
+                                     },function(error){
+                                          deferred.reject(error);
+
+                                     });
+                                     return deferred.promise;
+          },
+
+
+         listadoEspectaculosFiltradoPorFechas: function(fechaInferior,fechaSuperior){
+               var deferred = $q.defer();
+                                     $http.get(config.apiUrl+'web-module/espectaculo/listadoespectaculosentrefechas/'+ fechaInferior + '/' + fechaSuperior).then(function(successData){
+                                          var data = successData;
+                                          deferred.resolve(data);
+                                      },function(error){
+                                          deferred.reject(error);
+
+                                      });
+                                       return deferred.promise;
+
+
+         }
 
 
 
