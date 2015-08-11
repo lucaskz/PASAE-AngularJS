@@ -7,7 +7,7 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,config) {
+angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,$cookies,$httpParamSerializer,config) {
 
  return {
         crearFuncion : function(funcion){

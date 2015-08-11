@@ -20,7 +20,8 @@ angular
     'ngStorage',
     'angularUtils.directives.dirPagination',
     'file-model',
-    'ui.router'
+    'ui.router',
+
     ])
   .constant('config', {
 	    appName: 'My App',

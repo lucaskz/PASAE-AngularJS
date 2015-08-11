@@ -20,7 +20,7 @@
 
   </div>
 
-    <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/agregar" class="btn btn-lg" role="button">
+    <a ng-show="roles=='ROLE_ADMINISTRADOR'"  ui-sref="addShow" class="btn btn-lg" role="button">
       <span class=" btn btn-success btn-lg">Agregar Espectaculo</span>
     </a>
 
@@ -54,10 +54,10 @@
           <a ng-hide="roles=='ROLE_ADMINISTRADOR'" href="#" class="btn-info btn-lg" role="button">
             <span class="glyphicon glyphicon-info-sign"></span> Más información
           </a>
- 		 </p>	
+ 		 </p>
          <div>El rol es: {{roles}}</div>
 
-         
+
          </p>
       </div>
     </div>
