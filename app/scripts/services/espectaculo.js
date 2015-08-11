@@ -18,7 +18,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
                        }
 
 
-              $http.post(config.apiUrl+'web-module/espectaculo',espectaculo).then(function(successData){
+              $http(req).then(function(successData){
 
 
                 var data = successData;
@@ -93,7 +93,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
          getFuncionesEspectaculo : function(idEspectaculo){
 
                        var deferred = $q.defer();
-                       $http.get(config.apiUrl+'web-module/espectaculo/' + idEspectaculo + '/listado_funciones').then(function(successData){
+                       $http.get(config.apiUrl+'web-module/espectaculo/' + idEspectaculo + '/listadofunciones').then(function(successData){
                                 var data = successData;
 
                                 deferred.resolve(data);
