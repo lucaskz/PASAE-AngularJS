@@ -7,7 +7,7 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$location,$routeParams,$modal,TeatroService,EspectaculoService) {
+angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$location,$stateParams,$modal,TeatroService,EspectaculoService) {
 
 //   $scope.teatros=TeatroService.getTeatros();
 
@@ -43,7 +43,8 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
       }
   );
   }
-  TeatroService.getDataTeatro($routeParams.idteatro).then(
+  if($stateParams.idteatro != null){
+  TeatroService.getDataTeatro($stateParams.idteatro).then(
    	function(data){
          				// los datos estan en data.data
           				$scope.teatro=data.data;
@@ -54,11 +55,11 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
           				$scope.loading = false;
           				console.log(error);
   });
-
+}
     $scope.editar=function(){
     $scope.loading = true;
 
-              TeatroService.editarTeatro($routeParams.idteatro,$scope.teatro).then(
+              TeatroService.editarTeatro($stateParams.idteatro,$scope.teatro).then(
               		   function(){
                        console.log("edito teatro");
                        $location.path('/listadoteatros');
@@ -87,7 +88,7 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
   $scope.confirmDeleteTeatro = function(teatro){
     $scope.cantidadEspectaculos(teatro.nombre);
     if($scope.cantidad != 0){
-           sweetAlert("Oops...", "Something went wrong!", "error");
+           sweetAlert("Oops...", "El teatro tiene espectaculos asociados", "error");
     }
      else{
          TeatroService.eliminarTeatro($scope.teatroSelected.id).then(

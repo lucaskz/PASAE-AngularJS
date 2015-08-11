@@ -89,6 +89,7 @@ angular.module('pasaeAngularJsApp').controller(
 					$scope.loading = false;
 					console.log(error);
 				});
+
 			};
 
 

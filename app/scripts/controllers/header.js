@@ -36,7 +36,7 @@ angular.module('pasaeAngularJsApp').controller(
 				});
 			};
 
-			$scope.register = function() {
+      $scope.register = function() {
 
 				var modalInstance = $modal.open({
 					animation : false,

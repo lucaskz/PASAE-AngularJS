@@ -60,4 +60,9 @@ angular.module('pasaeAngularJsApp').controller(
 					$scope.errorMsg = error;
 				});
 			};
+
+
+
+
+
 		});

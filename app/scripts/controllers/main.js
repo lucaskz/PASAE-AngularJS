@@ -5,7 +5,7 @@
  * @name pasaeAngularJsApp.controller:MainCtrl
  * @description # MainCtrl Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cookies, $routeParams, $location, EspectaculoService,$sessionStorage, $modal) {
+angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cookies, $stateParams, $location, EspectaculoService,$sessionStorage, $modal) {
 			$scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS', 'Karma'
 
 			];
@@ -74,7 +74,7 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 			}
 
 			EspectaculoService.listadoEspectaculoSegunCategoria(
-					$routeParams.categoria).then(
+					$stateParams.categoria).then(
 
 			function(data) {
 				$scope.espectaculos2 = data.data;
@@ -88,9 +88,9 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 			var listadoEspectaculosFiltrado = function() {
 
 				EspectaculoService.listadoEspectaculosFiltrado(
-						$routeParams.busqueda).then(function(data) {
+						$stateParams.busqueda).then(function(data) {
 
-					$scope.espectaculos = data.data;
+					$scope.espectaculos2 = data.data;
 
 				}, function(error) {
 
@@ -102,13 +102,13 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 
 			};
 
-			 if (($routeParams.fecha1 != null) && ($routeParams.fecha2 != null)){
+			 if (($stateParams.fecha1 != null) && ($stateParams.fecha2 != null)){
 
 		  EspectaculoService.listadoEspectaculosFiltradoPorFechas(
-           						$routeParams.fecha1, $routeParams.fecha2).then(
+           						$stateParams.fecha1, $stateParams.fecha2).then(
            						function(data) {
 
-           							$scope.espectaculos = data.data;
+           							$scope.espectaculos2 = data.data;
 
 
 
@@ -144,7 +144,7 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 
 			$scope.isCollapsed = true;
 			if ($location.url() === "/busquedaespectaculosfiltrados/"
-					+ $routeParams.busqueda)
+					+ $stateParams.busqueda)
 				  listadoEspectaculosFiltrado();
 
 			else

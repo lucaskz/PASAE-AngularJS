@@ -33,7 +33,6 @@ angular
 	    appVersion: 2.0,
 	    apiUrl: 'http://localhost:8080/'
    })
-
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
 
     $stateProvider
