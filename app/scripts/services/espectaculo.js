@@ -2,7 +2,7 @@
 
 angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,$cookies,$httpParamSerializer,config){
     return {
-        crearEspectaculo : function(espectaculo){
+        crearEspectaculo : function(archivo,espectaculo){
               var deferred = $q.defer();
              var json={"nombre":espectaculo.nombre,"descripcion":espectaculo.descripcion,"categoriaId":espectaculo.categoriaId,"teatroId":espectaculo.teatroId }
              var formData = new FormData();
