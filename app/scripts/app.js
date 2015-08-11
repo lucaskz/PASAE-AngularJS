@@ -20,15 +20,22 @@ angular
     'ngStorage',
     'angularUtils.directives.dirPagination',
     'file-model',
-    'ui.router'
+    'ui.router',
+    'jcs-autoValidate'
     ])
+  .run([
+       'bootstrap3ElementModifier',
+       function (bootstrap3ElementModifier) {
+          bootstrap3ElementModifier.enableValidationStateIcons(true);
+  }])
   .constant('config', {
 	    appName: 'My App',
 	    appVersion: 2.0,
 	    apiUrl: 'http://localhost:8080/'
    })
+
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
-  
+
     $stateProvider
       .state('home',{
  	     	url:'/',
@@ -60,7 +67,7 @@ angular
        		 templateUrl: 'views/listadousuarios.html',
        		 controller: 'UsuarioCtrl'
       })
-       .state('lsitTeather', {
+       .state('listTeather', {
       		url:'/listadoteatros',
             templateUrl: 'views/listadoteatros.html',
             controller: 'TeatroCtrl'
@@ -124,21 +131,21 @@ angular
 	        url: '/sector/crear',
 	        templateUrl: 'views/crearTeatro.html',
 	        controller: 'SectorCtrl'
-	    })	    
-	    // nested states 
+	    })
+	    // nested states
 	    // each of these sections will have their own view
 	    // url will be nested (/form/profile)
 	    .state('sector-crear.sectores', {
 	        url: '/sectores',
 	        templateUrl: 'views/crearTeatroSectores.html'
 	    })
-	    
+
 	    // url will be /form/interests
 	    .state('sector-crear.filas', {
 	        url: '/filas',
 	        templateUrl: 'views/crearTeatroFilas.html'
 	    })
-	    
+
 	    // url will be /form/payment
 	    .state('sector-crear.confirmar', {
 	        url: '/confirmar',
@@ -150,16 +157,16 @@ angular
 	        params: {funcion: null,espectaculo : null},
 	        controller: 'ReservaCtrl'
 	    })
-	    
-	    // nested states 
+
+	    // nested states
 	    // each of these sections will have their own view
 	    // url will be nested (/form/profile)
 	    .state('reserva.sector', {
 	        url: '/sector',
 	        templateUrl: 'views/reservarSector.html',
-	        
+
 	    })
-	    
+
 	    // url will be /form/interests
 	     .state('reserva.seleccion', {
 	        url: '/seleccion',
@@ -170,9 +177,9 @@ angular
 	        url: '/metodo',
 	        templateUrl: 'views/reservarMetodo.html'
 	    });
-      
-    $urlRouterProvider.otherwise("/"); 
-    
+
+    $urlRouterProvider.otherwise("/");
+
     $httpProvider.defaults.withCredentials = true;
     $httpProvider.interceptors.push('ErrorInterceptor');
   });

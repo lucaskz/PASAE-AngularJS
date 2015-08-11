@@ -37,6 +37,7 @@ module.exports = function(config) {
       'bower_components/angular-file-model/angular-file-model.js',
       'bower_components/sweetalert/dist/sweetalert.min.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-auto-validate/dist/jcs-auto-validate.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
