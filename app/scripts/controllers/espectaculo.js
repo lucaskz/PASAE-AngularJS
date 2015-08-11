@@ -5,11 +5,7 @@
  * @name pasaeAngularJsApp.controller:AboutCtrl
  * @description # RegisterController Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller(
-		'EspectaculoCtrl',
-		function($scope, $routeParams, $location, $filter, $modal,
-				EspectaculoService, CategoriaService, TeatroService,
-				FuncionService) {
+angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope, $routeParams, $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService) {
 
 			TeatroService.getTeatros().then(function(data) {
 

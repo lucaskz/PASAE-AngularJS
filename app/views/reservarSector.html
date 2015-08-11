@@ -1,0 +1,24 @@
+
+
+<div class="row">
+	<div class="col-xs-6 col-xs-offset-3">
+		<div class="form-group">
+		    <label for="espectaculo">{{reserva.espectaculo}}</label>		    
+		</div>
+		<div class="form-group">
+		    <label for="funcion">{{reserva.funcion}}</label>		    
+		</div>		
+		<div class="form-group">
+		    <label for="sector">Sector</label>
+	    	<select class="form-control"  ng-model="data.sector" ng-options="sector as sector.nombre for sector in sectores"></select>
+		</div>		
+	</div>
+</div>
+
+<div class="form-group row " style="margin-top: 30px">
+	<div class="col-xs-6 col-xs-offset-3">
+	    <a ui-sref="reserva.seleccion" class="btn btn-block btn-info">
+	     Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+	    </a>
+	</div>
+</div>

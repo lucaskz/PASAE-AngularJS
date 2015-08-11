@@ -1,0 +1,30 @@
+<!-- form-profile.html -->
+<div class="row">
+	<div class="col-xs-9 ">
+		<div ng-repeat="fila in data.sector.filas">
+			<div class="row">
+				<div class="col-xs-2">
+					Fila : {{fila.numero}}
+				</div>
+				<div class="col-xs-8">
+					<div ng-repeat="asiento in fila.asientos">
+						<div class="seat" ng-click="seatClicked(asiento,fila)" ng-switch on="getStatus(asiento)" style="float:left">
+							<img ng-switch-when="selected" src="images/seat_selected.png" style="height: 2em;">
+	              			<img ng-switch-when="reserved" src="images/seat_reserved.png" style="height: 2em;">
+	                		<img ng-switch-default src="images/seat_available.png" style="height: 2em;">
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="form-group row" style="margin-top: 30px">
+<div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref="reserva.metodo" class="btn btn-block btn-info">
+     Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+</div>
+</div>

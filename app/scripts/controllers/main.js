@@ -5,11 +5,7 @@
  * @name pasaeAngularJsApp.controller:MainCtrl
  * @description # MainCtrl Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller(
-		'MainCtrl',
-		function($scope, $cookies, $routeParams, $location, EspectaculoService,
-				$sessionStorage, $modal) {
-
+angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cookies, $routeParams, $location, EspectaculoService,$sessionStorage, $modal) {
 			$scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS', 'Karma'
 
 			];

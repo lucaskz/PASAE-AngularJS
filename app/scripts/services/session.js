@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http,$cookies,$httpParamSerializer){
+angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,$cookies,$httpParamSerializer,config){
 	return {
 		register : function(user){
 			var deferred = $q.defer();
-			$http.post('http://localhost:8080/web-module/espectador', user).then(function(successData){
+			$http.post(config.apiUrl+'web-module/espectador', user).then(function(successData){
 				var data = successData;
 				// se registra exitosamente el usuario devuelvo la informacion para logearlo
 				deferred.resolve(data);
@@ -20,7 +20,7 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 //			var headers = credentials ? {authorization : 'Basic ' + btoa(credentials.username + ":" + credentials.password)
 //		    } : {};
 
-			$http.post('http://localhost:8080/web-module/login', $httpParamSerializer(credentials), {
+			$http.post(config.apiUrl+'web-module/login', $httpParamSerializer(credentials), {
 			    headers: {
 			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			        },

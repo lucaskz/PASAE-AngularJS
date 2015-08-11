@@ -7,13 +7,13 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http,$cookies,$httpParamSerializer) {
+angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,$cookies,$httpParamSerializer,config) {
 
     return{
         crearTeatro : function(teatro){
                       var deferred = $q.defer();
 
-                      $http.post('http://localhost:8080/web-module/teatro',teatro).then(function(successData){
+                      $http.post(config.apiUrl+'web-module/teatro',teatro).then(function(successData){
 
 
                         var data = successData;
@@ -27,7 +27,7 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
          getTeatros : function(){
               var deferred = $q.defer();
 
-              $http.get('http://localhost:8080/web-module/teatro/listadoteatros').then(function(successData){
+              $http.get(config.apiUrl+'web-module/teatro/listadoteatros').then(function(successData){
                 var data = successData;
 
                 deferred.resolve(data);
@@ -39,7 +39,7 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
 
           getDataTeatro : function(idTeatro){
             var deferred = $q.defer();
-                         $http.get('http://localhost:8080/web-module/teatro/' + idTeatro).then(function(successData){
+                         $http.get(config.apiUrl+'web-module/teatro/' + idTeatro).then(function(successData){
                            var data = successData;
 
                            deferred.resolve(data);
@@ -55,7 +55,7 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
           editarTeatro : function(idTeatro,teatro){
 
                                          var deferred = $q.defer();
-                                         $http.post('http://localhost:8080/web-module/teatro/' + idTeatro + '/modificardatos', teatro).then(function(successData){
+                                         $http.post(config.apiUrl+'web-module/teatro/' + idTeatro + '/modificardatos', teatro).then(function(successData){
                                                     var data = successData;
                                                     deferred.resolve(data);
 
@@ -69,7 +69,7 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
            eliminarTeatro: function(idTeatro){
 
                                        var deferred = $q.defer();
-                                       $http.post('http://localhost:8080/web-module/teatro/eliminar/' + idTeatro).then(function(successData){
+                                       $http.post(config.apiUrl+'web-module/teatro/eliminar/' + idTeatro).then(function(successData){
                                                  var data = successData;
                                                   deferred.resolve(data);
                                                },function(error){
@@ -86,7 +86,7 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
             tieneEspectaculosAsociados: function(nombreTeatro){
 
                         var deferred = $q.defer();
-                        $http.get('http://localhost:8080/web-module/espectaculo/espectaculosdeteatro/' + nombreTeatro).then(function(successData){
+                        $http.get(config.apiUrl+'web-module/espectaculo/espectaculosdeteatro/' + nombreTeatro).then(function(successData){
                                           var data = successData;
 
                                           deferred.resolve(data);
