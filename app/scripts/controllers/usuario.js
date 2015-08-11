@@ -28,8 +28,7 @@ angular.module('pasaeAngularJsApp').controller(
 						loading = false;
 						console.log(error);
 					});
-				}
-				;
+				};
 
 			};
 
@@ -81,7 +80,6 @@ angular.module('pasaeAngularJsApp').controller(
 
 				function() {
 					console.log("agrego empleado");
-					listadoUsuarios();
 					$location.path("/admin/listadoempleados");
 
 				},
