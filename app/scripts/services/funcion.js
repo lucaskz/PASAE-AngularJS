@@ -7,13 +7,13 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$cookies','$httpParamSerializer',function($q,$http) {
+angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,config) {
 
  return {
         crearFuncion : function(funcion){
               var deferred = $q.defer();
 
-              $http.post('http://localhost:8080/web-module/funcion',funcion).then(function(successData){
+              $http.post(config.apiUrl+'web-module/funcion',funcion).then(function(successData){
 
 
                 var data = successData;
@@ -28,7 +28,7 @@ angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$co
         eliminarFuncion: function(idFuncion){
 
                            var deferred = $q.defer();
-                           $http.post('http://localhost:8080/web-module/funcion/eliminar/' + idFuncion).then(function(successData){
+                           $http.post(config.apiUrl+'web-module/funcion/eliminar/' + idFuncion).then(function(successData){
                                               var data = successData;
                                                deferred.resolve(data);
 

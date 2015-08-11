@@ -81,8 +81,6 @@ angular.module('pasaeAngularJsApp').controller(
 
 				function() {
 					console.log("agrego empleado");
-					listadoUsuarios();
-					$location.path("/admin/listadoempleados");
 
 				},
 
@@ -91,24 +89,7 @@ angular.module('pasaeAngularJsApp').controller(
 					$scope.loading = false;
 					console.log(error);
 				});
-
 			};
-
-
-				$scope.confirmarDeshabilitarUsuario = function(usuario) {
-
-      				$scope.usuarioSeleccionado = usuario;
-      				$scope.modalInstance = $modal.open({
-      					animation : true,
-      					scope : $scope,
-      					templateUrl : 'views/deshabilitarUsuario.html'
-      				});
-        };
-
-        $scope.close = function() {
-        		$scope.modalInstance.close();
-        };
-
 
 			$scope.habilitarUsuario = function(usuario) {
 				$scope.loading = true;
@@ -175,7 +156,6 @@ angular.module('pasaeAngularJsApp').controller(
 					});
 
 				}
-				$scope.close();
 
 			};
 

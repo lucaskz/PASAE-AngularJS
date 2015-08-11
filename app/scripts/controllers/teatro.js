@@ -11,11 +11,11 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
 
 //   $scope.teatros=TeatroService.getTeatros();
 
- var cantidadEspectaculos=function(nombre,scope){
+ $scope.cantidadEspectaculos=function(nombre){
      TeatroService.tieneEspectaculosAsociados(nombre).then(
 
          function(data){
-            scope.cantidad=data.data;
+            $scope.cantidad=data.data;
 
          },
          function (error){
@@ -77,19 +77,19 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
    $scope.eliminar = function(teatro){
 
             $scope.teatroSelected = teatro;
-            $scope.modalInstance = $modal.open({
-            animation: true,
+             $scope.modalInstance = $modal.open({
+              animation: true,
               scope:$scope,
               templateUrl: 'views/eliminarTeatro.html'
             });
    }
 
   $scope.confirmDeleteTeatro = function(teatro){
-  cantidadEspectaculos($scope,teatro);
+    $scope.cantidadEspectaculos(teatro.nombre);
     if($scope.cantidad != 0){
-          sweetAlert("Oops...", "Something went wrong!", "error");
+           sweetAlert("Oops...", "Something went wrong!", "error");
     }
-    else{
+     else{
          TeatroService.eliminarTeatro($scope.teatroSelected.id).then(
                                    function(data){
                                             console.log(data);

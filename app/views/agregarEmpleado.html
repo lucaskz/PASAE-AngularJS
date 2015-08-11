@@ -1,23 +1,21 @@
 <div class="container">
   <div class="input-form-container">
   <div class="row">
-    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate class="form-horizontal col-sm-offset-3 col-md-6">
+    <form class="form-horizontal col-sm-offset-3 col-md-6">
       <div class="form-group">
         <input type="text" class="form-control input-lg" ng-model="usuario.nombre" placeholder="Nombre"/>
       </div>
       <div class="form-group">
         <input type="text" class="form-control input-lg" ng-model="usuario.apellido" placeholder="Apellido"/>
       </div>
-      <div class="form-group ng-valid-minlength ng-valid-maxlength ng-dirty ng-valid-parse ng-invalid ng-invalid-required ng-invalid-email">
-        <input type="text" name="email" class="form-control input-lg" ng-model="usuario.email" placeholder="Email"/>
-        <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
-
+      <div class="form-group">
+        <input type="text" class="form-control input-lg" ng-model="usuario.email" placeholder="Email"/>
       </div>
       <div class="form-group">
         <input type="password" class="form-control input-lg" ng-model="usuario.password" placeholder="Password"/>
       </div>
       <div class="form-group">
-        <a ng-click="agregarEmpleado()"  class="btn btn-danger btn-lg btn-block">Agregar Empleado</a>
+        <a ng-click="agregarEmpleado()" href="#/admin/listadoempleados" class="btn btn-danger btn-lg btn-block">Agregar Empleado</a>
       </div>
     </form>
   </div>
