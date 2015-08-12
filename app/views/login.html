@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body row">
 	<h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
-	<form name="formLogin" class="css-form col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" >
+	<form name="formLogin" class="css-form col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" ng-submit="login()" >
 	    <div class="form-group">
 	        <input type="email"  class="form-control input-lg" name="username" ng-model="user.username" placeholder="Email" required="">
 	    </div>
@@ -13,7 +13,7 @@
 	        <input type="password" class="form-control input-lg" ng-model="user.password" placeholder="Password" required>
 	    </div>
 	    <div class="form-group">
-	        <input type="submit" class="btn btn-danger btn-lg btn-block" ng-click="login()" value="Sign In" />
+	        <input type="submit" class="btn btn-danger btn-lg btn-block" value="Sign In" />
 	        <i class="spinner tu-icono-fav" ng-show="loading"></i>
 	        <span class="pull-right"><a  ng-click="register()">Register</a></span><span><a href="#">Need help?</a></span>
 	    </div>
