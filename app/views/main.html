@@ -19,10 +19,10 @@
 	    	<h4>{{espectaculo.descripcion}}</h4>
 	    </div>
 	    <div class="row" style=" margin: 5px;">
-	    	<div class="col-sm-3">
+	    	<div class="col-sm-5">
 	    		<a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button"><span class="glyphicon glyphicon-edit"></span> Editar </a>
 	    	</div>
-	    	<div class="col-sm-3">
+	    	<div class="col-sm-5">
 	    		<a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button"> <span class="glyphicon glyphicon-erase"></span> Eliminar  </a>
 	    	</div>
 	    </div>

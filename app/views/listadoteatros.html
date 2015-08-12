@@ -6,20 +6,32 @@
     <div collapse="isCollapsed">
 
 
-      <form name="formAdd"class="form-horizontal col-sm-offset-3">
+      <form class="form-horizontal col-sm-offset-3" ng-submit=agregar() novalidate="novalidate">
         <div class="form-group">
             <div class="col-md-8">
-              <input  ng-model="teatro.nombre" type="text" placeholder="Ingrese un nombre" class="form-control input-md" required>
+              <input  ng-model="teatro.nombre" type="text" placeholder="Ingrese un nombre" class="form-control input-md"
+                      ng-minlength="3"
+                      ng-maxlength="15"
+                      required
+                      required-err-type="requiredName"
+                      ng-minlength-err-type="minLength"
+                      ng-maxlength-err-type="maxLength"/>
             </div>
         </div>
         <div class="form-group">
 
             <div class="col-md-8">
-              <input  ng-model="teatro.direccion" type="text" placeholder="Ingrese una direccion" class="form-control input-md" required>
+              <input  ng-model="teatro.direccion" type="text" placeholder="Ingrese una direccion" class="form-control input-md"
+                      ng-minlength="3"
+                      ng-maxlength="20"
+                      required
+                      required-err-type="requiredAddress"
+                      ng-minlength-err-type="minLength"
+                      ng-maxlength-err-type="maxLength"/>
             </div>
         </div>
 
-        <button ng-click="agregar()" class="btn btn-lg btn-primary :hover">Aceptar</button>
+        <button type="submit" class="btn btn-lg btn-primary :hover">Aceptar</button>
         </form>
       </div>
     </div>
