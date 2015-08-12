@@ -22,7 +22,16 @@
 	            <!-- our nested state views will be injected here -->
 	            <div id="form-views" ui-view></div>
 	        </form>
-	
+	        
+			<div class="row " ng-show="data.error.active">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="alert alert-danger" role="alert">
+					  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					  <span class="sr-only">Error:</span>
+					    {{data.error.detail}}
+					</div>
+				</div>
+			</div>
 	    </div>
 	
 	    <!-- show our formData as it is being typed -->

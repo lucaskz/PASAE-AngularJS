@@ -25,7 +25,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header" ng-controller="HeaderCtrl">
-        <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
 		    <div class="container">
 		        <div class="navbar-header">
 		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
@@ -35,19 +35,19 @@
 		                <span class="icon-bar"></span>
 		            </button>
 		            <div class="dropdown navbar-brand text-danger">		            
-			          <span  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TicketYA <span class="caret"></span></span>
+			          <span style="color: #f44d3c;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TicketYA <span class="caret"></span></span>
 			          <ul class="dropdown-menu">
-			            <li><a ui-sref="sector-crear.sectores" >Crear Sector</a></li>			            
-			            <li><a href="#">Another action</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a ui-sref="sector-crear.sectores" >Crear Sector</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/espectaculo/agregar" >Agregar Espectaculo</a></li>
 			            <li><a href="#">Something else here</a></li>
 			            <li role="separator" class="divider"></li>
 			            <li><a href="#">Separated link</a></li>
 			            <li role="separator" class="divider"></li>
-			            <li><a href="#">One more separated link</a></li>
+			            <li><a href="#/">Home</a></li>
 			          </ul>
 			        </div>
 		        </div>
-		        <div class="navbar-collapse collapse" id="navbar-collapsible">
+		        <div class="navbar-collapse collapse" id="navbar">
 		            <ul class="nav navbar-nav navbar-left">
 	                  <li><a href="#/categorias/comedia">Comedia/Comedia Musical</a></li>
 	                  <li><a href="#/categorias/drama">Drama</a></li>
@@ -56,13 +56,9 @@
 	                  <li><a href="#/">Opera/Clasica/Ballet</a></li>
 	                  <li ><a class="glyphicon glyphicon-calendar" ng-click="open('lg')"> Calendario </a></li>
 	                  <li>&nbsp;</li>
-		            </ul>
-		            <ul class="nav navbar-nav navbar-right" ng-hide="authenticated">
-		                <li><a  ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Login</a></li>
-		                <li><a  ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Sign up</a></li>
-		            </ul>
-		            <ul class="nav navbar-nav navbar-right" ng-show="authenticated">
-		                <li><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
+		              <li ng-hide="authenticated"><a  ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Login</a></li>
+		              <li ng-hide="authenticated"><a  ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Sign up</a></li>
+		              <li ng-show="authenticated"><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -179,10 +175,8 @@
         <script src="scripts/services/teatro.js"></script>
         <script src="scripts/services/funcion.js"></script>
         <script src="scripts/services/sector.js"></script>
+        <script src="scripts/services/venta.js"></script> 
         <script src="/assets/scripts/angular-locale_es-es.js"></script>
-
-        
-
 
 
     <!-- endbuild -->

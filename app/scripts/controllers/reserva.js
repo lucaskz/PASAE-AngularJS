@@ -7,24 +7,31 @@
  * # RegisterController
  * Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,EspectaculoService,SectorService,$state,$stateParams) {
+angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,EspectaculoService,SectorService,$state,$stateParams,VentaService) {
 
 	console.log('reserva instanciado');	
 	
 	$scope.reserva = {asientos : []};
 	
+	$scope.data = {};
+	
 	if($stateParams.funcion!=null){
-		$scope.reserva.espectaculo = $stateParams.espectaculo;
-		$scope.reserva.funcion = $stateParams.funcion;
+		$scope.data.espectaculo = $stateParams.espectaculo;
+		$scope.reserva.funcionId = $stateParams.funcion.id;
+		$scope.data.funcion = $stateParams.funcion;
+		SectorService.getSectores($scope.data.espectaculo).then(
+				function(data){
+					$scope.data.sectores = data.data;
+				},
+				function(error){
+					console.log(error);
+				}
+		);	
 	}else{
 		$state.go('home');
-	}
+	}	
 	
-	$scope.sectores = SectorService.getSectores($scope.reserva.espectaculo);
-	
-	$scope.data = {};	
-	
-	$scope.sectores = SectorService.getSectores('test');
+
 	
 	$scope.reserva.monto = 0 ;
 	
@@ -34,32 +41,64 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 	
 	$scope.getStatus = function(asiento) {
 		var index = $scope.reserva.asientos.indexOf(asiento);
-        if(index > -1 && asiento.ocupado == 'true') {
+        if(index > -1 && asiento.ocupado ) {
             return 'selected';
-        } else if(index == -1 && asiento.ocupado == 'true') {
+        } else if(index == -1 && asiento.ocupado ) {
             return 'reserved';
         }else{
         	return 'available';
         }
     }
 
-	
+	var actualizarMonto = function(){
+		$scope.error.active = false;	
+		VentaService.chequearMonto($scope.data.sector.id,$scope.reserva.asientos.length).then(
+				function(data){
+					$scope.reserva.monto = data.data.monto;
+				},
+				function(error){
+					console.log(error);
+				}
+		);   
+	}
 	
 
     $scope.seatClicked = function(asiento,fila) {    	
+    	$scope.error.active = false;	
     	var index = $scope.reserva.asientos.indexOf(asiento);
-    	if(asiento.ocupado == 'true' &&  index!= -1 ){
+    	if(asiento.ocupado  &&  index!= -1 ){
     		$scope.reserva.asientos.splice(index, 1);
-    		asiento.ocupado = 'false';
-    		$scope.reserva.monto -= $scope.sector.monto;
+    		asiento.ocupado = false;
+//    		$scope.reserva.monto -= $scope.sector.monto;
+    		$scope.reserva.asientos.length > 0 ? actualizarMonto() : $scope.reserva.monto = 0;
+    		
+    		
     	}else{
-    		if(asiento.ocupado == 'false'){
-    			asiento.ocupado = 'true';
+    		if( !asiento.ocupado ){
+    			asiento.ocupado = true;
     			$scope.reserva.asientos.push(asiento);
-    			$scope.reserva.monto += $scope.data.sector.monto;
+//    			$scope.reserva.monto += $scope.data.sector.monto;
+    			$scope.reserva.asientos.length > 0 ? actualizarMonto() : $scope.reserva.monto = 0;
     		}
     	}
     }
+    
+	
+	$scope.processForm= function(){
+		$scope.error.active = false;	
+		VentaService.confirmarVenta($scope.reserva).then(
+				function(data){
+					if(data.data.title == 'error'){
+						$scope.error.detail = data.data.detail;
+						$scope.error.active = true;						
+					}
+					console.log(data);
+				},
+				function(error){
+					console.log(error);
+				}
+		);
+	};
 
 
 	  
