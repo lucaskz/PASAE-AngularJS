@@ -17,8 +17,8 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl',
 				SessionService.register(user).then(function(data) {
 
 				     if(data.data.title == "error"){
+               sweetAlert("Oops...",data.data.detail, "error");
 
-				       alert(data.data.detail);
 				     }
 
 					// aca okParam es lo que se devuelve en

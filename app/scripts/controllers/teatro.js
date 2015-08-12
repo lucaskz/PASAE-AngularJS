@@ -121,8 +121,13 @@ $scope.isCollapsed = true;
     	$scope.loading = true;
 
           TeatroService.crearTeatro($scope.teatro).then(
-          		   function(){
-                   console.log("agrego teatro");
+          		   function(data){
+
+          		     console.log("agrego teatro");
+                   if(data.data.title == "error"){
+                         sweetAlert("Oops...",data.data.detail, "error");
+
+                   }
                    teatros();
 
 
