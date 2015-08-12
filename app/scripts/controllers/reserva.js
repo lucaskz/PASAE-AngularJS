@@ -13,7 +13,7 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 	
 	$scope.reserva = {asientos : []};
 	
-	$scope.data = {};
+	$scope.data = {error:{active:false}};
 	
 	if($stateParams.funcion!=null){
 		$scope.data.espectaculo = $stateParams.espectaculo;
@@ -51,7 +51,7 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
     }
 
 	var actualizarMonto = function(){
-		$scope.error.active = false;	
+		$scope.data.error.active = false;	
 		VentaService.chequearMonto($scope.data.sector.id,$scope.reserva.asientos.length).then(
 				function(data){
 					$scope.reserva.monto = data.data.monto;
@@ -64,7 +64,7 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 	
 
     $scope.seatClicked = function(asiento,fila) {    	
-    	$scope.error.active = false;	
+    	$scope.data.error.active = false;	
     	var index = $scope.reserva.asientos.indexOf(asiento);
     	if(asiento.ocupado  &&  index!= -1 ){
     		$scope.reserva.asientos.splice(index, 1);
@@ -85,12 +85,13 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
     
 	
 	$scope.processForm= function(){
-		$scope.error.active = false;	
+		$scope.data.error.active = false;	
 		VentaService.confirmarVenta($scope.reserva).then(
 				function(data){
 					if(data.data.title == 'error'){
-						$scope.error.detail = data.data.detail;
-						$scope.error.active = true;						
+						$scope.data.error.detail = data.data.detail;
+						$scope.data.error.active = true;	
+						
 					}
 					console.log(data);
 				},

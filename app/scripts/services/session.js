@@ -13,6 +13,17 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 				});
 			return deferred.promise;
 		},
+		logout : function(user){
+			var deferred = $q.defer();
+			$http.post(config.apiUrl+'web-module/logout',{}).then(function(successData){
+				var data = successData;
+				// se registra exitosamente el usuario devuelvo la informacion para logearlo
+				deferred.resolve(data);
+				},function(error){
+					deferred.reject(error);
+				});
+			return deferred.promise;
+		},
 		authenticate : function(credentials){
 			var deferred = $q.defer();
 

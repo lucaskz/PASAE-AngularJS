@@ -42,6 +42,14 @@ angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies
             	$rootScope.error.msg = 'Unauthorized';
             	$location.path('/error');
             }
+            
+            if (rejection.status == 403)
+            {
+            	$rootScope.error.status = rejection.status;
+            	$rootScope.error.code = 403;
+            	$rootScope.error.msg = 'Forbidden';
+            	$location.path('/error');
+            }
 
             return $q.reject(rejection);
         },
