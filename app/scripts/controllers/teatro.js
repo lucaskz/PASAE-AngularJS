@@ -39,7 +39,7 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
      },
      function (error){
         $scope.loading=false;
-        $scope.log(error);
+
       }
   );
   }
@@ -53,7 +53,7 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
       function(error){
           				 //el error funciona igual
           				$scope.loading = false;
-          				console.log(error);
+
   });
 }
     $scope.editar=function(){

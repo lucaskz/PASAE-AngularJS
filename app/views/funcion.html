@@ -45,7 +45,7 @@
               <p></p>
               <p></p>
 
-              <button  ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
+              <button  ng-show="roles=='ROLE_ADMINISTRADOR'" ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
 
             </div>
           </div>
@@ -53,7 +53,7 @@
         </form>
       </div>
     <p></p>
-    
+
 	    <div ng-repeat="e in datos">
 	    	<div class="row">
 	    		<div class="col-md-9">
@@ -61,7 +61,7 @@
 	    				{{ e.fecha | date:'fullDate' }} a las {{ e.hora | date:'"HH:mm'}}
 	    			</div>
 	    			<div class="col-md-2">
-	    				<button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>	
+	    				<button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
 	    			</div>
 	    			<div class="col-md-2">
 	    				<button class="btn-small btn-primary :hover" ng-click="reservarEntrada(e)" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>

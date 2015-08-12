@@ -26,7 +26,7 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 			$scope.$on('loginEvent', function(event, data) {
 				checkLogin();
 			});
-			
+
 			$scope.$on('logOut', function(event, data) {
 				$scope.authenticated = false;
 				$scope.roles = {};
