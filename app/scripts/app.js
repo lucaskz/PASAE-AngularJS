@@ -61,7 +61,7 @@ angular
        		 controller: 'UsuarioCtrl'
       })
        .state('lsitTeather', {
-      		url:'/listadoteatros',
+      		url:'/admin/listadoteatros',
             templateUrl: 'views/listadoteatros.html',
             controller: 'TeatroCtrl'
        })
