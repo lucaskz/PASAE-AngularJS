@@ -60,7 +60,9 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 //		        console.log(headers);
 //		        console.log(config);
 //		    });
-		}
+		},
+
+
 
 
 //		login :  function() {
