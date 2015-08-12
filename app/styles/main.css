@@ -103,7 +103,7 @@ body {
 
   body > div.header.ng-scope > nav > div > div.navbar-header > div {
     margin-left: -18px;
-    font-size: 30px;
+    
   }
 
   body > div.container > div > div > p:nth-child(4) {
@@ -120,6 +120,12 @@ body {
 
   }
 
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
 
 /* Test para formulario con animaciones */

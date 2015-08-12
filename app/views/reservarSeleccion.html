@@ -20,11 +20,25 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-xs-6 col-xs-offset-3 vcenter">	
+		<a ui-sref="reserva.metodo" class="btn btn-block btn-info">
+	     Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+	    </a>
+	</div>
+	<div class="col-xs-2 vcenter" ng-show="reserva.monto > 0">		
+			<h3> $ {{reserva.monto}} </h3>
+	</div>
+</div>
 
-<div class="form-group row" style="margin-top: 30px">
-<div class="col-xs-6 col-xs-offset-3">
-    <a ui-sref="reserva.metodo" class="btn btn-block btn-info">
-     Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
-    </a>
-</div>
-</div>
+
+<!-- <div class="form-group row" style="margin-top: 30px"> -->
+<!-- <div class="col-xs-6 col-xs-offset-3"> -->
+<!--     <a ui-sref="reserva.metodo" class="btn btn-block btn-info"> -->
+<!--      Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span> -->
+<!--     </a> -->
+<!-- </div> -->
+<!-- <div class="col-xs-2" ng-show="reserva.monto > 0"> -->
+<!-- 	<h2> $ {{reserva.monto}} </h2 -->
+<!-- </div> -->
+<!-- </div> -->
