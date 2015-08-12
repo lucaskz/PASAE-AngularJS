@@ -5,16 +5,19 @@
  * @name pasaeAngularJsApp.controller:AboutCtrl
  * @description # RegisterController Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope, $stateParams , $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService,$state) {
+angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope, $stateParams , $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService,$state,$sessionStorage) {
 
-			TeatroService.getTeatros().then(function(data) {
+  $scope.roles=$sessionStorage.roles[0].authority;
 
-				$scope.teatros = data.data;
-			}, function(error) {
-				$scope.loading = false;
-				$scope.log(error);
-			});
+	var teatros=function(){
+	    TeatroService.getTeatros().then(function(data) {
+	        $scope.teatros = data.data;
+      	},
+      	function(error) {
+      	  $scope.loading = false;
 
+        });
+  }
 			CategoriaService.getCategorias().then(function(data) {
 				// aca okParam es lo que se devuelve en deferred.resolve(DATA)
 				// desde el service
@@ -60,8 +63,8 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 					console.log(error);
 				});
 			};
-
-			EspectaculoService.getDataEspectaculo($stateParams .idespectaculo)
+    if($stateParams.idespectaculo != null){
+			EspectaculoService.getDataEspectaculo($stateParams.idespectaculo)
 					.then(function(data) {
 						// los datos estan en data.data
 						$scope.espectaculo = data.data;
@@ -71,12 +74,12 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 						$scope.loading = false;
 						console.log(error);
 					});
-
+    }
 			$scope.editar = function() {
 				$scope.loading = true;
-
+      if($stateParams.idespectaculo != null){
 				EspectaculoService.editarEspectaculo(
-						$stateParams .idespectaculo, $scope.espectaculo).then(
+						$stateParams.idespectaculo, $scope.espectaculo).then(
 						function() {
 							console.log("edito espectaculo");
 							$location.path("/");
@@ -88,7 +91,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 							console.log(error);
 
 						});
-
+      }
 			}
 
 			$scope.eliminar = function() {
@@ -110,7 +113,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 		var funciones=function(){
 		   EspectaculoService.getFuncionesEspectaculo(
 
-				$stateParams .idespectaculo).then(function(data) {
+				$stateParams.idespectaculo).then(function(data) {
 				// los datos estan en data.data
 				$scope.datos = data.data;
 
@@ -188,6 +191,13 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 								});
 
 			}
-			funciones();
+			if($location.url() === "/espectaculo/agregar"){
+        teatros();
+			}
+			if($location.url() =="/espectaculo/info/"+ $stateParams.idespectaculo){
+			    	funciones();
+			}
+
+
 
 		});
