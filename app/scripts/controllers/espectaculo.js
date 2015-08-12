@@ -197,6 +197,9 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 			if($location.url() =="/espectaculo/info/"+ $stateParams.idespectaculo){
 			    	funciones();
 			}
+/*			if($location.url() == "/espectaculo/editar/"+ $stateParams.idespectaculo){
+      			            teatros();
+      }*/
 
 
 
