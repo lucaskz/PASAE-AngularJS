@@ -39,9 +39,11 @@
 			          <ul class="dropdown-menu">
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a ui-sref="sector-crear.sectores" >Crear Sector</a></li>
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/espectaculo/agregar" >Agregar Espectaculo</a></li>
-			            <li><a href="#">Something else here</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoteatros">Listado de Teatros</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoespectadores" >Listar Espectadores</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoempleados" >Listar Empleados</a></li>
 			            <li role="separator" class="divider"></li>
-			            <li><a href="#">Separated link</a></li>
+			            <li  ng-show="authenticated"><a href="/misCompras" >Listar Compras </a></li>			            
 			            <li role="separator" class="divider"></li>
 			            <li><a href="#/">Home</a></li>
 			          </ul>
@@ -56,9 +58,10 @@
 	                  <li><a href="#/">Opera/Clasica/Ballet</a></li>
 	                  <li ><a class="glyphicon glyphicon-calendar" ng-click="open('lg')"> Calendario </a></li>
 	                  <li>&nbsp;</li>
-		              <li ng-hide="authenticated"><a  ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Login</a></li>
-		              <li ng-hide="authenticated"><a  ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Sign up</a></li>
+		              <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Login</a></li>
+		              <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Sign up</a></li>
 		              <li ng-show="authenticated"><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
+		              <li ng-show="authenticated"><a  ng-href="#/" ng-click="logout()"><i class="fa fa-heart-o fa-lg"></i>Log out</a></li>
 		            </ul>
 		        </div>
 		    </div>

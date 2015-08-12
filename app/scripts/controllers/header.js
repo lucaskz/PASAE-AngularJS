@@ -8,7 +8,7 @@
 angular.module('pasaeAngularJsApp').controller(
 		'HeaderCtrl',
 		function($scope, $modal, $log, $rootScope, $cookies, $sessionStorage,
-				$filter, $location, EspectaculoService) {
+				$filter, $location, EspectaculoService,SessionService) {
 
 			var checkLogin = function() {
 				if ($sessionStorage.authenticated) {
@@ -19,6 +19,17 @@ angular.module('pasaeAngularJsApp').controller(
 					$scope.authenticated = false;
 				}
 			}
+			
+			
+			$scope.logout = function(){
+				SessionService.logout().then(
+					function(data){						
+						$rootScope.$broadcast('logOut', true);						
+					},
+					function(error){
+						console.log(error);
+					}					
+			)}
 
 			checkLogin();
 
@@ -79,13 +90,12 @@ angular.module('pasaeAngularJsApp').controller(
 				$scope.modalInstance.close();
 			};
 
-			$scope.logout = function() {
-            			  $scope.authenticated=false;
-            			  $location.path('/');
-
-       };
-
 			$scope.$on('loginEvent', function(event, data) {
 				checkLogin();
+			});
+			$scope.$on('logOut', function(event, data) {
+				$scope.authenticated = false;
+				$scope.roles = {};
+				$scope.username = {};
 			});
 		});
