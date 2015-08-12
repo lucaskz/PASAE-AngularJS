@@ -30,8 +30,14 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 			$scope.agregar = function() {
 				$scope.loading = true;
 				EspectaculoService.crearEspectaculo($scope.archivo,$scope.espectaculo).then(
-						function() {
+						function(data) {
+
+
 							console.log("agrego espectaculo");
+							if(data.data.title == "error"){
+                   sweetAlert("Oops...",data.data.detail, "error");
+
+              }
 							$location.path('/');
 
 						}, function(error) {
@@ -152,10 +158,10 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 					templateUrl : 'views/eliminarFuncion.html'
 				});
 			}
-			
-			$scope.reservarEntrada = function(fn){				
+
+			$scope.reservarEntrada = function(fn){
 				$state.go('reserva.sector', {funcion: fn,espectaculo:{ id : $scope.espectaculo.id , nombre : $scope.espectaculo.nombre} })
-				
+
 			}
 
 			$scope.confirmDelete2 = function(funcion) {

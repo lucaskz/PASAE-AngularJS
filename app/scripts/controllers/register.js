@@ -14,7 +14,13 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl',
 				// Control de los input del usuario
 
 				$scope.loading = true;
-				SessionService.register(user).then(function() {
+				SessionService.register(user).then(function(data) {
+
+				     if(data.data.title == "error"){
+               sweetAlert("Oops...",data.data.detail, "error");
+
+				     }
+
 					// aca okParam es lo que se devuelve en
 					// deferred.resolve(DATA) desde el service
 					$scope.login(user);
@@ -42,4 +48,5 @@ angular.module('pasaeAngularJsApp').controller('RegisterCtrl',
 				});
 			};
 
-		});
+			}
+);

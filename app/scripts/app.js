@@ -66,7 +66,7 @@ angular
        		 templateUrl: 'views/listadousuarios.html',
        		 controller: 'UsuarioCtrl'
       })
-       .state('lsitTeather', {
+       .state('listTeather', {
       		url:'/admin/listadoteatros',
             templateUrl: 'views/listadoteatros.html',
             controller: 'TeatroCtrl'

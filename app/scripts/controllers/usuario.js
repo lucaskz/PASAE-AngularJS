@@ -78,8 +78,17 @@ angular.module('pasaeAngularJsApp').controller(
 				$scope.loading = true;
 				UsuarioService.agregarEmpleado($scope.usuario).then(
 
-				function() {
+				function(data) {
+
+
 					console.log("agrego empleado");
+					if(data.data.title == "error"){
+                sweetAlert("Oops...",data.data.detail, "error");
+
+         }
+					listadoUsuarios();
+
+
 					$location.path("/admin/listadoempleados");
 
 				},
