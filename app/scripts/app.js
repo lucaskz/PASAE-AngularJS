@@ -175,7 +175,11 @@ angular
 	    .state('reserva.metodo', {
 	        url: '/metodo',
 	        templateUrl: 'views/reservarMetodo.html'
-	    });
+	    })
+	    .state('reserva.confirmada', {
+      	        url: '/metodo',
+      	        templateUrl: 'views/reservarConfirmada.html'
+      	    });
 
     $urlRouterProvider.otherwise("/");
 

@@ -9,12 +9,12 @@
  */
 angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,EspectaculoService,SectorService,$state,$stateParams,VentaService) {
 
-	console.log('reserva instanciado');	
-	
+	console.log('reserva instanciado');
+
 	$scope.reserva = {asientos : []};
-	
+
 	$scope.data = {error:{active:false}};
-	
+
 	if($stateParams.funcion!=null){
 		$scope.data.espectaculo = $stateParams.espectaculo;
 		$scope.reserva.funcionId = $stateParams.funcion.id;
@@ -26,19 +26,19 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 				function(error){
 					console.log(error);
 				}
-		);	
+		);
 	}else{
 		$state.go('home');
-	}	
-	
+	}
 
-	
+
+
 	$scope.reserva.monto = 0 ;
-	
+
 	if($scope.reserva.sector){
 		$scope.asientos = SectorService.getSector(sector);
 	}
-	
+
 	$scope.getStatus = function(asiento) {
 		var index = $scope.reserva.asientos.indexOf(asiento);
         if(index > -1 && asiento.ocupado ) {
@@ -51,7 +51,7 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
     }
 
 	var actualizarMonto = function(){
-		$scope.data.error.active = false;	
+		$scope.data.error.active = false;
 		VentaService.chequearMonto($scope.data.sector.id,$scope.reserva.asientos.length).then(
 				function(data){
 					$scope.reserva.monto = data.data.monto;
@@ -59,20 +59,20 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 				function(error){
 					console.log(error);
 				}
-		);   
+		);
 	}
-	
 
-    $scope.seatClicked = function(asiento,fila) {    	
-    	$scope.data.error.active = false;	
+
+    $scope.seatClicked = function(asiento,fila) {
+    	$scope.data.error.active = false;
     	var index = $scope.reserva.asientos.indexOf(asiento);
     	if(asiento.ocupado  &&  index!= -1 ){
     		$scope.reserva.asientos.splice(index, 1);
     		asiento.ocupado = false;
 //    		$scope.reserva.monto -= $scope.sector.monto;
     		$scope.reserva.asientos.length > 0 ? actualizarMonto() : $scope.reserva.monto = 0;
-    		
-    		
+
+
     	}else{
     		if( !asiento.ocupado ){
     			asiento.ocupado = true;
@@ -82,16 +82,18 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
     		}
     	}
     }
-    
-	
+
+
 	$scope.processForm= function(){
-		$scope.data.error.active = false;	
+		$scope.data.error.active = false;
 		VentaService.confirmarVenta($scope.reserva).then(
 				function(data){
 					if(data.data.title == 'error'){
 						$scope.data.error.detail = data.data.detail;
-						$scope.data.error.active = true;	
-						
+						$scope.data.error.active = true;
+
+					}else{
+					  $state.go('reserva.confirmada');
 					}
 					console.log(data);
 				},
@@ -102,6 +104,6 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 	};
 
 
-	  
-   
+
+
 });
