@@ -194,9 +194,12 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 			if($location.url() === "/espectaculo/agregar"){
         teatros();
 			}
-			if($location.url() =="/espectaculo/info/"+ $stateParams.idespectaculo){
+			if($location.url() == "/espectaculo/info/"+ $stateParams.idespectaculo){
 			    	funciones();
 			}
+			if($location.url() == "/espectaculo/editar/"+ $stateParams.idespectaculo){
+			            teatros();
+      }
 
 
 
