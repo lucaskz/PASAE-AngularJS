@@ -5,15 +5,15 @@
 			<label for="email">Espectaculo</label>
 		    <select class="form-control"  ng-model="teatro.espectaculoId" required>
                <option  ng-repeat="espectaculo in espectaculos" value="{{espectaculo.id}}">{{ espectaculo.nombre }}</option>
-            </select>		
-		</div>	
+            </select>
+		</div>
 		<div class="form-group">
 		    <label for="email">Sectores</label>
 		    <input type="number" class="form-control" name="sectores" ng-model="data.nSectores" ng-change="crearSectores()">
-		</div>	
-		
+		</div>
+
 	</div>
-	
+
 </div>
 
 

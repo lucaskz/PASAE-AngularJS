@@ -20,8 +20,14 @@ angular
     'ngStorage',
     'angularUtils.directives.dirPagination',
     'file-model',
-    'ui.router'
+    'ui.router',
+    'jcs-autoValidate'
     ])
+  .run([
+       'bootstrap3ElementModifier',
+       function (bootstrap3ElementModifier) {
+          bootstrap3ElementModifier.enableValidationStateIcons(true);
+  }])
   .constant('config', {
 	    appName: 'My App',
 	    appVersion: 2.0,
@@ -169,7 +175,11 @@ angular
 	    .state('reserva.metodo', {
 	        url: '/metodo',
 	        templateUrl: 'views/reservarMetodo.html'
-	    });
+	    })
+	    .state('reserva.confirmada', {
+      	        url: '/metodo',
+      	        templateUrl: 'views/reservarConfirmada.html'
+      	    });
 
     $urlRouterProvider.otherwise("/");
 

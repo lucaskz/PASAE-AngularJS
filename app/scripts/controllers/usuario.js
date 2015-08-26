@@ -28,8 +28,7 @@ angular.module('pasaeAngularJsApp').controller(
 						loading = false;
 						console.log(error);
 					});
-				}
-				;
+				};
 
 			};
 

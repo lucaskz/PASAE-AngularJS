@@ -62,7 +62,7 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
               TeatroService.editarTeatro($stateParams.idteatro,$scope.teatro).then(
               		   function(){
                        console.log("edito teatro");
-                       $location.path('/listadoteatros');
+                       $location.path('/admin/listadoteatros');
 
               		  },
               			function(error){

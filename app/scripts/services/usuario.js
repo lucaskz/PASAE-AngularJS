@@ -14,6 +14,8 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
 
                 return deferred.promise;
+
+
           },
 
 

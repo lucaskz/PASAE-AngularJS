@@ -16,7 +16,13 @@
       <!-- Text input-->
       <div class="form-group">
         <div class="col-md-8">
-          <input  ng-model="espectaculo.nombre" type="text" placeholder="Ingrese un nombre" class="form-control input-md" required>
+          <input  ng-model="espectaculo.nombre" type="text" placeholder="Ingrese un nombre" class="form-control input-md"
+                  ng-minlength="3"
+                  ng-maxlength="30"
+                  required
+                  required-err-type="requiredName"
+                  ng-minlength-err-type="minLength"
+                  ng-maxlength-err-type="maxLength"/>
         </div>
       </div>
 
@@ -24,7 +30,10 @@
       <div class="form-group">
 
         <div class="col-md-8">
-          <textarea class="form-control" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion"></textarea>
+          <textarea class="form-control" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion"
+                    required
+                    required-err-type="requiredDesc"
+            ></textarea>
         </div>
       </div>
 
