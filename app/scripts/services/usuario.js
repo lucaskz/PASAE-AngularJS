@@ -119,7 +119,8 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
                  var deferred = $q.defer();
 
-                 $http.post(config.apiUrl+'web-module/empleado/'+usuario.id+'/cambiardatospersonales',usuario).then(function(successData){
+                 $http.post(config.apiUrl+'web-module/empleado/cambiardatospersonales/'+ usuario.id,usuario).then(function(successData){
+
                     var data = successData;
                    	deferred.resolve(data);
                  },function(error){
@@ -132,7 +133,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
                            var deferred = $q.defer();
 
-                           $http.post(config.apiUrl+'web-module/espectador/'+usuario.id+'/cambiardatospersonales',usuario).then(function(successData){
+                           $http.post(config.apiUrl+'web-module/espectador/cambiardatospersonales/'+ usuario.id,usuario).then(function(successData){
                               var data = successData;
                              	deferred.resolve(data);
                            },function(error){
@@ -147,7 +148,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
                            var deferred = $q.defer();
 
-                           $http.post(config.apiUrl+'web-module/empleado/'+usuario.id+'/cambiarestado',usuario).then(function(successData){
+                           $http.post(config.apiUrl+'web-module/empleado/cambiarestado/'+ usuario.id,usuario).then(function(successData){
                               var data = successData;
                              	deferred.resolve(data);
                            },function(error){
@@ -160,7 +161,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
                                          var deferred = $q.defer();
 
-                                         $http.post(config.apiUrl+'web-module/espectador/'+usuario.id+'/cambiarestado',usuario).then(function(successData){
+                                         $http.post(config.apiUrl+'web-module/espectador/cambiarestado'+ usuario.id,usuario).then(function(successData){
                                             var data = successData;
                                            	deferred.resolve(data);
                                          },function(error){

@@ -25,8 +25,17 @@ angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$co
                 });
               return deferred.promise;
         },
-        buscarFuncion : function(){
-        	
+        getDataFunction : function(){
+               var deferred = $q.defer();
+               $http.get(config.apiUrl+'web-module/function').then(function(successData){
+                                var data = successData;
+                                deferred.resolve(data);
+                                },function(error){
+                                  deferred.reject(error);
+                                });
+               return deferred.promise;
+
+
         },
         eliminarFuncion: function(idFuncion){
                var deferred = $q.defer();

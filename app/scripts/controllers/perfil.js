@@ -14,7 +14,7 @@ angular.module('pasaeAngularJsApp').controller('ProfileCtrl', function ($scope,$
   var roles=$sessionStorage.roles[0].authority;
 
   if (roles =="ROLE_ADMINISTRADOR")
-   EspectaculoService.getDataAdministrador($routeParams.idespectaculo).then(
+   EspectaculoService.getDataAdministrador($routeParams.idespectador).then(
      	function(data){
            				// los datos estan en data.data
             				$scope.espectaculo=data.data;

@@ -9,7 +9,12 @@
  */
 angular.module('pasaeAngularJsApp').controller('FuncionCtrl', function ($scope,FuncionService) {
 
-
+      FuncionService.getDataFunction.then(function(data) {
+           $scope.funcion = data.data;
+      },
+      function(error) {
+               $scope.loading = false;
+      });
 
 
 
