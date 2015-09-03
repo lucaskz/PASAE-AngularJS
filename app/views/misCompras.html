@@ -3,11 +3,12 @@
     <h3> MIS COMPRAS</h3>
     <div ng-repeat="compra in compras" class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">{{compra.funcionId}}</h3>
+    <h3 class="panel-title">{{compra.nombreEspectaculo}}</h3>
   </div>
   <div class="panel-body">
-    <p>{{compra.monto}}</p>
-    <p>{{compra.cuotas}}</p>
+    <p>Monto: {{compra.monto}}</p>
+    <p>Fecha: {{compra.funcion.fecha}}</p>
+    <p>Hora: {{compra.funcion.hora}}</p>
 
   </div>
   </div>
