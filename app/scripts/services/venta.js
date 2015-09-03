@@ -29,6 +29,18 @@ angular.module('pasaeAngularJsApp').service('VentaService', ['$q','$http','$cook
                 deferred.reject(error);
               });
             return deferred.promise;
+        },
+        comprasDeEspectador : function(username){
+
+           var deferred = $q.defer();
+                       $http.get(config.apiUrl+'web-module/venta/miscompras/'+ username ).then(function(successData){
+                         var data = successData;
+                         deferred.resolve(data);
+                         },function(error){
+                           deferred.reject(error);
+                         });
+                       return deferred.promise;
+
         }
   }
 }]);

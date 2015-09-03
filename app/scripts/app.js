@@ -47,7 +47,7 @@ angular
             controller: 'AboutCtrl'
       })
       .state('editData',{
-      	  url:'/perfil/editardatos',
+      	  url:'/perfil/editardatos:',
     	  templateUrl: 'views/editarPerfil.html',
     	  controller: 'ProfileCtrl'
       })
@@ -178,8 +178,14 @@ angular
 	    })
 	    .state('reserva.confirmada', {
       	        url: '/metodo',
-      	        templateUrl: 'views/reservarConfirmada.html'
-      	    });
+      	        templateUrl: 'views/reservaConfirmada.html'
+      	    })
+      .state('compras', {
+         url:'/espectador/miscompras',
+         templateUrl: 'views/misCompras.html',
+         controller: 'CompraCtrl'
+      })
+
 
     $urlRouterProvider.otherwise("/");
 

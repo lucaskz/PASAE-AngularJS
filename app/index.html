@@ -43,7 +43,7 @@
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoespectadores" >Listar Espectadores</a></li>
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoempleados" >Listar Empleados</a></li>
 			            <li role="separator" class="divider"></li>
-			            <li  ng-show="authenticated"><a href="/misCompras" >Listar Compras </a></li>
+			            <li  ng-show="authenticated"><a href="#/espectador/miscompras" >Listar Compras </a></li>
 			            <li role="separator" class="divider"></li>
 			            <li><a href="#/">Home</a></li>
 			          </ul>
@@ -171,7 +171,8 @@
         <script src="scripts/controllers/funcion.js"></script>
         <script src="scripts/controllers/sector.js"></script>
         <script src="scripts/controllers/reserva.js"></script>
-        <script src="scripts/interceptors/error.js"></script>
+        <script src="scripts/controllers/compra.js"></script>
+       <script src="scripts/interceptors/error.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/espectaculo.js"></script>
         <script src="scripts/services/usuario.js"></script>
