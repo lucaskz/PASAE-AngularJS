@@ -1,7 +1,8 @@
 <div class="container">
   <div class="div-form">
-    <img src="images/favio-posca.jpg" class="img-thumbnail"/>
-
+    <div class="img-container">
+    <img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}" class="function-img"/>
+    </div>
     <div class="panel panel-default ">
       <div class="panel-heading black-bg">
         <h3  class="panel-title"> {{ espectaculo.nombre}}  </h3>
