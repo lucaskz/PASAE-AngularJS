@@ -1,20 +1,31 @@
 <div class="container">
   <div class="input-form-container"> 
     <h3> MIS COMPRAS</h3>
+    <strong> A continuación te mostramos el detalle de las últimas compras que realizaste</strong>
     <div ng-repeat="compra in compras" class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">{{compra.nombreEspectaculo}}</h3>
   </div>
   <div class="panel-body">
-    <p>Monto: {{compra.monto}}</p>
-    <p>Fecha: {{compra.funcion.fecha}}</p>
-    <p>Hora: {{compra.funcion.hora}}</p>
+    <div class="row">
+        <strong>&nbsp  Precio: </strong>${{compra.monto }}
+    </div>
+    <div class="row">
+        <strong>&nbsp Fecha: </strong>{{compra.funcion.fecha| date:'fullDate'}}
+    </div>
+    <div class="row">
+        <strong>&nbsp Hora:  </strong>{{compra.funcion.hora| date:'"HH:mm'}}
+    </div>
+    <div class="row">
+       <strong>&nbsp Cantidad de Asientos: </strong> {{ compra.asientos.length}}
+
+
 
   </div>
+      </div>
   </div>
   </div>
 </div>
-
 
 <!--
 
