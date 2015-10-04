@@ -21,7 +21,8 @@ angular
     'angularUtils.directives.dirPagination',
     'file-model',
     'ui.router',
-    'jcs-autoValidate'
+    'jcs-autoValidate',
+    'highcharts-ng'
     ])
   .run([
        'bootstrap3ElementModifier',
@@ -185,6 +186,13 @@ angular
          templateUrl: 'views/misCompras.html',
          controller: 'CompraCtrl'
       })
+       .state('estadisticasVentas', {
+               url:'/estadistica',
+               templateUrl: 'views/estadisticasDeVentas.html',
+               controller: 'EstadisticaCtrl'
+        })
+
+
 
 
     $urlRouterProvider.otherwise("/");

@@ -22,11 +22,11 @@
       <div class="panel-heading">
         <h3 class="panel-title">Funciones</h3>
       </div>
-      <div class="panel-body">
+      <div  class="panel-body">
 
         <!--<a href="#/funcion/agregar" class="btn-small btn-primary :hover">-->
           <!--<span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Funcion</span>-->
-          <button type="button" class="btn btn-sm btn-success glyphicon glyphicon-plus" ng-click="isCollapsed = !isCollapsed">Agregar funcion</button>
+          <button  ng-show="roles=='ROLE_ADMINISTRADOR'"type="button" class="btn btn-sm btn-success glyphicon glyphicon-plus" ng-click="isCollapsed = !isCollapsed">Agregar funcion</button>
         <!--</a> -->
 
        <div collapse="isCollapsed">
@@ -47,7 +47,7 @@
               <p></p>
               <p></p>
 
-              <button  ng-show="roles=='ROLE_ADMINISTRADOR'" ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
+              <button ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
 
             </div>
           </div>
@@ -62,10 +62,10 @@
 	    			<div class="col-md-5">
 	    				{{ e.fecha | date:'fullDate' }} a las {{ e.hora | date:'"HH:mm'}}
 	    			</div>
-	    			<div class="col-md-2">
+	    			<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="col-md-2">
 	    				<button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
 	    			</div>
-	    			<div class="col-md-2">
+	    			<div  ng-show="roles=='ROLE_ESPECTADOR'"class="col-md-2">
 	    				<button class="btn-small btn-primary :hover" ng-click="reservarEntrada(e)" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>
 	    			</div>
 	    		</div>

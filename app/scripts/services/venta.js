@@ -41,6 +41,18 @@ angular.module('pasaeAngularJsApp').service('VentaService', ['$q','$http','$cook
                          });
                        return deferred.promise;
 
+        },
+        listadoVentas :function(){
+
+                                  var deferred = $q.defer();
+                                              $http.get(config.apiUrl+'web-module/venta/listado').then(function(successData){
+                                                var data = successData;
+                                                deferred.resolve(data);
+                                                },function(error){
+                                                  deferred.reject(error);
+                                                });
+                                  return deferred.promise;
+
         }
   }
 }]);

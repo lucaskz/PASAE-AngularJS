@@ -43,7 +43,9 @@
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoteatros">Listado de Teatros</a></li>
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoespectadores" >Listar Espectadores</a></li>
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoempleados" >Listar Empleados</a></li>
-			            <li role="separator" class="divider"></li>
+                  <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/estadistica" >Estadisticas de Ventas Realizadas</a></li>
+
+                  <li role="separator" class="divider"></li>
 			            <li  ng-show="authenticated"><a href="#/espectador/miscompras" >Listar Compras </a></li>
 			            <li role="separator" class="divider"></li>
 			            <li><a href="#/">Home</a></li>
@@ -154,6 +156,10 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-auto-validate/dist/jcs-auto-validate.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+    <script src="bower_components/highcharts-release/highcharts.js"></script>
+    <script src="bower_components/highcharts-release/highcharts-more.js"></script>
+    <script src="bower_components/highcharts-release/modules/exporting.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -174,7 +180,8 @@
         <script src="scripts/controllers/sector.js"></script>
         <script src="scripts/controllers/reserva.js"></script>
         <script src="scripts/controllers/compra.js"></script>
-       <script src="scripts/interceptors/error.js"></script>
+        <script src="scripts/controllers/estadistica.js"></script>
+        <script src="scripts/interceptors/error.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/espectaculo.js"></script>
         <script src="scripts/services/usuario.js"></script>
@@ -183,7 +190,10 @@
         <script src="scripts/services/funcion.js"></script>
         <script src="scripts/services/sector.js"></script>
         <script src="scripts/services/venta.js"></script>
-        <script src="/assets/scripts/angular-locale_es-es.js"></script>
+        <script src="scripts/services/estadistica.js"></script>
+
+    <script src="/assets/scripts/angular-locale_es-es.js"></script>
+
 
 
     <!-- endbuild -->
