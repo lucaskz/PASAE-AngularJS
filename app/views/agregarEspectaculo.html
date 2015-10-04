@@ -3,9 +3,24 @@
   <form class="form-horizontal col-sm-offset-3">
     <!-- Form Name -->
       <legend>ALTA ESPECTACULO</legend>
-      <div class="form-group pull-left ">
+      <div class="form-group">
 
-        <input type="file" file-model="archivo"/>
+        <div class="col-md-8">
+              <div class="input-group">
+                <input type="text" id="subfile" class="form-control imput-md" placeholder="Seleccione una imagen..." readonly="">
+                <span class="input-group-btn">
+
+                    <span class="btn btn-primary btn-file">
+                        <i class="glyphicon glyphicon-folder-open"></i>
+                        &nbsp;Seleccionar…
+                      <input type="file" ngf-select ng-model="archivo" name="archivo" accept="image/*" ngf-max-size="10MB" onchange="$('#subfile').val($(this).val());">
+                    </span>
+                </span>
+              </div>
+
+        </div>
+
+
         <!--<label class="col-md-4 control-label" for="filebutton">Imagen</label>
         <div class="col-md-4">
           <input id="filebutton" name="filebutton" class="input-file" type="file">
@@ -16,7 +31,7 @@
       <!-- Text input-->
       <div class="form-group">
         <div class="col-md-8">
-          <input  ng-model="espectaculo.nombre" type="text" placeholder="Ingrese un nombre" class="form-control input-md"
+          <input  ng-model="espectaculo.nombre" type="text" placeholder="Ingrese un nombre..." class="form-control input-md"
                   ng-minlength="3"
                   ng-maxlength="30"
                   required
@@ -30,7 +45,7 @@
       <div class="form-group">
 
         <div class="col-md-8">
-          <textarea class="form-control" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion"
+          <textarea class="form-control" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion..."
                     required
                     required-err-type="requiredDesc"
             ></textarea>

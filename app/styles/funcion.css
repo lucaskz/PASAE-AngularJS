@@ -2,6 +2,7 @@
   margin-top: 30px;
 }
 
+/*
 .img-container {
   width:920px;
   height:237px;
@@ -11,4 +12,19 @@
   width: auto;
   height: auto;
   margin: -75px 0 0 -100px;
+}
+*/
+
+.crop-height {
+  max-height: 237px;
+  overflow: hidden;
+}
+
+img.scale {
+  /* corrects inline gap in enclosing div */
+  display: block;
+  width: 100%;
+  /* just in case, to force correct aspect ratio */
+  height: auto !important;
+
 }

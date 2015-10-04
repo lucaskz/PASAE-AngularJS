@@ -7,11 +7,13 @@
       </div>
     </div>
  </div>
-  <div class="row col-sm-13">
-    <div ng-repeat="espectaculo in espectaculos track by espectaculo.id" class="col-sm-8 col-md-4" style="background-color:white;  padding: 15px;    margin: 10px;">
-	    <div class="row thumbnail" style="border:0;">
+  <div class="row">
+    <div ng-repeat="espectaculo in espectaculos track by espectaculo.id" class="col-sm-6 col-md-4 col-lg-4">
+
+
+      <div class="thumbnail" style="border:0;">
 	    	<img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}"/>
-	    </div>
+
 	    <div class="row" style=" margin: 5px;">
 	    	<h3>{{espectaculo.nombre}}</h3>
 	    </div>
@@ -32,7 +34,7 @@
           </a>
         </div>
 	    </div>
-
+    </div>
    </div>
   </div>
 </div>

@@ -55,11 +55,11 @@ a:hover {
 .navbar-trans {
 	background-color:#2b2b2b;
     color:#cdcdcd;
-    
+
 }
 
 .navbar-trans .navbar-brand, .navbar-trans >.container-fluid .navbar-brand {
-    
+
     color:#f44d3c;
 }
 
@@ -236,6 +236,31 @@ tr th:last-child {
     border-bottom-right-radius: 6px;
 }
 
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  border-radius:4px;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
 /* Test para formulario con animaciones */
 /* style.css */
 /* BASIC STYLINGS
@@ -245,7 +270,7 @@ tr th:last-child {
 /* form styling */
 #form-container                { background:#2f2f2f; margin-bottom:20px;
     border-radius:5px; }
-#form-container .page-header   { background:#151515; margin:0; padding:30px; 
+#form-container .page-header   { background:#151515; margin:0; padding:30px;
     border-top-left-radius:5px; border-top-right-radius:5px; }
 
 /* numbered buttons */
@@ -254,7 +279,7 @@ tr th:last-child {
 #status-buttons a:hover         { text-decoration:none; }
 
 /* we will style the span as the circled number */
-#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
+#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;
     border-radius:50%; }
 
 /* active buttons turn light green-blue*/
@@ -270,21 +295,21 @@ tr th:last-child {
 /* left and right added to ensure full width */
 #form-views.ng-enter,
 #form-views.ng-leave      { position:absolute; left:30px; right:30px;
-    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease; 
+    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease;
 }
-    
+
 /* enter animation */
-#form-views.ng-enter            { 
+#form-views.ng-enter            {
     -webkit-animation:slideInRight 0.5s both ease;
     -moz-animation:slideInRight 0.5s both ease;
-    animation:slideInRight 0.5s both ease; 
+    animation:slideInRight 0.5s both ease;
 }
 
 /* leave animation */
-#form-views.ng-leave            { 
+#form-views.ng-leave            {
     -webkit-animation:slideOutLeft 0.5s both ease;
     -moz-animation:slideOutLeft 0.5s both ease;
-    animation:slideOutLeft 0.5s both ease;   
+    animation:slideOutLeft 0.5s both ease;
 }
 
 /* ANIMATIONS
@@ -293,7 +318,7 @@ tr th:last-child {
 @keyframes slideOutLeft {
     to      { transform: translateX(-200%); }
 }
-@-moz-keyframes slideOutLeft {  
+@-moz-keyframes slideOutLeft {
     to      { -moz-transform: translateX(-200%); }
 }
 @-webkit-keyframes slideOutLeft {

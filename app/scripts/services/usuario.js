@@ -161,7 +161,7 @@ angular.module('pasaeAngularJsApp').service( 'UsuarioService', ['$q','$http','$h
 
                                          var deferred = $q.defer();
 
-                                         $http.post(config.apiUrl+'web-module/espectador/cambiarestado'+ usuario.id,usuario).then(function(successData){
+                                         $http.post(config.apiUrl+'web-module/espectador/cambiarestado/'+ usuario.id,usuario).then(function(successData){
                                             var data = successData;
                                            	deferred.resolve(data);
                                          },function(error){
