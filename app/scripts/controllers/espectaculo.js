@@ -109,7 +109,6 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope
 
 				})
 			}
-
 		var funciones=function(){
 		   EspectaculoService.getFuncionesEspectaculo(
 
