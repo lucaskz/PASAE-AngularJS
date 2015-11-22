@@ -39,6 +39,11 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-auto-validate/dist/jcs-auto-validate.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
+      'bower_components/highcharts-ng/dist/highcharts-ng.js',
+      'bower_components/highcharts-release/highcharts.js',
+      'bower_components/highcharts-release/highcharts-more.js',
+      'bower_components/highcharts-release/modules/exporting.js',
+      'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

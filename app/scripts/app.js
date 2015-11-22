@@ -11,6 +11,7 @@
 angular
   .module('pasaeAngularJsApp', [
     'ngAnimate',
+    'angular-loading-bar',
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -20,6 +21,7 @@ angular
     'ngStorage',
     'angularUtils.directives.dirPagination',
     'file-model',
+    'ngFileUpload',
     'ui.router',
     'jcs-autoValidate',
     'highcharts-ng'

@@ -5,7 +5,7 @@
  * @name pasaeAngularJsApp.controller:AboutCtrl
  * @description # RegisterController Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl',function($scope, $stateParams , $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService,$state,$sessionStorage) {
+angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scope, $stateParams , $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService,$state,$sessionStorage) {
 
   $scope.roles=$sessionStorage.roles[0].authority;
 

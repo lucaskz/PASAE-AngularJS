@@ -62,7 +62,12 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 1200px;
+      min-height: 100%;
+      height: auto;
+      /* Negative indent footer by its height */
+      margin: 0 auto -60px;
+      /* Pad bottom by footer height */
+      padding: 0 0 60px;
   }
 
   /* Remove the padding we set earlier */
@@ -127,6 +132,7 @@ body {
     vertical-align: middle;
     float: none;
 }
+
 
 /* Test para formulario con animaciones */
 /* style.css */

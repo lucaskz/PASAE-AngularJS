@@ -1,6 +1,6 @@
 <div class="container">
   <div class="input-form-container">
-  <form class="form-horizontal col-sm-offset-3">
+  <form class="form-horizontal col-sm-offset-3" ng-submit="agregar()" novalidate="novalidate">
     <!-- Form Name -->
       <legend>ALTA ESPECTACULO</legend>
       <div class="form-group">
@@ -13,11 +13,13 @@
                     <span class="btn btn-primary btn-file">
                         <i class="glyphicon glyphicon-folder-open"></i>
                         &nbsp;Seleccionar…
-                      <input type="file" ngf-select ng-model="archivo" name="archivo" accept="image/*" ngf-max-size="10MB" onchange="$('#subfile').val($(this).val());">
+                      <input type="file" ngf-select ng-model="archivo" onchange="angular.element($('#subfile')).val(this.files[0].name)" id="archivo" name="archivo" accept="image/*" ngf-max-size="10MB" disable-valid-styling="true">
                     </span>
                 </span>
               </div>
-
+          <!--
+          angular.element(this).scope().agregar(this.files);
+          onchange="$('#subfile').val($(this).val()); -->
         </div>
 
 
@@ -33,11 +35,7 @@
         <div class="col-md-8">
           <input  ng-model="espectaculo.nombre" type="text" placeholder="Ingrese un nombre..." class="form-control input-md"
                   ng-minlength="3"
-                  ng-maxlength="30"
-                  required
-                  required-err-type="requiredName"
-                  ng-minlength-err-type="minLength"
-                  ng-maxlength-err-type="maxLength"/>
+                  ng-maxlength="30"/>
         </div>
       </div>
 
@@ -47,7 +45,6 @@
         <div class="col-md-8">
           <textarea class="form-control" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion..."
                     required
-                    required-err-type="requiredDesc"
             ></textarea>
         </div>
       </div>
@@ -59,6 +56,7 @@
             <option value="">Seleccione Teatro </option>
 
             <option ng-repeat="teatro in teatros" value="{{teatro.id}}">{{teatro.nombre}}</option>
+
           </select>
 
         </div>
@@ -74,7 +72,7 @@
 
         </div>
       </div>
-      <button ng-click="agregar()" class="btn btn-lg btn-primary :hover">Agregar Espectaculo</button>
+      <button type="submit"  class="btn btn-lg btn-primary :hover">Agregar Espectaculo</button>
 
 
   </form>
