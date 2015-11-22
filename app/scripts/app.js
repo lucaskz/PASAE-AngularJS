@@ -188,12 +188,16 @@ angular
          templateUrl: 'views/misCompras.html',
          controller: 'CompraCtrl'
       })
-       .state('estadisticasVentas', {
-               url:'/estadistica',
+      .state('estadisticasVentas', {
+               url:'/estadistica/ventaspormes',
                templateUrl: 'views/estadisticasDeVentas.html',
                controller: 'EstadisticaCtrl'
         })
-
+      .state('estadisticasEspectaculos', {
+                     url:'/estadistica/ventasdeespectaculos',
+                     templateUrl: 'views/estadisticasDeVentas.html',
+                     controller: 'EstadisticaCtrl'
+       })
 
 
 
