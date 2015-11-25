@@ -6,9 +6,10 @@
  * @description # RegisterController Controller of the pasaeAngularJsApp
  */
 angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scope, $stateParams , $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService,$state,$sessionStorage) {
-
-  $scope.roles=$sessionStorage.roles[0].authority;
-
+  $scope.isCollapsed = true;
+  $scope.autenticado=$sessionStorage.authenticated;
+  if($sessionStorage.authenticated){
+   $scope.roles=$sessionStorage.roles[0].authority;
 	var teatros=function(){
 	    TeatroService.getTeatros().then(function(data) {
 	        $scope.teatros = data.data;
@@ -51,31 +52,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 						});
 
 			};
-
-			$scope.listado = function() {
-				EspectaculoService.getEspectaculos().then(function() {
-
-				},
-
-				function(error) {
-
-					$loading = false;
-					console.log(error);
-				});
-			};
-    if($stateParams.idespectaculo != null){
-			EspectaculoService.getDataEspectaculo($stateParams.idespectaculo)
-					.then(function(data) {
-						// los datos estan en data.data
-						$scope.espectaculo = data.data;
-
-					}, function(error) {
-						// el error funciona igual
-						$scope.loading = false;
-						console.log(error);
-					});
-    }
-			$scope.editar = function() {
+      $scope.editar = function() {
 				$scope.loading = true;
       if($stateParams.idespectaculo != null){
 				EspectaculoService.editarEspectaculo(
@@ -109,19 +86,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 
 				})
 			}
-		var funciones=function(){
-		   EspectaculoService.getFuncionesEspectaculo(
 
-				$stateParams.idespectaculo).then(function(data) {
-				// los datos estan en data.data
-				$scope.datos = data.data;
-
-			}, function(error) {
-				// el error funciona igual
-				$scope.loading = false;
-				console.log(error);
-			});
-			}
 
 			$scope.agregar_funcion = function() {
 
@@ -149,7 +114,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 			}
 
 
-			$scope.isCollapsed = true;
+
 
 			$scope.eliminarFuncion = function(funcion) {
 
@@ -161,10 +126,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 				});
 			}
 
-			$scope.reservarEntrada = function(fn){
-				$state.go('reserva.sector', {funcion: fn,espectaculo:{ id : $scope.espectaculo.id , nombre : $scope.espectaculo.nombre} })
 
-			}
 
 			$scope.confirmDelete2 = function(funcion) {
 				FuncionService.eliminarFuncion($scope.funcionSelected.id)
@@ -190,16 +152,68 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 								});
 
 			}
-			if($location.url() === "/espectaculo/agregar"){
-        teatros();
-			}
-			if($location.url() =="/espectaculo/info/"+ $stateParams.idespectaculo){
-			    	funciones();
-			}
+
+
+
+
 /*			if($location.url() == "/espectaculo/editar/"+ $stateParams.idespectaculo){
       			            teatros();
       }*/
 
+
+
+		}
+		else{
+
+
+    }
+   var funciones=function(){
+   		   EspectaculoService.getFuncionesEspectaculo(
+
+   				$stateParams.idespectaculo).then(function(data) {
+   				// los datos estan en data.data
+   				$scope.datos = data.data;
+
+   			}, function(error) {
+   				// el error funciona igual
+   				$scope.loading = false;
+   				console.log(error);
+   			});
+    }
+    if($stateParams.idespectaculo != null){
+         			EspectaculoService.getDataEspectaculo($stateParams.idespectaculo)
+         					.then(function(data) {
+         						// los datos estan en data.data
+         						$scope.espectaculo = data.data;
+
+         					}, function(error) {
+         						// el error funciona igual
+         						$scope.loading = false;
+         						console.log(error);
+         					});
+    }
+   if($location.url() === "/espectaculo/agregar"){
+           teatros();
+   			}
+   if($location.url() =="/espectaculo/info/"+ $stateParams.idespectaculo){
+   			    	funciones();
+   }
+   	var open_modal=function(){
+       $scope.modalInstance = $modal.open({
+         					animation : true,
+         					scope : $scope,
+         					templateUrl : 'views/login.html'
+         	});
+    }
+  	$scope.reservarEntrada = function(fn){
+
+  			if($scope.roles == 'ROLE_ESPECTADOR'){
+  				$state.go('reserva.sector', {funcion: fn,espectaculo:{ id : $scope.espectaculo.id , nombre : $scope.espectaculo.nombre} })
+        }
+        else{
+           open_modal();
+        }
+  	}
 
 
 		});

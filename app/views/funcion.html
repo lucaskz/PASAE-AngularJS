@@ -47,7 +47,7 @@
               <p></p>
               <p></p>
 
-              <button ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
+              <button ng-show="roles=='ROLE_ADMINISTRADOR'" ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
 
             </div>
           </div>
@@ -65,9 +65,12 @@
 	    			<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="col-md-2">
 	    				<button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
 	    			</div>
-	    			<div  ng-show="roles=='ROLE_ESPECTADOR'"class="col-md-2">
+	    			<div ng-hide="roles=='ROLE_ADMINISTRADOR'"class="col-md-2">
 	    				<button class="btn-small btn-primary :hover" ng-click="reservarEntrada(e)" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>
 	    			</div>
+            <!--<div  ng-show="!autenticado" class="col-md-2">
+              <button class="btn-small btn-primary :hover" ng-click="open('lg')" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>
+            </div>-->
 	    		</div>
 	    	</div>
 	    </div>

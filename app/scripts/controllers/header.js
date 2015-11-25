@@ -19,16 +19,16 @@ angular.module('pasaeAngularJsApp').controller(
 					$scope.authenticated = false;
 				}
 			}
-			
-			
+
+
 			$scope.logout = function(){
 				SessionService.logout().then(
-					function(data){						
-						$rootScope.$broadcast('logOut', true);						
+					function(data){
+						$rootScope.$broadcast('logOut', true);
 					},
 					function(error){
 						console.log(error);
-					}					
+					}
 			)}
 
 			checkLogin();
@@ -94,8 +94,9 @@ angular.module('pasaeAngularJsApp').controller(
 				checkLogin();
 			});
 			$scope.$on('logOut', function(event, data) {
-				$scope.authenticated = false;
-				$scope.roles = {};
-				$scope.username = {};
-			});
-		});
+             delete $sessionStorage.authenticated;
+            delete $scope.authenticated;
+       			delete	$scope.roles;
+       			delete 	$scope.username;
+       			});
+       		});

@@ -47,7 +47,7 @@
                   <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/estadistica/ventaspormes" >Estadisticas de Ventas Realizadas</a></li>
                   <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/estadistica/ventasdeespectaculos" >Estadisticas de Espectaculos Vendidos</a></li>
                   <li role="separator" class="divider"></li>
-			            <li  ng-show="authenticated"><a href="#/espectador/miscompras" >Listar Compras </a></li>
+			            <li  ng-show="roles== 'ROLE_ESPECTADOR'"><a href="#/espectador/miscompras" >Listar Compras </a></li>
 			            <li role="separator" class="divider"></li>
 			            <li><a href="#/">Home</a></li>
 			          </ul>
