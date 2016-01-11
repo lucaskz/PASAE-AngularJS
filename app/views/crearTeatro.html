@@ -1,39 +1,40 @@
 <!-- form.html -->
-<div class="row">
-<div class="col-sm-8 col-sm-offset-2">
+<div class="input-form-container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
 
-    <div id="form-container">
+      <div id="form-container">
 
         <div class="page-header text-center">
-            <h2>Sectores</h2>
+          <h2>Sectores</h2>
 
-            <!-- the links to our nested states using relative paths -->
-            <!-- add the active class if the state matches our ui-sref -->
-            <div id="status-buttons" class="text-center">
-                <a ui-sref-active="active" ui-sref="sector-crear.sectores"><span>1</span> Sectores</a>
-                <a ui-sref-active="active" ui-sref="sector-crear.filas"><span>2</span> Filas</a>
-                <a ui-sref-active="active" ui-sref="sector-crear.confirmar"><span>3</span> Asientos</a>
-            </div>
+          <!-- the links to our nested states using relative paths -->
+          <!-- add the active class if the state matches our ui-sref -->
+          <div id="status-buttons" class="text-center">
+            <a ui-sref-active="active" ui-sref="sector-crear.sectores"><span>1</span> Sectores</a>
+            <a ui-sref-active="active" ui-sref="sector-crear.filas"><span>2</span> Filas</a>
+            <a ui-sref-active="active" ui-sref="sector-crear.confirmar"><span>3</span> Asientos</a>
+          </div>
         </div>
 
         <!-- use ng-submit to catch the form submission and use our Angular function -->
-        <form  id="signup-form" ng-submit="processForm()" disable-dynamic-validation="true">
+        <form id="signup-form" ng-submit="processForm()" disable-dynamic-validation="true">
 
-            <!-- our nested state views will be injected here -->
-            <div id="form-views" ui-view>
+          <!-- our nested state views will be injected here -->
+          <div id="form-views" ui-view>
 
 
-            </div>
+          </div>
         </form>
 
-    </div>
+      </div>
 
-    <!-- show our formData as it is being typed -->
+      <!-- show our formData as it is being typed -->
     <pre>
         {{ teatro }}
     </pre>
 
 
-
-</div>
+    </div>
+  </div>
 </div>

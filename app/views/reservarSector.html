@@ -3,15 +3,17 @@
 <div class="row">
 	<div class="col-xs-6 col-xs-offset-3">
 		<div class="form-group">
-		    <label for="espectaculo">Espect·culo : {{data.espectaculo.nombre}}</label>		    
+		    <label for="espectaculo">Espect√°culo : {{data.espectaculo.nombre}}</label>
 		</div>
 		<div class="form-group">
-		    <label for="funcion">Fecha : {{data.funcion.fecha}} Hora : {{data.funcion.hora}}</label>		    
-		</div>		
+		    <label for="funcion">Fecha : {{data.funcion.fecha}} </label>
+        <br>
+        <label for="funcion">Hora : {{data.funcion.hora}}</label>
+		</div>
 		<div class="form-group">
 		    <label for="sector">Sector</label>
-	    	<select class="form-control"  ng-model="data.sector" ng-options="sector as sector.nombre for sector in data.sectores"></select>
-		</div>	
+	    	<select class="form-control" ng-model="data.sector" ng-options="sector as sector.nombre for sector in data.sectores"></select>
+		</div>
 	</div>
 </div>
 
