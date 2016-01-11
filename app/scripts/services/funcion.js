@@ -50,6 +50,20 @@ angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$co
                                 }
                );
                return deferred.promise;
+        },
+        tieneVentasAsociadas: function(idFuncion){
+           var deferred = $q.defer();
+                          $http.get(config.apiUrl+'web-module/funcion/ventasdefuncion/' + idFuncion).then(function(successData){
+                                             var data = successData;
+                                              deferred.resolve(data);
+
+                                           },function(error){
+                                                deferred.reject(error);
+
+
+                                           }
+                          );
+           return deferred.promise;
         }
 
 

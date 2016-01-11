@@ -115,7 +115,6 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
   }
 }
 
-$scope.isCollapsed = true;
 
  $scope.agregar = function () {
     	$scope.loading = true;
@@ -128,7 +127,7 @@ $scope.isCollapsed = true;
                          sweetAlert("Oops...",data.data.detail, "error");
 
                    }
-                   teatros();
+                   $location.path('/admin/listadoteatros');
 
 
           		  },
@@ -147,6 +146,9 @@ $scope.isCollapsed = true;
   				$scope.modalInstance.close();
   };
 
+
+
+ $scope.isCollapsed = true;
  teatros();
 
 

@@ -125,11 +125,29 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 					templateUrl : 'views/eliminarFuncion.html'
 				});
 			}
+      $scope.ventasAsociadas=function(id){
+           FuncionService.tieneVentasAsociadas(id).then(
+
+               function(data){
+                  $scope.cantidad=data.data;
+
+               },
+               function (error){
+                  $scope.loading=false;
+                  $scope.log(error);
+                }
+            );
+
+       }
 
 
-
-			$scope.confirmDelete2 = function(funcion) {
-				FuncionService.eliminarFuncion($scope.funcionSelected.id)
+			$scope.confirmDelete2 = function(fn) {
+			 $scope.ventasAsociadas(fn.id);
+       if($scope.cantidad != 0){
+                 sweetAlert("Oops...", "La funcion tiene ventas asociados", "error");
+       }
+       else{
+			   FuncionService.eliminarFuncion($scope.funcionSelected.id)
 						.then(
 								function(data) {
 
@@ -152,21 +170,10 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 								});
 
 			}
-
-
-
-
-/*			if($location.url() == "/espectaculo/editar/"+ $stateParams.idespectaculo){
-      			            teatros();
-      }*/
-
-
-
-		}
-		else{
-
-
     }
+
+ }
+
    var funciones=function(){
    		   EspectaculoService.getFuncionesEspectaculo(
 
@@ -205,6 +212,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
          					templateUrl : 'views/login.html'
          	});
     }
+
   	$scope.reservarEntrada = function(fn){
 
   			if($scope.roles == 'ROLE_ESPECTADOR'){

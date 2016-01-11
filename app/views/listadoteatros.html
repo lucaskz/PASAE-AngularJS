@@ -1,46 +1,11 @@
 <div class="container">
   <div class="input-form-container">
-    <button type="button"  ng-click="isCollapsed = !isCollapsed" class="btn btn-sm btn-success"> <i
-      class="glyphicon glyphicon-plus"> </i> Agregar Teatro
-    </button>
-    <div collapse="isCollapsed">
-
-
-      <form class="form-horizontal col-sm-offset-3" ng-submit=agregar() novalidate="novalidate">
-        <div class="form-group">
-            <div class="col-md-8">
-              <input  ng-model="teatro.nombre" type="text" placeholder="Ingrese un nombre" class="form-control input-md"
-                      ng-minlength="3"
-                      ng-maxlength="30"
-                      required
-                      required-err-type="requiredName"
-                      ng-minlength-err-type="minLength"
-                      ng-maxlength-err-type="maxLength"/>
-            </div>
-        </div>
-        <div class="form-group">
-
-            <div class="col-md-8">
-              <input  ng-model="teatro.direccion" type="text" placeholder="Ingrese una direccion" class="form-control input-md"
-                      ng-minlength="3"
-                      ng-maxlength="40"
-                      required
-                      required-err-type="requiredAddress"
-                      ng-minlength-err-type="minLength"
-                      ng-maxlength-err-type="maxLength"/>
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-lg btn-primary :hover">Aceptar</button>
-        </form>
-      </div>
-    </div>
-   <p></p>
+    <a type="button" href="#/admin/agregarteatro" class="btn btn-sm btn-success">  <i
+      class="glyphicon glyphicon-plus">  </i> Crear nuevo teatro
+    </a>
+    <p></p> 
     <table class="table table-striped">
-
       <thead> 
-
-       
       <tr> 
 
         <th ng-click="sort('nombre');reverseSort = !reverseSort">Nombre
@@ -82,8 +47,7 @@
   </dir-pagination-controls>
 
   </div>
-
-
+</div>
 
 
 

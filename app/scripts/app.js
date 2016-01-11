@@ -74,6 +74,11 @@ angular
             templateUrl: 'views/listadoteatros.html',
             controller: 'TeatroCtrl'
        })
+       .state('addTeather', {
+       	      	url:'/admin/agregarteatro',
+         	        templateUrl: 'views/agregarTeatro.html',
+          		    controller: 'TeatroCtrl'
+        })
        .state('show',{
      	 	url:'/espectaculo',
         	templateUrl: 'views/espectaculo.html',

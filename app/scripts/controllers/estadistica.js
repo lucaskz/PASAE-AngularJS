@@ -67,7 +67,7 @@
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                 },
                 title: {
-                    text: 'Espectaculos Vendidos'
+                    text: 'Espectaculos vendidos segun la recaudacion'
                 },
                 plotOptions: {
                                 pie: {
