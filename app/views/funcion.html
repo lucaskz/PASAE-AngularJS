@@ -62,11 +62,12 @@
 	    			<div class="col-md-5">
 	    				{{ e.fecha | date:'fullDate' }} a las {{ e.hora | date:'"HH:mm'}}
 	    			</div>
-	    			<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="col-md-2">
-	    				<button class="btn-small btn-primary :hover" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
+	    			<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="delete-reserva-funcion col-md-2">
+	    				<button class="btn btn-sm btn-danger" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
+              <p></p>
 	    			</div>
-	    			<div ng-hide="roles=='ROLE_ADMINISTRADOR'"class="col-md-2">
-	    				<button class="btn-small btn-primary :hover" ng-click="reservarEntrada(e)" > Reservar</button>
+	    			<div ng-hide="roles=='ROLE_ADMINISTRADOR'" class="col-md-2">
+	    				<button class="btn btn-sm btn-success delete-reserva-funcion" ng-click="reservarEntrada(e)" > Reservar</button>
               <p>
 	    			</div>
             <!--<div  ng-show="!autenticado" class="col-md-2">
