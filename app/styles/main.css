@@ -219,3 +219,14 @@ body {
 .delete-reserva-funcion {
       border-radius: 20px;
 }
+.monto-color{
+      background: green;
+      width: 30%;
+      padding: 13px;
+      margin-left: 4px;
+      border: solid;
+
+}
+.vtop{
+ margin-top: 2em;
+}
