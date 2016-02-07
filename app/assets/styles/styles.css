@@ -23,10 +23,6 @@ a:hover {
     color:#111;
 }
 
-.btn,.well,.panel {
-    border-radius:0;
-}
-
 .btn-danger {
     background-color:#f44d3c;
 }

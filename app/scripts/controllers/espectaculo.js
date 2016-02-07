@@ -124,12 +124,13 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 					scope : $scope,
 					templateUrl : 'views/eliminarFuncion.html'
 				});
-			}
-      $scope.ventasAsociadas=function(id){
+		  }
+     /* $scope.ventasAsociadas=function(id){
            FuncionService.tieneVentasAsociadas(id).then(
 
                function(data){
                   $scope.cantidad=data.data;
+                  return $scope.cantidad;
 
                },
                function (error){
@@ -138,12 +139,46 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
                 }
             );
 
-       }
+       }*/
+
+
+/*function func1(id) {
+  var c=function foo(id) {
+
+   FuncionService.tieneVentasAsociadas(id).then(function(data) {
+
+             	        return data.data;
+
+                   	},
+                   	function(error) {
+                   	  $scope.loading = false;
+
+                     });
+  }
+  return c();
+}*/
+
+
 
 
 			$scope.confirmDelete2 = function(fn) {
-			 $scope.ventasAsociadas(fn.id);
-       if($scope.cantidad != 0){
+
+   /*   var cantidad= function ventasAsociadas(){
+          	  FuncionService.tieneVentasAsociadas(id).then(function(data) {
+          	        return data.data;
+
+                	},
+                	function(error) {
+                	  $scope.loading = false;
+
+                  });
+      }*/
+    //  ventasAsociadas;
+    ;
+
+
+
+      if ( func1(fn.id) != 0){
                  sweetAlert("Oops...", "La funcion tiene ventas asociados", "error");
        }
        else{
