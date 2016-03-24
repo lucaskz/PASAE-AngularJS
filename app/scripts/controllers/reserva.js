@@ -101,7 +101,16 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 					console.log(error);
 				}
 		);
-	};
+	}
+
+	$scope.controlSlider = function () {
+  	  if($state.current.name == 'reserva.sector')
+  	    $scope.disableStep2=false;
+  	  else if ($state.current.name == 'reserva.seleccion')
+  	    $scope.disableStep3=false;
+
+
+  };
 
 
 

@@ -431,7 +431,7 @@ input[readonly] {
   100% { transform: rotate(360deg); transform: rotate(360deg); }
 }
 
-/*******************Alternate Spinner****************/
+/**********************Alternate Spinner********************/
 
 #loading-bar-spinner {
   display: block;
@@ -444,7 +444,7 @@ input[readonly] {
 .spinner-icon {
 
   position:relative;
-  margin-left:600px;
+  margin-left:40em;
   margin-top:150px;
   font-size: 10px;
   text-indent: -2em;

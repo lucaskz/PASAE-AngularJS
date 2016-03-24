@@ -186,6 +186,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
+        exclude: [ 'bower_components/angular-loading-bar/build/loading-bar.css', /codecode/ ],
         ignorePath:  /\.\.\//
       },
       test: {
