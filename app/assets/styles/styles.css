@@ -485,7 +485,25 @@ input[readonly] {
   }
 }
 
+/**********STAGE*********/
 
+.stage-rectangle  {
+   width: 300px;
+   height: 70px;
+   margin-left: 22%;
+   margin-bottom: 5%;
+   background: -webkit-gradient(linear, 0 0, 0 100%, from(#c81e2b), to(#f04349));
+   background: -moz-linear-gradient(#c81e2b, #f04349);
+   background: -o-linear-gradient(#c81e2b, #f04349);
+   background: linear-gradient(#c81e2b, #f04349);
+}
+
+.stage-rectangle p {
+  margin-left: 35%;
+  padding-top: 8%;
+  font-size: 18px;
+  text-shadow: 4px -2px 3px #000009;
+}
 
 
 
