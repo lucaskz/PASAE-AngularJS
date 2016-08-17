@@ -51,23 +51,25 @@ angular.module('pasaeAngularJsApp').service('FuncionService', ['$q','$http','$co
                );
                return deferred.promise;
         },
-        tieneVentasAsociadas: function(idFuncion){
-           var deferred = $q.defer();
-                          $http.get(config.apiUrl+'web-module/funcion/ventasdefuncion/' + idFuncion).then(function(successData){
-                                             var data = successData;
-                                              deferred.resolve(data);
 
-                                           },function(error){
-                                                deferred.reject(error);
+        tieneVentasAsociadas :function(idFuncion) {
+             var request;
+         if (window.XMLHttpRequest) {
+             request=new XMLHttpRequest();
+         } else if (window.ActiveXObject) {
+             request = new ActiveXObject("Microsoft.XMLHTTP");
+         } else {
+             throw new Error("Your browser don't support XMLHttpRequest");
+          }
 
+          request.open('GET',config.apiUrl+'web-module/funcion/ventasdefuncion/' + idFuncion, false);
+          request.send(null);
 
-                                           }
-                          );
-           return deferred.promise;
-        }
+             if (request.status === 200) {
+               return request.responseText;
+             }
+    }
 
+}
+   }]);
 
-
-
-  }
-}]);

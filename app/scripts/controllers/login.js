@@ -40,6 +40,9 @@ angular.module('pasaeAngularJsApp').controller(
 					// $cookies.username = data.username;
 					// $cookies.roles = data.roles;
 					// $cookies.user = data.user;
+
+
+
 					$sessionStorage.authenticated = true;
 					$sessionStorage.username = data.username;
 					$sessionStorage.roles = data.roles;
@@ -60,6 +63,7 @@ angular.module('pasaeAngularJsApp').controller(
 					$scope.errorMsg = error;
 				});
 			};
+
 
 
 

@@ -16,15 +16,28 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 					$scope.username = $sessionStorage.username;
 					$scope.authenticated = true;
 					$scope.roles = $sessionStorage.roles[0].authority;
-				} else {
+
+       /*  if($stateParams.idespectaculo != null){
+          //$location.path("/espectaculo/info/"+ $stateParams.idespectaculo);
+
+
+          ;*/
+
+
+
+        }
+				else {
 					$scope.authenticated = false;
 				}
-			}
+		 }
 
 			checkLogin();
 
+
 			$scope.$on('loginEvent', function(event, data) {
 				checkLogin();
+
+
 			});
 
 			$scope.$on('logOut', function(event, data) {
@@ -58,27 +71,35 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 				});
 			}
 
-			$scope.confirmDelete = function(espectaculo) {
-				EspectaculoService.eliminarEspectaculo(
+			$scope.confirmDeleteEspectaculo = function(espectaculo) {
+
+			var tieneFunciones=EspectaculoService.getCantidadFunciones(espectaculo.id);
+
+      if (tieneFunciones != 0){
+               sweetAlert("Oops...", "El espectaculo tiene funciones asociadas", "error");
+      }
+      else{
+			      EspectaculoService.eliminarEspectaculo(
 						$scope.espectaculoSelected.id).then(function(data) {
-					console.log(data);
-					var index = -1, i = 0;
-					while (index == -1 && i <= $scope.espectaculos.length - 1) {
+					  console.log(data);
+					  var index = -1, i = 0;
+					  while (index == -1 && i <= $scope.espectaculos.length - 1) {
 						if ($scope.espectaculos[i].id == espectaculo.id) {
 							index = i;
 						}
 						i++;
-					}
-					$scope.espectaculos.splice(index, 1);
-					$scope.modalInstance.close();
-				}, function(error) {
+					  }
+					  $scope.espectaculos.splice(index, 1);
+					  $scope.modalInstance.close();
+				},
+				function(error) {
 
-					console.log(error);
-					$scope.modalInstance.close();
+				   	console.log(error);
+					  $scope.modalInstance.close();
 				});
 
 			}
-
+    }
 			EspectaculoService.listadoEspectaculoSegunCategoria(
 					$stateParams.categoria).then(
 

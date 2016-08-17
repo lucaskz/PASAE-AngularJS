@@ -72,6 +72,8 @@ angular.module('pasaeAngularJsApp').controller(
 				});
 			}
 
+
+
 			$scope.buscarEspectaculosEntreFechas = function(fecha1, fecha2) {
 
 				var fechaInferior = $filter('date')(fecha1, "yyyy-MM-dd");
@@ -97,6 +99,7 @@ angular.module('pasaeAngularJsApp').controller(
              delete $sessionStorage.authenticated;
             delete $scope.authenticated;
        			delete	$scope.roles;
+       			delete $sessionStorage.roles;
        			delete 	$scope.username;
        			});
        		});

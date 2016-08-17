@@ -144,7 +144,28 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
                                        return deferred.promise;
 
 
-         }
+        },
+
+        getCantidadFunciones : function(idEspectaculo){
+        var request;
+                     if (window.XMLHttpRequest) {
+                         request=new XMLHttpRequest();
+                     } else if (window.ActiveXObject) {
+                         request = new ActiveXObject("Microsoft.XMLHTTP");
+                     } else {
+                         throw new Error("Your browser don't support XMLHttpRequest");
+                      }
+
+                      request.open('GET',config.apiUrl+'web-module/espectaculo/funcionesAsociadas/'+ idEspectaculo, false);
+                      request.send(null);
+
+                         if (request.status === 200) {
+                           return request.responseText;
+                         }
+
+
+
+        }
 
 
 
