@@ -7,10 +7,8 @@
  */
 angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scope, $stateParams , $location, $filter, $modal,EspectaculoService, CategoriaService, TeatroService,FuncionService,$state,$sessionStorage) {
   $scope.isCollapsed = true;
-  $scope.autenticado=$sessionStorage.authenticated;
-  if($sessionStorage.authenticated){
-   $scope.roles=$sessionStorage.roles[0].authority;
-	var teatros=function(){
+
+  var teatros=function(){
 	    TeatroService.getTeatros().then(function(data) {
 	        $scope.teatros = data.data;
       	},
@@ -19,6 +17,26 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 
         });
   }
+  $scope.reservarEntrada = function(fn){
+         if($sessionStorage.authenticated){
+             $scope.autenticado=$sessionStorage.authenticated;
+             $scope.roles=$sessionStorage.roles[0].authority;
+    			   if($scope.roles == 'ROLE_ESPECTADOR'){
+        			   $state.go('reserva.sector', {funcion: fn,espectaculo:{ id : $scope.espectaculo.id , nombre : $scope.espectaculo.nombre} })
+             }
+         }
+          else{
+             /*if ($location.url() === "/espectaculo/info/"+ $stateParams.idespectaculo){
+                                   $state.go('showInfo',$stateParams.idespectaculo);
+                       }*/
+             open_modal();
+
+          }
+  }
+
+
+
+
 			CategoriaService.getCategorias().then(function(data) {
 				// aca okParam es lo que se devuelve en deferred.resolve(DATA)
 				// desde el service
@@ -125,60 +143,27 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 					templateUrl : 'views/eliminarFuncion.html'
 				});
 		  }
-     /* $scope.ventasAsociadas=function(id){
+      var ventasAsociadas=function (id){
            FuncionService.tieneVentasAsociadas(id).then(
 
                function(data){
                   $scope.cantidad=data.data;
-                  return $scope.cantidad;
-
                },
                function (error){
                   $scope.loading=false;
                   $scope.log(error);
                 }
             );
-
-       }*/
-
-
-/*function func1(id) {
-  var c=function foo(id) {
-
-   FuncionService.tieneVentasAsociadas(id).then(function(data) {
-
-             	        return data.data;
-
-                   	},
-                   	function(error) {
-                   	  $scope.loading = false;
-
-                     });
-  }
-  return c();
-}*/
-
+      }
 
 
 
 			$scope.confirmDelete2 = function(fn) {
 
-   /*   var cantidad= function ventasAsociadas(){
-          	  FuncionService.tieneVentasAsociadas(id).then(function(data) {
-          	        return data.data;
 
-                	},
-                	function(error) {
-                	  $scope.loading = false;
+  var cantidad=FuncionService.tieneVentasAsociadas(fn.id);
 
-                  });
-      }*/
-    //  ventasAsociadas;
-    ;
-
-
-
-      if ( func1(fn.id) != 0){
+  if (cantidad != 0){
                  sweetAlert("Oops...", "La funcion tiene ventas asociados", "error");
        }
        else{
@@ -190,7 +175,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 									var index = -1, i = 0;
 									while (index == -1
 											&& i <= $scope.datos.length - 1) {
-										if ($scope.datos[i].id == funcion.id) {
+										if ($scope.datos[i].id == fn.id) {
 											index = i;
 										}
 										i++;
@@ -207,7 +192,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 			}
     }
 
- }
+// }
 
    var funciones=function(){
    		   EspectaculoService.getFuncionesEspectaculo(
@@ -215,6 +200,10 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
    				$stateParams.idespectaculo).then(function(data) {
    				// los datos estan en data.data
    				$scope.datos = data.data;
+   			  if ($sessionStorage.authenticated){
+               $scope.roles=$sessionStorage.roles[0].authority;
+               $scope.autenticado=$sessionStorage.authenticated;
+          }
 
    			}, function(error) {
    				// el error funciona igual
@@ -228,6 +217,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
          						// los datos estan en data.data
          						$scope.espectaculo = data.data;
 
+
          					}, function(error) {
          						// el error funciona igual
          						$scope.loading = false;
@@ -238,25 +228,23 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
            teatros();
    			}
    if($location.url() =="/espectaculo/info/"+ $stateParams.idespectaculo){
+
    			    	funciones();
    }
-   	var open_modal=function(){
+   var open_modal=function(){
        $scope.modalInstance = $modal.open({
          					animation : true,
          					scope : $scope,
-         					templateUrl : 'views/login.html'
-         	});
-    }
+         					templateUrl : 'views/login.html',
+         					controller : 'LoginCtrl'
+       }
 
-  	$scope.reservarEntrada = function(fn){
+   );
 
-  			if($scope.roles == 'ROLE_ESPECTADOR'){
-  				$state.go('reserva.sector', {funcion: fn,espectaculo:{ id : $scope.espectaculo.id , nombre : $scope.espectaculo.nombre} })
-        }
-        else{
-           open_modal();
-        }
-  	}
+
+    };
+
+
 
 
 		});

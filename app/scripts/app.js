@@ -170,7 +170,7 @@ angular
 	    // url will be nested (/form/profile)
 	    .state('reserva.sector', {
 	        url: '/sector',
-	        templateUrl: 'views/reservarSector.html',
+	        templateUrl: 'views/reservarSector.html'
 
 	    })
 
