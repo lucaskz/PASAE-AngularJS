@@ -9,9 +9,9 @@
 				<div class="col-xs-8">
 					<div ng-repeat="asiento in fila.asientos">
 						<div class="seat" ng-click="seatClicked(asiento,fila)" ng-switch on="getStatus(asiento)" style="float:left">
-							<img ng-switch-when="selected" src="images/seat_selected.png" style="height: 2em;">
+							<img ng-switch-when="selected"  src="images/seat_selected.png" ng-click="decSeatsSelected()" style="height: 2em;">
 	              			<img ng-switch-when="reserved" src="images/seat_reserved.png" style="height: 2em;">
-	                		<img ng-switch-default src="images/seat_available.png" style="height: 2em;">
+	                		<img ng-switch-default src="images/seat_available.png" ng-click="incSeatsSelected()" style="height: 2em;">
 						</div>
 					</div>
 				</div>
@@ -28,9 +28,9 @@
 <div class="row">
 
 	<div class="col-xs-6 col-xs-offset-3 vcenter vtop">
-		<a ui-sref="reserva.metodo" class="btn btn-block btn-info">
+		<button ng-click="controlSlider()" ng-disabled="seatsSelected()==false" ui-sref="reserva.metodo" class="btn btn-block btn-info">
 	     Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
-	    </a>
+	    </button>
 	</div>
 
 

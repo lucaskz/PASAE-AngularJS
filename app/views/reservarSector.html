@@ -12,14 +12,17 @@
 		</div>
 		<div class="form-group">
 		    <label for="sector">Sector</label>
-	    	<select class="form-control" ng-model="data.sector" ng-options="sector as sector.nombre for sector in data.sectores"></select>
+	    	<select class="form-control" name="nombreSector" ng-model="data.sector"
+                ng-options="sector as sector.nombre for sector in data.sectores" required>
+                <option value="" disabled>- Seleccione sector -</option>
+        </select>
 		</div>
 	</div>
 </div>
 
 <div class="form-group row " style="margin-top: 30px">
 	<div class="col-xs-6 col-xs-offset-3">
-    <button ng-click="controlSlider()" ng-disabled="teatroForm.nombreSector.$error.required || teatroForm.precio.$error.required || teatroForm.filas.$error.required" ui-sref="sector-crear.confirmar" class="btn btn-block btn-info">
+    <button ng-click="controlSlider()" ng-disabled="reservaForm.nombreSector.$error.required" ui-sref="reserva.seleccion" class="btn btn-block btn-info">
       Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
     </button>
 

@@ -11,14 +11,14 @@
           <!-- the links to our nested states using relative paths -->
           <!-- add the active class if the state matches our ui-sref -->
           <div id="status-buttons" class="text-center">
-            <a ui-sref-active="active" ui-sref="reserva.sector"><span>1</span> Sector</a>
-            <a ui-sref-active="active" ui-sref="reserva.seleccion"><span>2</span> Selección</a>
-            <a ui-sref-active="active" ui-sref="reserva.metodo"><span>3</span> Pago</a>
+            <button class="btn btn-link" ui-sref-active="active" ui-sref="reserva.sector"><span>1</span> Sector</button>
+            <button class="btn btn-link" ng-disabled="disableStep2" ui-sref-active="active" ui-sref="reserva.seleccion"><span>2</span> Selección</button>
+            <button class="btn btn-link" ng-disabled="disableStep3" ui-sref-active="active" ui-sref="reserva.metodo"><span>3</span> Pago</button>
           </div>
         </div>
 
         <!-- use ng-submit to catch the form submission and use our Angular function -->
-        <form id="signup-form" ng-submit="processForm()" disable-dynamic-validation="true">
+        <form id="signup-form" name="reservaForm" ng-submit="processForm()" disable-dynamic-validation="true">
 
           <!-- our nested state views will be injected here -->
           <div id="form-views" ui-view></div>
