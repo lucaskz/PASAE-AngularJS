@@ -93,7 +93,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 				$scope.loading = true;
 
 				EspectaculoService.eliminarEspectaculo(
-						$stateParams .idespectaculo).then(function() {
+						$stateParams.idespectaculo).then(function() {
 					console.log("elimino con espectaculo");
 					alert("entro a eliminar");
 
