@@ -86,8 +86,9 @@ angular.module('pasaeAngularJsApp').controller('TeatroCtrl', function ($scope,$l
    }
 
   $scope.confirmDeleteTeatro = function(teatro){
-    $scope.cantidadEspectaculos(teatro.nombre);
-    if($scope.cantidad != 0){
+
+   	var tieneEspectaculos=TeatroService.tieneEspectaculosAsociados(teatro.nombre);
+   if(tieneEspectaculos != 0){
            sweetAlert("Oops...", "El teatro tiene espectaculos asociados", "error");
     }
      else{

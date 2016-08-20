@@ -89,23 +89,6 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
       }
 			}
 
-			$scope.eliminar = function() {
-				$scope.loading = true;
-
-				EspectaculoService.eliminarEspectaculo(
-						$stateParams .idespectaculo).then(function() {
-					console.log("elimino con espectaculo");
-					alert("entro a eliminar");
-
-				}, function(error) {
-
-					$scope.loading = false;
-					console.log(error);
-
-				})
-			}
-
-
 			$scope.agregar_funcion = function() {
 
 				var fecha = $filter('date')($scope.fecha, "yyyy-MM-dd");

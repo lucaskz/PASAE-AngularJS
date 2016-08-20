@@ -76,8 +76,8 @@ angular.module('pasaeAngularJsApp').controller(
 
 			$scope.buscarEspectaculosEntreFechas = function(fecha1, fecha2) {
 
-				var fechaInferior = $filter('date')(fecha1, "yyyy-MM-dd");
-				var fechaSuperior = $filter('date')(fecha2, "yyyy-MM-dd");
+				var fechaInferior = $filter('date')(fecha1, "dd-MM-yyyy");
+				var fechaSuperior = $filter('date')(fecha2, "dd-MM-yyyy");
 			 if ((fechaInferior != null) && (fechaSuperior != null)){
 
 				$scope.cancel();

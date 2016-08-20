@@ -85,17 +85,24 @@ angular.module('pasaeAngularJsApp').service('TeatroService', ['$q','$http','$coo
             },
             tieneEspectaculosAsociados: function(nombreTeatro){
 
-                        var deferred = $q.defer();
-                        $http.get(config.apiUrl+'web-module/espectaculo/espectaculosdeteatro/' + nombreTeatro).then(function(successData){
-                                          var data = successData;
+                          var request;
+                                                       if (window.XMLHttpRequest) {
+                                                           request=new XMLHttpRequest();
+                                                       } else if (window.ActiveXObject) {
+                                                           request = new ActiveXObject("Microsoft.XMLHTTP");
+                                                       } else {
+                                                           throw new Error("Your browser don't support XMLHttpRequest");
+                                                        }
 
-                                          deferred.resolve(data);
-                                          },function(error){
-                                            deferred.reject(error);
-                                          });
-                                        return deferred.promise;
+                                                        request.open('GET',config.apiUrl+'web-module/espectaculo/espectaculosdeteatro/'+ nombreTeatro, false);
+                                                        request.send(null);
 
+                                                           if (request.status === 200) {
+                                                             return request.responseText;
+                                                           }
             }
+
+
 
 
     }
