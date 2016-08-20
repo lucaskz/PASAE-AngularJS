@@ -156,7 +156,7 @@ angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http',
                          throw new Error("Your browser don't support XMLHttpRequest");
                       }
 
-                      request.open('GET',config.apiUrl+'web-module/espectaculo/funcionesAsociadas/'+ idEspectaculo, false);
+                      request.open('GET',config.apiUrl+'web-module/espectaculo/funcionesasociadas/'+ idEspectaculo, false);
                       request.send(null);
 
                          if (request.status === 200) {

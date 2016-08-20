@@ -15,6 +15,12 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 
 	$scope.data = {error:{active:false}};
 
+	$scope.disableStep2=true;
+
+	$scope.disableStep3=true;
+
+	$scope.seatsQty=0;
+
 	if($stateParams.funcion!=null){
 		$scope.data.espectaculo = $stateParams.espectaculo;
 		$scope.reserva.funcionId = $stateParams.funcion.id;
@@ -66,6 +72,7 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
     $scope.seatClicked = function(asiento,fila) {
     	$scope.data.error.active = false;
     	var index = $scope.reserva.asientos.indexOf(asiento);
+
     	if(asiento.ocupado  &&  index!= -1 ){
     		$scope.reserva.asientos.splice(index, 1);
     		asiento.ocupado = false;
@@ -103,15 +110,28 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 		);
 	}
 
+
+	$scope.incSeatsSelected=function() {
+	  var cantidad=$scope.seatsQty;
+	  $scope.seatsQty+=1;
+	}
+
+	$scope.decSeatsSelected=function() {
+  	  $scope.seatsQty-=1;
+  }
+
+  $scope.seatsSelected=function() {
+      return ($scope.seatsQty > 0);
+  }
+
 	$scope.controlSlider = function () {
-  	  if($state.current.name == 'reserva.sector')
+  	  if($state.current.name == 'reserva.seleccion')
   	    $scope.disableStep2=false;
-  	  else if ($state.current.name == 'reserva.seleccion')
+  	  else if ($state.current.name == 'reserva.confirmada')
   	    $scope.disableStep3=false;
 
 
   };
-
 
 
 
