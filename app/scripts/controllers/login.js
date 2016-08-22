@@ -61,6 +61,7 @@ angular.module('pasaeAngularJsApp').controller(
 					$rootScope.$broadcast('loginEvent', false);
 					$scope.error = true;
 					$scope.errorMsg = error;
+					sweetAlert ("OOPS...",$scope.errorMsg.detail,"error");
 				});
 			};
 

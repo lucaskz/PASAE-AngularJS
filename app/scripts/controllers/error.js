@@ -11,12 +11,12 @@ angular.module('pasaeAngularJsApp').controller('ErrorCtrl',
 			// $scope.$on('errorStatus', function(event, data) {
 			// console.log(data);
 			// });
-			//	 
+			//
 			if ($rootScope.error != null) {
 				$scope.error = {};
 				$scope.error.code = $rootScope.error.code;
 				$scope.error.status = $rootScope.error.status;
-				$scope.error.msg = $rootScope.error.msg;
+				$scope.error.msg = $rootScope.error.msg
 			} else {
 				$location.path('/');
 			}
