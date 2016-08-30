@@ -74,6 +74,7 @@ angular.module('pasaeAngularJsApp').controller('SectorCtrl', function ($scope,Se
 		SectorService.crearSectores(filtrarJson($scope.teatro)).then(
 				function(data){
 					$scope.espectaculos =  data.data;
+					$state.go('home');
 				},
 				function(error){
 					console.log(error);
