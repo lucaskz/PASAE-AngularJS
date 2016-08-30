@@ -17,9 +17,17 @@
     <div class="row">
        <strong>&nbsp Cantidad de Asientos: </strong> {{ compra.asientos.length}}
 
+      {{ compra.asientos }}
 
 
   </div>
+
+    <div ng-repeat="asiento in compra.asientos" class="panel panel-primary">
+      <h3 class="panel-title">{{ asiento.filaId }}</h3>
+      <h3 class="panel-title">{{ asiento.numero }}</h3>
+      <h3 class="panel-title">{{ asiento.ocupado }}</h3>
+    </div>
+
       </div>
 
   </div>

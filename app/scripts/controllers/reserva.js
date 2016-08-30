@@ -46,14 +46,14 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 	}
 
 	$scope.getStatus = function(asiento) {
-		var index = $scope.reserva.asientos.indexOf(asiento);
-        if(index > -1 && asiento.ocupado ) {
-            return 'selected';
-        } else if(index == -1 && asiento.ocupado ) {
-            return 'reserved';
-        }else{
-        	return 'available';
-        }
+     		var index = $scope.reserva.asientos.indexOf(asiento);
+             if(index > -1 && asiento.ocupado ) {
+                 return 'selected';
+             } else if(index == -1 && asiento.ocupado ) {
+                 return 'reserved';
+             }else{
+             	return 'available';
+             }
     }
 
 	var actualizarMonto = function(){
@@ -100,7 +100,10 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 						$scope.data.error.active = true;
 
 					}else{
-					  $state.go('reserva.confirmada');
+
+		       $state.go('reserva.confirmada');
+
+
 					}
 					console.log(data);
 				},
