@@ -10,27 +10,28 @@
     <div ng-repeat="espectaculo in espectaculos track by espectaculo.id" class="col-sm-6 col-md-4 col-lg-4">
 
 
-      <div class="thumbnail" style="border:0;">
+      <div class="thumbnail thumbnail-fade" style="border:0;">
 	    	<img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}"/>
-
+      <hr>
 	    <div class="row" style=" margin: 5px;">
 	    	<h3>{{espectaculo.nombre}}</h3>
 	    </div>
+      <hr>
 	    <div class="row" style=" margin: 5px;">
 	    	<h4>{{espectaculo.descripcion}}</h4>
 	    </div>
-	    <div class="row" style=" margin: 5px;">
+	    <div class="row" style=" margin: 5px; margin-top:55px">
 	    <!--	<div class="col-sm-5">
 	    		<a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button"><span class="glyphicon glyphicon-edit"></span> Editar </a>
 	    	</div>-->
-	    	<div class="col-sm-5">
-	    		<a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button"> <span class="glyphicon glyphicon-erase"></span> Eliminar  </a>
-	    	</div>
+      <hr>
+       <div class="btn-group">
 
-        <div class="col-sm-7">
+	    		<a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button"> <span class="glyphicon glyphicon-erase"></span> Eliminar  </a>
           <a  href="#/espectaculo/info/{{espectaculo.id}}" class="btn btn-info btn-lg" role="button">
             <span class="glyphicon glyphicon-info-sign"></span> Más información
           </a>
+
         </div>
 	    </div>
     </div>

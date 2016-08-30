@@ -35,6 +35,7 @@ angular.module('pasaeAngularJsApp').service( 'SessionService', ['$q','$http','$c
 			    headers: {
 			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			        },
+			    ignore401: true,
 			    withCredentials:true
 				}).success(function(data) {
 //					$cookies.authenticated = true;

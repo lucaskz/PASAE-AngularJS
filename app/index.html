@@ -40,9 +40,9 @@
 			          <span style="color: #f44d3c;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TicketYA <span class="caret"></span></span>
 			          <ul class="dropdown-menu">
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a ui-sref="sector-crear.sectores" >Crear Sector</a></li>
-			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/espectaculo/agregar" >Agregar Espectaculo</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR' || roles=='ROLE_EMPLEADO'"><a href="#/espectaculo/agregar" >Agregar Espectaculo</a></li>
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoteatros">Listado de Teatros</a></li>
-			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoespectadores" >Listar Espectadores</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR' || roles=='ROLE_EMPLEADO'"><a href="#/admin/listadoespectadores" >Listar Espectadores</a></li>
 			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoempleados" >Listar Empleados</a></li>
                   <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/estadistica/ventaspormes" >Estadisticas de Ventas Realizadas</a></li>
                   <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/estadistica/ventasdeespectaculos" >Estadisticas de Espectaculos Vendidos</a></li>
@@ -62,10 +62,10 @@
 	                  <li><a href="#">Opera/Clasica/Ballet</a></li>
 	                  <li ><a class="glyphicon glyphicon-calendar" ng-click="open('lg')"> Calendario </a></li>
 	                  <li>&nbsp;</li>
-		              <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Login</a></li>
-		              <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Sign up</a></li>
-		              <li ng-show="authenticated"><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>Logged as {{username}}</a></li>
-		              <li ng-show="authenticated"><a  ng-href="#/" ng-click="logout()"><i class="fa fa-heart-o fa-lg"></i>Log out</a></li>
+		              <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="login()"><i class="fa fa-heart-o fa-lg"></i>Ingresar</a></li>
+		              <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="register()"><i class="fa fa-heart-o fa-lg"></i>Registrarse</a></li>
+		              <li ng-show="authenticated"><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>{{username}}</a></li>
+		              <li ng-show="authenticated"><a  ng-href="#/" ng-click="logout()"><i class="fa fa-heart-o fa-lg"></i>Cerrar sesion</a></li>
 		            </ul>
 		        </div>
 		    </div>

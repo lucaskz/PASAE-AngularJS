@@ -127,7 +127,7 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 	$scope.controlSlider = function () {
   	  if($state.current.name == 'reserva.seleccion')
   	    $scope.disableStep2=false;
-  	  else if ($state.current.name == 'reserva.confirmada')
+  	  else if ($state.current.name == 'reserva.metodo')
   	    $scope.disableStep3=false;
 
 

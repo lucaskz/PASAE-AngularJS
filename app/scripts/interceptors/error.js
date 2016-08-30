@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 
 //$httpProvider.interceptors.push(function($q, $cookies) {
@@ -20,34 +20,34 @@ angular.module('pasaeAngularJsApp').service( 'ErrorInterceptor', ['$q','$cookies
 //	      // do something on success
 //		 if($cookies.authenticated == true){
 //			 config.headers['X-Auth-Token'] = $cookies.token;
-//		 }		  
+//		 }
 //	      return config;
 //	 	},
 	'responseError': function(rejection)
         {
             // Error found ..
 		$rootScope.error = {};
-		
+
 			if(rejection.status == 404){
 				$rootScope.error.status = rejection.status;
 				$rootScope.error.code = 404;
-				$rootScope.error.msg = 'Page not found';
+				$rootScope.error.msg = 'Página no encontrada';
 				$location.path('/error');
 			}
-			
-            if (rejection.status == 401)
+
+            if (rejection.status == 401 && !rejection.config.ignore401)
             {
             	$rootScope.error.status = rejection.status;
             	$rootScope.error.code = 401;
-            	$rootScope.error.msg = 'Unauthorized';
+            	$rootScope.error.msg = 'Acceso no autorizado';
             	$location.path('/error');
             }
-            
+
             if (rejection.status == 403)
             {
             	$rootScope.error.status = rejection.status;
             	$rootScope.error.code = 403;
-            	$rootScope.error.msg = 'Forbidden';
+            	$rootScope.error.msg = 'Acceso prohibido';
             	$location.path('/error');
             }
 
