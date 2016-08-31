@@ -185,7 +185,7 @@ angular
 	        templateUrl: 'views/reservarMetodo.html'
 	    })
 	    .state('reserva.confirmada', {
-      	        url: '/metodo',
+      	        url: '/confirmacion',
       	        templateUrl: 'views/reservaConfirmada.html'
       	    })
       .state('compras', {
@@ -202,11 +202,11 @@ angular
                      url:'/estadistica/ventasdeespectaculos',
                      templateUrl: 'views/estadisticasDeVentas.html',
                      controller: 'EstadisticaCtrl'
-       })
+       });
 
 
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise('/');
 
     $httpProvider.defaults.withCredentials = true;
     $httpProvider.interceptors.push('ErrorInterceptor');
