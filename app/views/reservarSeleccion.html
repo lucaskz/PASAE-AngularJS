@@ -10,7 +10,7 @@
 					Fila &nbsp; {{fila.nro_fila}}
 				</div>
 				<div class="col-xs-10">
-					<div ng-repeat="asiento in fila.asientos">
+					<div ng-repeat="asiento in fila.asientos | orderBy:'id'">
 						<div class="seat" ng-click="seatClicked(asiento,fila)" ng-switch on="getStatus(asiento)" style="float:left">
 							<img ng-switch-when="selected"  src="images/seat_selected.png" ng-click="decSeatsSelected()" style="height: 2em;">
 	              			<img ng-switch-when="reserved" src="images/seat_reserved.png" style="height: 2em;">
