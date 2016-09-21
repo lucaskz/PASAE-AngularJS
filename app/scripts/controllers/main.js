@@ -5,7 +5,7 @@
  * @name pasaeAngularJsApp.controller:MainCtrl
  * @description # MainCtrl Controller of the pasaeAngularJsApp
  */
-angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cookies, $stateParams, $location, EspectaculoService,$sessionStorage, $modal) {
+angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cookies, $stateParams, $location, EspectaculoService,$sessionStorage, $modal,$state) {
 			$scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS', 'Karma'
 
 			];
@@ -114,8 +114,7 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 
 			var listadoEspectaculosFiltrado = function() {
 
-				EspectaculoService.listadoEspectaculosFiltrado(
-						$stateParams.busqueda).then(function(data) {
+				EspectaculoService.listadoEspectaculosFiltrado($stateParams.busqueda).then(function(data){
 
 					$scope.espectaculos2 = data.data;
 
@@ -151,12 +150,11 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 		  $scope.search = function() {
 
 				if (!$scope.busqueda) {
-
 					listadoEspectaculos();
 
 				} else {
-					$location.path('/busquedaespectaculosfiltrados/'
-							+ $scope.busqueda);
+              listadoEspectaculosFiltrado();
+							$location.path('/busquedaespectaculosfiltrados/'+ $scope.busqueda);
 
 				}
 
@@ -166,10 +164,7 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
       				$scope.modalInstance.close();
       };
 
-
-
-
-			$scope.isCollapsed = true;
+  		$scope.isCollapsed = true;
 			if ($location.url() === "/busquedaespectaculosfiltrados/"
 					+ $stateParams.busqueda)
 				  listadoEspectaculosFiltrado();
