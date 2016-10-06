@@ -287,3 +287,13 @@ body {
 .vtop{
  margin-top: 2em;
 }
+.respond {
+
+   border-radius: 6px;
+   border: 1px solid black;
+   width:600px;
+}
+.addStyle{
+   padding:2em;
+  background-color:#5bc0de;
+}
