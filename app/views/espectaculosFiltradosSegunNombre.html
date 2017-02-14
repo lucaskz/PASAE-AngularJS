@@ -1,51 +1,54 @@
 <div class="container">
-  <class="row">
 
 
-    <div style="background: orange;color:white;margin-top:40px;border-radius:10px;">
+  <div style="background: orange;color:white;margin-top:40px;border-radius:10px;">
 
-        <h2 style="padding:7px;"><strong>RESULTADOS DE BUSQUEDA</strong></h2>
+    <h2 style="padding:7px;"><strong>RESULTADOS DE BUSQUEDA</strong></h2>
 
-    </div>
+  </div>
 
 
-  <div ng-if="espectaculos2.length >0" ng-repeat="espectaculo in espectaculos2" class="col-sm-6 col-md-4">
+  <div ng-repeat="espectaculo in espectaculos2" ng-if="espectaculos2.length" class="col-sm-6 col-md-4">
 
-  <div class="thumbnail">
-        <img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}" alt="...">
-        <div class="caption">
-          <h3>{{espectaculo.nombre}}</h3>
-          <p>{{espectaculo.descripcion}}</p>
+    <div class="thumbnail">
+      <img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}" alt="...">
+      <div class="caption">
+        <h3><strong class="strongTitle">{{espectaculo.nombre}}</strong></h3>
+        <p style="color: white;">{{espectaculo.descripcion}}</p>
+        <p>
+        <div class="row" style=" margin: 5px;">
+          &lt;!&ndash;
+          <div class="col-sm-5">
+            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}"
+               class="btn btn-lg btn-warning" role="button"><span class="glyphicon glyphicon-edit"></span> Editar </a>
+          </div>&ndash;&gt;
+          <div class="col-sm-5">
+            <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"
+               class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button"> <span
+              class="glyphicon glyphicon-erase"></span> Eliminar </a>
+          </div>
 
-          <p>
-          <div class="row" style=" margin: 5px;">
-            <!--	<div class="col-sm-5">
-                      <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="#/espectaculo/editar/{{espectaculo.id}}" class="btn btn-lg btn-warning" role="button"><span class="glyphicon glyphicon-edit"></span> Editar </a>
-                  </div>-->
-            <div class="col-sm-5">
-              <a ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button"> <span class="glyphicon glyphicon-erase"></span> Eliminar  </a>
-            </div>
-
-            <div class="col-sm-7">
-              <a  href="#/espectaculo/info/{{espectaculo.id}}" class="btn btn-info btn-lg" role="button">
-                <span class="glyphicon glyphicon-info-sign"></span> Más información
-              </a>
-            </div>
+          <div class="col-sm-7">
+            <a href="#/espectaculo/info/{{espectaculo.id}}" class="btn btn-info btn-lg" role="button">
+              <span class="glyphicon glyphicon-info-sign"></span> Más información
+            </a>
           </div>
         </div>
       </div>
+
     </div>
+    </div>
+  <div ng-if="!espectaculos2.length">
 
-  <div ng-if="espectaculos2.length == 0">
-    <strong> No se han encontrado resultados de la búsqueda ingresada.
+    <strong class="strongTitle"> No se han encontrado resultados de la búsqueda ingresada.
       Te sugerimos intentar con otra palabra </strong>
-  </div>
 
+  </div>
 </div>
 
 
 <a class="btn btn-warning btn-lg" href="javascript:history.back()" role="button"><span
   class="glyphicon glyphicon-circle-arrow-left"></span> Volver a la pagina principal</a>
 
-  <p></p>
-</div>
+<p></p>
+

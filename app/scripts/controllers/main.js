@@ -118,7 +118,8 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 
 					$scope.espectaculos2 = data.data;
 
-				}, function(error) {
+
+          }, function(error) {
 
 					$scope.loading = false;
 					console.log(error);
@@ -128,7 +129,8 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 
 			};
 
-			 if (($stateParams.fecha1 != null) && ($stateParams.fecha2 != null)){
+
+  if (($stateParams.fecha1 != null) && ($stateParams.fecha2 != null)){
 
 		  EspectaculoService.listadoEspectaculosFiltradoPorFechas(
            						$stateParams.fecha1, $stateParams.fecha2).then(

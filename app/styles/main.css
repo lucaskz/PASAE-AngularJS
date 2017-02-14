@@ -297,3 +297,7 @@ body {
    padding:2em;
   background-color:#5bc0de;
 }
+
+.strongTitle {
+  color: white;
+}
