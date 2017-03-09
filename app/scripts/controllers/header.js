@@ -66,6 +66,7 @@ angular.module('pasaeAngularJsApp').controller(
 
 				$scope.modalInstance = $modal.open({
 					animation : true,
+
 					size : size,
 					scope : $scope,
 					templateUrl : 'views/espectaculosFiltradosEntreFechas.html'

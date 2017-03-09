@@ -1,81 +1,63 @@
-<div class="container">
+<div class="container ">
   <div class="input-form-container">
-  <form class="form-horizontal col-sm-offset-3" ng-submit="agregar()" novalidate="novalidate">
-    <!-- Form Name -->
-      <legend>ALTA ESPECTACULO</legend>
-      <div class="form-group">
+    <form class="addStyle form-horizontal col-sm-offset-3" ng-submit="agregar()" novalidate="novalidate" role="form">
 
+      <div class="form-group">
         <div class="col-md-8">
-              <div class="input-group">
-                <input type="text" id="subfile" class="form-control imput-md" placeholder="Seleccione una imagen..." readonly="">
+          <div class="input-group input-group-lg">
+            <input type="text" id="subfile" class="form-control" placeholder="Seleccione una imagen..." readonly="">
                 <span class="input-group-btn">
 
                     <span class="btn btn-primary btn-file">
                         <i class="glyphicon glyphicon-folder-open"></i>
                         &nbsp;Seleccionar…
-                      <input type="file" ngf-select ng-model="archivo" onchange="angular.element($('#subfile')).val(this.files[0].name)" id="archivo" name="archivo" accept="image/*" ngf-max-size="10MB" disable-valid-styling="true">
+                      <input type="file" ngf-select ng-model="archivo" class="form-control"
+                             onchange="angular.element($('#subfile')).val(this.files[0].name)" id="archivo"
+                             name="archivo" accept="image/*" ngf-max-size="10MB" disable-valid-styling="true">
+
                     </span>
                 </span>
               </div>
-          <!--
-          angular.element(this).scope().agregar(this.files);
-          onchange="$('#subfile').val($(this).val()); -->
         </div>
-
-
-        <!--<label class="col-md-4 control-label" for="filebutton">Imagen</label>
-        <div class="col-md-4">
-          <input id="filebutton" name="filebutton" class="input-file" type="file">
-        </div>-->
       </div>
 
-
-      <!-- Text input-->
       <div class="form-group">
-        <div class="col-md-8">
-          <input  ng-model="espectaculo.nombre" type="text" placeholder="Ingrese un nombre..." class="form-control input-md"
+        <input ng-model="espectaculo.nombre" type="text" placeholder="Ingrese un nombre..."
+               class="form-control input-lg"
                   ng-minlength="3"
                   ng-maxlength="30"/>
-        </div>
       </div>
 
-      <!-- Text input-->
       <div class="form-group">
 
-        <div class="col-md-8">
-          <textarea class="form-control" ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion..."
-                    required
-            ></textarea>
-        </div>
+          <textarea class="form-control input-lg" ng-model="espectaculo.descripcion"
+                    placeholder="Ingrese una descripcion..."
+                    required></textarea>
+
       </div>
 
-      <!-- Select Basic -->
       <div class="form-group">
-        <div class="col-md-8">
-          <select class="form-control"  ng-model="espectaculo.teatroId" required>
+        <select class="form-control input-lg" ng-model="espectaculo.teatroId" required>
             <option value="">Seleccione Teatro </option>
 
             <option ng-repeat="teatro in teatros" value="{{teatro.id}}">{{teatro.nombre}}</option>
 
           </select>
-
-        </div>
       </div>
 
-      <!-- Select Basic -->
-      <div class="form-group">
-        <div class="col-md-8">
-          <select class=" form-control" ng-model="espectaculo.categoriaId" required>
+      <div class="form-group ">
+        <select class="form-control input-lg" ng-model="espectaculo.categoriaId" required>
             <option value="">Seleccione Categoria </option>
             <option  ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre.replace('_','/')}}</option>
           </select>
 
-        </div>
+
       </div>
-      <button type="submit"  class="btn btn-lg btn-primary :hover">Agregar Espectaculo</button>
 
+      <button type="submit" class="btn btn-danger btn-lg btn-block">Agregar Espectaculo</button>
 
-  </form>
+    </form>
+  </div>
     </div>
 
 </div>

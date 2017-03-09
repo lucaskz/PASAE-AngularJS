@@ -203,13 +203,13 @@ position: fixed;
 
 table {
     border-collapse: separate;
-    border-spacing: 0 5px;
+    border-spacing: 0 3px;
 }
 
 
 
 thead th {
-    background-color: #006DCC;
+    background-color: #5bc0de;
     color: white;
 }
 
