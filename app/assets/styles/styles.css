@@ -206,9 +206,7 @@ table {
     border-spacing: 0 5px;
 }
 
-th,td {
-    width:
-}
+
 
 thead th {
     background-color: #006DCC;
@@ -443,10 +441,11 @@ input[readonly] {
 
 .spinner-icon {
 
-  position:relative;
-  margin-left:40em;
-  margin-top:150px;
-  font-size: 10px;
+  position: fixed;
+  top:-100%; right:-100%; left:-100%; bottom:-100%;
+  margin:auto;
+  z-index:0;
+  font-size: 15px;
   text-indent: -2em;
   border-top: 1.1em solid rgba(200, 200, 200, 0.2);
   border-right: 1.1em solid rgba(200, 200, 200, 0.2);
@@ -563,6 +562,7 @@ input[readonly] {
 }​
 
 
+/*****************HOVER ESPECTACULOS*****************/
 
 .hovereffect {
   width: 100%;
@@ -574,9 +574,10 @@ input[readonly] {
   cursor: default;
 }
 
+
 .hovereffect .overlay {
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 400px;
   position: absolute;
   overflow: hidden;
   text-align:center;
@@ -585,9 +586,9 @@ input[readonly] {
   background-color: rgba(0,0,0,0.6);
   opacity: 0;
   filter: alpha(opacity=0);
-  -webkit-transform: translate(460px, -100px) rotate(180deg);
-  -ms-transform: translate(460px, -100px) rotate(180deg);
-  transform: translate(460px, -100px) rotate(180deg);
+  -webkit-transform: translate(-200px, -100px) rotate(180deg);
+  -ms-transform: translate(-200px, -100px) rotate(180deg);
+  transform: translate(-200px, -100px) rotate(180deg);
   -webkit-transition: all 0.2s 0.4s ease-in-out;
   transition: all 0.2s 0.4s ease-in-out;
 }
@@ -604,30 +605,44 @@ input[readonly] {
   color: #fff;
   text-align: center;
   position: relative;
-  font-size: 17px;
+  font-size: 24px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.6);
 }
 
-.hovereffect a.info {
+.overlay div{
+  color:white;
+  text-align:center;
+  margin-top: 55px;
+  font-size: 18px;
+
+}
+
+.hovereffect a {
   display: inline-block;
   text-decoration: none;
   padding: 7px 14px;
-  bottom:55px;
+  bottom:35px;
   text-transform: uppercase;
   color: #fff;
   border: 1px solid #fff;
-  margin: 50px 0 0 0;
+  margin: 150px 0 0 0;
   background-color: transparent;
-  -webkit-transform: translateY(-200px);
-  -ms-transform: translateY(-200px);
-  transform: translateY(-200px);
+  -webkit-transform: translateY(-800px);
+  -ms-transform: translateY(-800px);
+  transform: translateY(-800px);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
 .hovereffect a.info:hover {
   box-shadow: 0 0 5px #fff;
+  color: #00BFFF
+}
+
+.hovereffect a.delete:hover {
+  box-shadow: 0 0 5px #f00;
+  color:red;
 }
 
 .hovereffect:hover .overlay {
@@ -648,7 +663,7 @@ input[readonly] {
   transition-delay: 0.5s;
 }
 
-.hovereffect:hover a.info {
+.hovereffect:hover a {
   -webkit-transform: translateY(0px);
   -ms-transform: translateY(0px);
   transform: translateY(0px);
@@ -658,5 +673,5 @@ input[readonly] {
 
 .nopadding {
    padding: 0 !important;
-   margin-right:3%;
+   /*margin-left:3%;*/
 }

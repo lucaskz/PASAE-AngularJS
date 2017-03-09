@@ -67,7 +67,7 @@
         <div class="col-md-8">
           <select class=" form-control" ng-model="espectaculo.categoriaId" required>
             <option value="">Seleccione Categoria </option>
-            <option  ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+            <option  ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre.replace('_','/')}}</option>
           </select>
 
         </div>

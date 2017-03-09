@@ -30,7 +30,10 @@ $('a[href*=#]:not([href=#])').click(function() {
 
         return false;
       }
-    },
+    }});
+
+
+
 
 
 //  $('#confirm-delete').on('show.bs.modal', function(e) {
@@ -45,4 +48,4 @@ $('a[href*=#]:not([href=#])').click(function() {
 
 
 
-);
+

@@ -45,6 +45,7 @@ module.exports = function(config) {
       'bower_components/highcharts-release/modules/exporting.js',
       'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angularjs-filters/index.js',
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
