@@ -60,7 +60,7 @@ body {
 }
 
 .navbar-nav>li {
-   font-size:16px;
+   font-size:14px;
  }
 
 /* Responsive: Portrait tablets and up */
@@ -262,7 +262,7 @@ body {
 }
 @-webkit-keyframes slideOutLeft {
     to      { -webkit-transform: translateX(-200%); }
-}  <
+} 
 
 /* slide in from the right */
 @keyframes slideInRight {
