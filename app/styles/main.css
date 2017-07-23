@@ -64,6 +64,14 @@ body {
  }
 
 /* Responsive: Portrait tablets and up */
+
+@media screen and (max-width: 768px) {
+
+  .navbar-form {
+    margin-top: 38px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .container {
       min-height: 100%;
@@ -73,6 +81,7 @@ body {
       margin: 0 auto -60px;
       /* Pad bottom by footer height */
       padding: 0 0 60px;
+      overflow: auto;
   }
 
   /* Remove the padding we set earlier */
@@ -262,7 +271,7 @@ body {
 }
 @-webkit-keyframes slideOutLeft {
     to      { -webkit-transform: translateX(-200%); }
-} 
+}
 
 /* slide in from the right */
 @keyframes slideInRight {
