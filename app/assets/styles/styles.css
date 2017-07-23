@@ -586,9 +586,9 @@ input[readonly] {
   background-color: rgba(0,0,0,0.6);
   opacity: 0;
   filter: alpha(opacity=0);
-  -webkit-transform: translate(-200px, -100px) rotate(180deg);
-  -ms-transform: translate(-200px, -100px) rotate(180deg);
-  transform: translate(-200px, -100px) rotate(180deg);
+  -webkit-transform: translate(-50px, -50px) rotate(180deg);
+  -ms-transform: translate(-50px, -50px) rotate(180deg);
+  transform: translate(-50px, -50px) rotate(180deg);
   -webkit-transition: all 0.2s 0.4s ease-in-out;
   transition: all 0.2s 0.4s ease-in-out;
 }
@@ -674,4 +674,14 @@ input[readonly] {
 .nopadding {
    padding: 0 !important;
    /*margin-left:3%;*/
+  margin-bottom: 15px;
+}
+
+.notfoundtext {
+
+  font-size: 20px;
+  margin-top: 35px;
+  margin-left: 15px;
+  color: orange;
+
 }

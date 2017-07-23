@@ -1,3 +1,6 @@
+/**
+ * Created by EzequielPanoff on 9/3/17.
+ */
 'use strict';
 
 /**
@@ -9,12 +12,12 @@
  */
 angular.module('pasaeAngularJsApp').controller('FuncionCtrl', function ($scope,FuncionService) {
 
-      FuncionService.getDataFunction.then(function(data) {
-           $scope.funcion = data.data;
-      },
-      function(error) {
-               $scope.loading = false;
-      });
+  FuncionService.getDataFunction.then(function(data) {
+      $scope.funcion = data.data;
+    },
+    function(error) {
+      $scope.loading = false;
+    });
 
 
 
