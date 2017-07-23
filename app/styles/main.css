@@ -262,7 +262,7 @@ body {
 }
 @-webkit-keyframes slideOutLeft {
     to      { -webkit-transform: translateX(-200%); }
-}  <
+}
 
 /* slide in from the right */
 @keyframes slideInRight {
