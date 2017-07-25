@@ -298,6 +298,7 @@ body {
 }
 .delete-reserva-funcion {
       border-radius: 20px;
+
 }
 .monto-color{
       background: green;
@@ -309,4 +310,24 @@ body {
 
 .vtop{
  margin-top: 2em;
+}
+.nombre-color{
+  padding:10px;
+  background: #AED6F1;
+}
+.tamano{
+  font-size:20px;
+}
+.tamano-descripcion{
+  font-size:22px;
+  padding: 20px;
+}
+.tamano-funcion{
+  font-size:16px;
+}
+.color-titulo{
+  color: white;
+}
+.compra-padding{
+  padding: 10px;
 }
