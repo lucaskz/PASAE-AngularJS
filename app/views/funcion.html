@@ -4,23 +4,22 @@
     <div class="crop-height">
     <img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}" class="scale"/>
     </div>
-    <div class="panel panel-default ">
-      <div class="panel-heading black-bg">
-        <h3  class="panel-title"> {{ espectaculo.nombre}}  </h3>
-      </div>
-    </div>
-    <div class="panel panel-primary">
+
+    <h2 class="nombre-color"> <strong>{{ espectaculo.nombre| uppercase}}</strong> </h2>
+
+    <div class="panel panel-info">
       <div class="panel-heading">
-        <h3  class="panel-title">SINOPSIS
+        <h3  class="tamano panel-title"><strong>SINOPSIS</strong>
         </h3>
       </div>
-      <div class="panel-body">
-         {{ espectaculo.descripcion }}
+      <div class="panel-body ">
+         <div class="tamano-descripcion"><strong>{{ espectaculo.descripcion }}</strong></div>
+
       </div>
 
-    <div class="panel panel-primary">
+    <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title">Funciones</h3>
+        <h3 class="tamano panel-title"><strong>FUNCIONES</strong></h3>
       </div>
       <div  class="panel-body">
 
@@ -60,16 +59,16 @@
 	    	<div class="row">
 	    		<div class="col-md-9">
 	    			<div class="col-md-5">
-	    				{{ e.fecha | date:'fullDate' }} a las {{ e.hora | date:'"HH:mm'}}
-	    			</div>
-	    			<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="delete-reserva-funcion col-md-2">
-	    				<button class="btn btn-sm btn-danger" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
-              <p></p>
-	    			</div>
-	    			<div ng-hide="roles=='ROLE_ADMINISTRADOR'" class="col-md-2">
-	    				<button class="btn btn-sm btn-success delete-reserva-funcion" ng-click="reservarEntrada(e)" > Reservar</button>
-              <p>
-	    			</div>
+              <div class="tamano-funcion"><strong>{{ e.fecha | date:'fullDate' |uppercase }} a las {{ e.hora | date:'"HH:mm'|uppercase}}</strong></div>
+            </div>
+            <p></p>
+          </div>
+          <div ng-hide="roles=='ROLE_ADMINISTRADOR'" class="col-md-2">
+            <button class="btn btn-bg btn-primary delete-reserva-funcion" ng-click="reservarEntrada(e)" > Reservar</button>
+            <p>
+          </div>	<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="delete-reserva-funcion col-md-2">
+	    				<button class="btn btn-bg btn-danger delete-reserva-funcion" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
+
             <!--<div  ng-show="!autenticado" class="col-md-2">
               <button class="btn-small btn-primary :hover" ng-click="open('lg')" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>
             </div>-->
