@@ -17,7 +17,7 @@
           <img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}" width="300px" height="400px"/>
           <div class="overlay">
             <h2>{{espectaculo.nombre}}</h2>
-            <div>{{espectaculo.descripcion}}</div>
+            <div>{{espectaculo.descripcion | limitstringlenght}}</div>
             <a class="delete" ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button"> <span class="glyphicon glyphicon-erase"></span> Eliminar  </a>
             <a class="info" href="#/espectaculo/info/{{espectaculo.id}}" class="btn btn-info btn-lg" role="button">
               <span class="glyphicon glyphicon-info-sign"></span> Más información

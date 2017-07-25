@@ -36,6 +36,13 @@ angular
       return input.replace(/_/g, '/');
     };
   })
+  .filter('limitstringlenght',function () {
+    return function (input) {
+      var length = 100;
+      var trimmedString = input.substring(0, length);
+      return trimmedString+='...';
+    };
+  })
   .constant('config', {
 	    appName: 'My App',
 	    appVersion: 2.0,
