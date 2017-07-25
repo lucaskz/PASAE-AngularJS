@@ -1,9 +1,11 @@
 <div class="container">
 
 
-  <div style="background: orange;color:white;margin-top:40px;border-radius:10px;">
+  <div style="background: black;color:white;margin-top:40px;border-radius:10px;">
 
-    <h2 style="padding:7px; margin-bottom: 25px"><strong>RESULTADOS DE BUSQUEDA</strong></h2>
+    <h3 ng-show="busqueda" style="padding:7px; margin-bottom: 25px"><strong>RESULTADOS DE BUSQUEDA: &nbsp <span style="font-family: 'Arial Black'">"{{busqueda}}"</span></strong></h3>
+
+    <h3 ng-show="!busqueda" style="padding:7px; margin-bottom: 25px"><strong>RESULTADOS DE BUSQUEDA PARA LAS FECHAS SELECCIONADAS:</strong></h3>
 
   </div>
 
@@ -28,14 +30,11 @@
   <div ng-if="!espectaculos2.length">
 
     <strong class="strongTitle notfoundtext"> No se han encontrado resultados de la búsqueda ingresada.
-      Te sugerimos intentar con otra palabra </strong>
+      Te sugerimos intentar con otra palabra o un rango de fechas diferente. </strong>
 
   </div>
 </div>
 
-
-<a style="margin-top: 40px; margin-bottom: 25px; " class="btn btn-warning btn-lg" href="javascript:history.back()" role="button"><span
-  class="glyphicon glyphicon-circle-arrow-left"></span> Volver a la pagina principal</a>
 
 </div>
 </div>

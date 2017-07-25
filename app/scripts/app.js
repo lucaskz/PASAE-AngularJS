@@ -31,11 +31,17 @@ angular
        function (bootstrap3ElementModifier) {
           bootstrap3ElementModifier.enableValidationStateIcons(true);
   }])
+  .filter('underscorebyslash', function () {
+    return function (input) {
+      return input.replace(/_/g, '/');
+    };
+  })
   .constant('config', {
 	    appName: 'My App',
 	    appVersion: 2.0,
 	    apiUrl: 'http://localhost:8080/'
    })
+
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
 
     $stateProvider

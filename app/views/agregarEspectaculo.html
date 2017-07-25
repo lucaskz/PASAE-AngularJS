@@ -5,7 +5,8 @@
       <div class="form-group">
         <div class=" row col-xs-8">
           <div class="input-group input-group-lg">
-            <input type="text" id="subfile" class="form-control input-lg" placeholder="Seleccione una imagen..." readonly="">
+            <input type="text" id="subfile" class="form-control input-lg" placeholder="Seleccione imagen principal..."
+                   readonly="">
             <span class="input-group-btn">
 
                     <span class="btn btn-primary btn-file">
@@ -14,6 +15,25 @@
                       <input type="file" ngf-select ng-model="archivo" class="form-control"
                              onchange="angular.element($('#subfile')).val(this.files[0].name)" id="archivo"
                              name="archivo" accept="image/*" ngf-max-size="10MB" disable-valid-styling="true">
+
+                    </span>
+                </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class=" row col-xs-8">
+          <div class="input-group input-group-lg">
+            <input type="text" id="subfile2" class="form-control input-lg" placeholder="Seleccione imagen de portada..."
+                   readonly="">
+            <span class="input-group-btn">
+
+                    <span class="btn btn-primary btn-file">
+                        <i class="glyphicon glyphicon-folder-open"></i>
+                        &nbsp;Seleccionar…
+                      <input type="file" ngf-select ng-model="archivo2" class="form-control"
+                             onchange="angular.element($('#subfile2')).val(this.files[0].name)" id="archivo2"
+                             name="archivo2" accept="image/*" ngf-max-size="10MB" disable-valid-styling="true">
 
                     </span>
                 </span>
@@ -48,15 +68,15 @@
         <div class="form-group ">
           <select class="form-control input-lg" ng-model="espectaculo.categoriaId" required>
             <option value="">Seleccione Categoria</option>
-            <option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre.replace('_','/')}}
+            <option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre | underscorebyslash}}
             </option>
           </select>
 
 
         </div>
         <div class="form-group">
-        <button type="submit" class="btn btn-danger btn-lg btn-block">Agregar Espectaculo</button>
-          </div>
+          <button type="submit" class="btn btn-danger btn-lg btn-block">Agregar Espectaculo</button>
+        </div>
       </div>
 
 

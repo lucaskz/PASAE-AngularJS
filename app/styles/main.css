@@ -81,8 +81,10 @@ body {
       margin: 0 auto -60px;
       /* Pad bottom by footer height */
       padding: 0 0 60px;
-      overflow: auto;
+    overflow: hidden;
+    display: block;
   }
+
 
   /* Remove the padding we set earlier */
   .header,
@@ -159,6 +161,14 @@ body {
   }
 
 }
+
+
+@media (min-width: 992px) {
+  .col-md-offset-1 {
+    margin-left: 12.33333333%;
+  }
+}
+
 
 @media (max-width: 1024px) {
     .navbar-header {

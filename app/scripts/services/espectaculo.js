@@ -2,11 +2,12 @@
 
 angular.module('pasaeAngularJsApp').service('EspectaculoService', ['$q','$http','$cookies','$httpParamSerializer','config',function($q,$http,$cookies,$httpParamSerializer,config){
     return {
-        crearEspectaculo : function(archivo,espectaculo){
-              var deferred = $q.defer();
+        crearEspectaculo : function(archivo,archivo2,espectaculo){
+             var deferred = $q.defer();
              var json={"nombre":espectaculo.nombre,"descripcion":espectaculo.descripcion,"categoriaId":espectaculo.categoriaId,"teatroId":espectaculo.teatroId }
              var formData = new FormData();
                   formData.append("imagen", archivo);
+                  formData.append("imagen_portada",archivo2);
                   formData.append("datos",JSON.stringify(json));//important: convert to string JSON!
                        var req = {
                          url: config.apiUrl+'web-module/espectaculo',

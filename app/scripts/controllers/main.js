@@ -104,6 +104,7 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 					$stateParams.categoria).then(
 
 			function(data) {
+        $scope.categoria=$stateParams.categoria;
 				$scope.espectaculos2 = data.data;
 
 			},
@@ -116,6 +117,7 @@ angular.module('pasaeAngularJsApp').controller('MainCtrl',function($scope, $cook
 
 				EspectaculoService.listadoEspectaculosFiltrado($stateParams.busqueda).then(function(data){
 
+          $scope.busqueda=$stateParams.busqueda;
 					$scope.espectaculos2 = data.data;
 
 

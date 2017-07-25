@@ -51,7 +51,7 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 
 			$scope.agregar = function() {
 				$scope.loading = true;
-				EspectaculoService.crearEspectaculo($scope.archivo,$scope.espectaculo).then(
+				EspectaculoService.crearEspectaculo($scope.archivo, $scope.archivo2,$scope.espectaculo).then(
 						function(data) {
 
 
