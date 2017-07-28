@@ -313,17 +313,25 @@ body {
 }
 .nombre-color{
   padding:10px;
-  background: #AED6F1;
+  background: black;
+  color: white;
+  font-family: cursive;
+  margin-top: 1px;
+  margin-bottom: 50px;
+  border-top: white 1px solid;
+  border-bottom: white 1px solid;
 }
 .tamano{
   font-size:20px;
 }
 .tamano-descripcion{
-  font-size:22px;
-  padding: 20px;
+  font-size:19px;
+  padding: 15px;
 }
 .tamano-funcion{
-  font-size:16px;
+  font-size:18px;
+  margin-bottom: 25px;
+  margin-top: 10px;
 }
 .color-titulo{
   color: white;
@@ -331,3 +339,11 @@ body {
 .compra-padding{
   padding: 10px;
 }
+
+.panel-custom > .panel-heading {
+  color: white;
+  background-color: black;
+  border-color: white;
+  font-family: cursive;
+}
+

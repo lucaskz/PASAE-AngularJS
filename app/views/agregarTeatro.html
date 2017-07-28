@@ -17,8 +17,8 @@
                  required/>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control input-lg" ng-model="teatro.cuil" placeholder="Cuil"
-                 ng-minlength="3"
+          <input type="text" class="form-control input-lg" ng-model="teatro.cuil" ng-pattern="/^\d{2}\-\d{8}\-\d{1}$/" placeholder="CUIT"
+                 ng-minlength="11"
                  ng-maxlength="30"
                  required/>
         </div>

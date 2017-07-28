@@ -7,7 +7,7 @@
 
     <h2 class="nombre-color"> <strong>{{ espectaculo.nombre| uppercase}}</strong> </h2>
 
-    <div class="panel panel-info">
+    <div class="panel panel-custom">
       <div class="panel-heading">
         <h3  class="tamano panel-title"><strong>SINOPSIS</strong>
         </h3>
@@ -17,7 +17,7 @@
 
       </div>
 
-    <div class="panel panel-info">
+    <div class="panel panel-custom">
       <div class="panel-heading">
         <h3 class="tamano panel-title"><strong>FUNCIONES</strong></h3>
       </div>
@@ -25,10 +25,10 @@
 
         <!--<a href="#/funcion/agregar" class="btn-small btn-primary :hover">-->
           <!--<span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Funcion</span>-->
-          <button  ng-show="roles=='ROLE_ADMINISTRADOR'" type="button" class="btn btn-sm btn-success glyphicon glyphicon-plus" ng-click="isCollapsed = !isCollapsed">Agregar funcion</button>
+          <button style="margin-left: 15px" ng-show="roles=='ROLE_ADMINISTRADOR'" type="button" class="btn btn-md btn-success glyphicon glyphicon-plus" ng-click="isCollapsed = !isCollapsed">AGREGAR&nbspFUNCION...</button>
         <!--</a> -->
 
-       <div collapse="isCollapsed">
+       <div style="margin-bottom: 55px; margin-top: 25px;" collapse="isCollapsed">
         <form>
           <div style="display:inline-block; min-height:290px;">
             <datepicker ng-model="fecha" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
@@ -46,7 +46,7 @@
               <p></p>
               <p></p>
 
-              <button ng-show="roles=='ROLE_ADMINISTRADOR'" ng-click="agregar_funcion()" class="btn-small btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Aceptar</button>
+              <button style="margin-top: 15px" ng-show="roles=='ROLE_ADMINISTRADOR'" ng-click="agregar_funcion()" class="btn btn-md btn-primary :hover"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Aceptar</button>
 
             </div>
           </div>
@@ -59,7 +59,7 @@
 	    	<div class="row">
 	    		<div class="col-md-9">
 	    			<div class="col-md-5">
-              <div class="tamano-funcion"><strong>{{ e.fecha | date:'fullDate' |uppercase }} a las {{ e.hora | date:'"HH:mm'|uppercase}}</strong></div>
+              <div class="tamano-funcion"><strong>{{ e.fecha | date:"fullDate" | uppercase }} a las {{ e.hora | date:"HH:mm"  |uppercase}}</strong></div>
             </div>
             <p></p>
           </div>
@@ -67,7 +67,7 @@
             <button class="btn btn-bg btn-primary delete-reserva-funcion" ng-click="reservarEntrada(e)" > Reservar</button>
             <p>
           </div>	<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="delete-reserva-funcion col-md-2">
-	    				<button class="btn btn-bg btn-danger delete-reserva-funcion" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Eliminar</button>
+	    				<button class="btn btn-bg btn-danger delete-reserva-funcion" ng-click="eliminarFuncion({{e}})" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>&nbspELIMINAR</button>
 
             <!--<div  ng-show="!autenticado" class="col-md-2">
               <button class="btn-small btn-primary :hover" ng-click="open('lg')" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>
