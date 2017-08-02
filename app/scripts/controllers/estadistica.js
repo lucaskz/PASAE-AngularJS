@@ -57,7 +57,7 @@
 
 
                series: [{
-                         name:"Cantidad",
+                         name:"Cantidad (en pesos)",
                           colorByPoint: true,
                            data: $scope.array
 
@@ -67,7 +67,7 @@
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                 },
                 title: {
-                    text: 'Espectaculos vendidos segun la recaudacion'
+                    text: 'Espectáculos vendidos segun la recaudación'
                 },
                 plotOptions: {
                                 pie: {
