@@ -112,11 +112,7 @@ angular
             templateUrl:'views/main.html',
             controller:'EspectaculoCtrl'
        })
-      .state('showInfo', {
-	      	url:'/espectaculo/info/:idespectaculo',
-            templateUrl:'views/funcion.html',
-            controller:'EspectaculoCtrl'
-       })
+      
        .state('category', {
       		url:'/categorias/:categoria',
             templateUrl:'views/espectaculosSegunCategoria.html',
@@ -148,27 +144,28 @@ angular
             controller: 'ErrorCtrl'
       })
       .state('sector-crear', {
-	        url: '/sector/crear',
-	        templateUrl: 'views/crearTeatro.html',
-	        controller: 'SectorCtrl'
-	    })
+	      	url:'/espectaculo/info/:idespectaculo',
+            templateUrl:'views/funcion.html',
+            controller:'EspectaculoCtrl'
+       })
+
 	    // nested states
 	    // each of these sections will have their own view
 	    // url will be nested (/form/profile)
 	    .state('sector-crear.sectores', {
-	        url: '/sectores',
+//	        url: '/sectores',
 	        templateUrl: 'views/crearTeatroSectores.html'
 	    })
 
 	    // url will be /form/interests
 	    .state('sector-crear.filas', {
-	        url: '/filas',
+//	        url: '/filas',
 	        templateUrl: 'views/crearTeatroFilas.html'
 	    })
 
 	    // url will be /form/payment
 	    .state('sector-crear.confirmar', {
-	        url: '/confirmar',
+//	        url: '/confirmar',
 	        templateUrl: 'views/crearTeatroConfirmar.html'
 	    })
 	    .state('reserva', {
@@ -211,6 +208,11 @@ angular
                templateUrl: 'views/estadisticasDeVentas.html',
                controller: 'EstadisticaCtrl'
         })
+        .state('aboutus', {
+	        url: '/aboutus',
+	        templateUrl: 'views/about.html',
+	        controller: 'AboutCtrl'
+	    })
       .state('estadisticasEspectaculos', {
                      url:'/estadistica/ventasdeespectaculos',
                      templateUrl: 'views/estadisticasDeVentas.html',

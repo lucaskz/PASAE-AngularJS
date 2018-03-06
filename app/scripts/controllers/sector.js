@@ -9,7 +9,6 @@
  */
 angular.module('pasaeAngularJsApp').controller('SectorCtrl', function ($scope,SectorService,EspectaculoService,$state) {
 
-	$scope.teatro = {};
 
 	EspectaculoService.getEspectaculos().then(
 				function(data){
@@ -81,11 +80,12 @@ angular.module('pasaeAngularJsApp').controller('SectorCtrl', function ($scope,Se
 				}
 		);
 	};
+	
+	$scope.teatro.espectaculoId = $stateParams .idespectaculo;
 
-
-	if($state.current.name == 'teatro-crear'){
+//	if($state.current.name == 'teatro-crear'){
 		$state.go('sector-crear.sectores');
-	}
+//	}
 
 
 
