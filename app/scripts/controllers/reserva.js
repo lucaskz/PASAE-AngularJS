@@ -25,7 +25,7 @@ angular.module('pasaeAngularJsApp').controller('ReservaCtrl', function ($scope,E
 		$scope.data.espectaculo = $stateParams.espectaculo;
 		$scope.reserva.funcionId = $stateParams.funcion.id;
 		$scope.data.funcion = $stateParams.funcion;
-		SectorService.getSectores($scope.data.espectaculo).then(
+		SectorService.getSectores($scope.reserva.funcionId).then(
 				function(data){
 					$scope.data.sectores = data.data;
 				},

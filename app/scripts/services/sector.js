@@ -11,7 +11,7 @@ angular.module('pasaeAngularJsApp').service('SectorService', ['$q','$http','$coo
 
     return{
     	crearSectores : function(sector){
-            var deferred = $q.defer();              
+            var deferred = $q.defer();
                 $http.post(config.apiUrl+'web-module/sector/agregarsectoresparaespectaculo',sector).then(function(successData){
                   var data = successData;
                   deferred.resolve(data);
@@ -21,7 +21,7 @@ angular.module('pasaeAngularJsApp').service('SectorService', ['$q','$http','$coo
                 return deferred.promise;
         },
     	 crearSector : function(sector){
-             var deferred = $q.defer();              
+             var deferred = $q.defer();
                  $http.post(config.apiUrl+'web-module/sector',sector).then(function(successData){
                    var data = successData;
                    deferred.resolve(data);
@@ -31,7 +31,7 @@ angular.module('pasaeAngularJsApp').service('SectorService', ['$q','$http','$coo
                  return deferred.promise;
          },
          getSector : function(sector){
-             var deferred = $q.defer();              
+             var deferred = $q.defer();
                  $http.get(config.apiUrl+'web-module/sector/getsector/'+sector).then(function(successData){
                    var data = successData;
                    deferred.resolve(data);
@@ -40,9 +40,9 @@ angular.module('pasaeAngularJsApp').service('SectorService', ['$q','$http','$coo
                    });
                  return deferred.promise;
          },
-         getSectores : function(espectaculo){
-             var deferred = $q.defer();              
-             $http.get(config.apiUrl+'web-module/sector/getsectores/'+espectaculo.id).then(function(successData){
+         getSectores : function(id){
+             var deferred = $q.defer();
+             $http.get(config.apiUrl+'web-module/sector/getsectores/'+id).then(function(successData){
                var data = successData;
                deferred.resolve(data);
                },function(error){
