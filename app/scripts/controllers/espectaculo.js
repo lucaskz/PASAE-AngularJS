@@ -320,12 +320,12 @@ angular.module('pasaeAngularJsApp').controller('EspectaculoCtrl', function($scop
 									console.log(error);
 								});
 					};
-					
+
 					$scope.teatro.espectaculoId = $stateParams .idespectaculo;
 
-//					if ($state.current.name == 'teatro-crear') {
+					if ($state.current.name != 'addShow') {
 						$state.go('sector-crear.sectores');
-//					}
+					}
 
 					console.log('Sector ctrl instanciado');
 
